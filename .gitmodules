@@ -1,0 +1,6 @@
+[submodule "dev/lovely-injector"]
+	path = dev/lovely-injector
+	url = https://github.com/ethangreen-dev/lovely-injector.git
+[submodule "dev/Steamodded"]
+	path = dev/Steamodded
+	url = https://github.com/Steamopollys/Steamodded.git
