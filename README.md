@@ -12,7 +12,7 @@ All mods in this repository require at least Balatro version `1.0.1-n`.
 
 To know where to install Balatro mods, see the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
-project, or the [Steamodded Wiki](https://github.com/Steamopollys/Steamodded/wiki/#step-3-installing-steamodded).
+project, or the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
 Once you have the `Mods` directory located on your machine, you're ready to go.
 
 There are two ways to install mods from this repository: the easy way and the hard way.
