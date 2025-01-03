@@ -1,0 +1,14 @@
+{
+	"id": "first-round-joker",
+	"name": "First Round Joker",
+	"author": ["LnxFCA"],
+	"display_name": "FRJ",
+	"description": "Ensures a specific Joker card appears in the shop during the first round",
+	"prefix": "frj",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "",
+	"badge_text_colour": "",
+	"version": "1.0.0",
+	"dependencies": []
+}
