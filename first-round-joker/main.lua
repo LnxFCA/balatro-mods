@@ -147,7 +147,7 @@ local frj_keyevent = function (self)
        and card.config.center.discovered
     then -- get the card key and save it if `save_joker` is enabled
         frj_key = card.config.center.key
-        if FRJ.config["save_joker"] and not FRJ.config["key"] == frj_key then
+        if FRJ.config["save_joker"] and not (FRJ.config["key"] == frj_key) then
             FRJ.config["key"] = frj_key
             SMODS.save_mod_config(FRJ)
         end
