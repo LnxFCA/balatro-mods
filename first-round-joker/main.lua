@@ -6,10 +6,20 @@ SMODS = require("dev.Steamodded.src.core")
 FRJ = SMODS.current_mod
 
 frj_key = FRJ.config["save_joker"] and FRJ.config["key"] or nil
-frj_enable = not not frj_key
+frj_enable = true
 
+
+-- Reset frj_enable on new game
+frj_start_run = Game.start_run
+Game.start_run = function (self, args)
+    frj_enable = true
+    return frj_start_run(self, args)
+end
+
+
+-- save joker key
 FRJ.save_config = function(self)
-    if self.config["save_joker"] then -- save Joker key
+    if self.config["save_joker"] then
         FRJ.config["key"] = frj_key
     else
         FRJ.config["key"] = nil
@@ -18,7 +28,8 @@ FRJ.save_config = function(self)
     SMODS.save_mod_config(self)
 end
 
----@return UIElement
+
+-- configuration
 FRJ.config_tab = function()
     return {
         n = G.UIT.ROOT,
@@ -95,11 +106,12 @@ FRJ.config_tab = function()
     }
 end
 
+
 local frj_create_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
     ---@type Card
     local card = nil
-    if G.GAME.round == 1 and frj_enable then  -- is the first round?
+    if G.GAME.round == 1 and frj_enable and not not frj_key then  -- should the mod activate?
         frj_enable = false  -- prevents the card from appearing after 1st round
 
         -- create the user selected Joker
@@ -141,6 +153,7 @@ local frj_keyevent = function (self)
         end
     end
 end
+
 
 SMODS.Keybind{
     key_pressed = 'f',
