@@ -1,8 +1,4 @@
--- development only
-require("balatro")
-SMODS = require("dev.Steamodded.src.core")
-
--- MOD
+-- MOD: First Round Joker
 FRJ = SMODS.current_mod
 
 frj_key = FRJ.config["save_joker"] and FRJ.config["key"] or nil
