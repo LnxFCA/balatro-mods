@@ -4,9 +4,9 @@ FRJ = SMODS.current_mod
 frj_key = FRJ.config["save_joker"] and FRJ.config["key"] or nil
 frj_enable = true
 
-
 -- Reset frj_enable on new game
 frj_start_run = Game.start_run
+---@diagnostic disable-next-line: duplicate-set-field
 Game.start_run = function (self, args)
     frj_enable = true
     return frj_start_run(self, args)
