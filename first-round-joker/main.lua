@@ -1,19 +1,22 @@
--- MOD: First Round Joker
+-- Misc
+function include(filename)
+    SMODS.load_file(filename, SMODS.current_mod.id)()
+end
+
+-- MOD files
+include("ui/ui.lua")
+
+-- MOD globals
 FRJ = SMODS.current_mod
 
 frj_key = FRJ.config["save_joker"] and FRJ.config["key"] or nil
 frj_enable = true
 
--- Reset frj_enable on new game
-frj_start_run = Game.start_run
----@diagnostic disable-next-line: duplicate-set-field
-Game.start_run = function (self, args)
-    frj_enable = true
-    return frj_start_run(self, args)
-end
 
+-- MOD configuration
+FRJ.config_tab = FRJ_UI.config_tab
 
--- save joker key
+-- MOD save configuration
 FRJ.save_config = function(self)
     if self.config["save_joker"] then
         FRJ.config["key"] = frj_key
@@ -25,81 +28,12 @@ FRJ.save_config = function(self)
 end
 
 
--- configuration
-FRJ.config_tab = function()
-    return {
-        n = G.UIT.ROOT,
-        config = {
-            r = 0.1,
-            minw = 5,
-            align = "cm",
-            padding = 0.1,
-            colour = G.C.BLACK,
-        },
-        nodes = { -- configuration options
-            {
-                n = G.UIT.C, --- container
-                config = {
-                    align = "cm",
-                },
-                nodes = { -- options
-                    {
-                        n = G.UIT.R,
-                        config = {
-                            align = "cm",
-                            padding = 0.1,
-                            colour = G.C.GREY,
-                            r = 0.2,
-                        },
-                        nodes = {
-                            create_toggle({ -- option toggle
-                                label = localize('frj_save_joker'),
-                                label_scale = 0.4,
-                                info = { localize("frj_save_joker_d") },
-                                ref_table = FRJ.config,
-                                ref_value = 'save_joker',
-                                callback = function() FRJ:save_config() end,
-                            }),
-                        }
-                    },
-
-                    {
-                        n = G.UIT.R, -- separator
-                        config = {
-                            align = "cm",
-                        },
-                        nodes = {{
-                            n = G.UIT.B,
-                            config = {
-                                h = 0.3,
-                                w = 1,
-                            }
-                        }}
-                    },
-
-                    {
-                        n = G.UIT.R,
-                        config = {
-                            align = "cm",
-                            padding = 0.1,
-                            colour = G.C.GREY,
-                            r = 0.2,
-                        },
-                        nodes = {
-                            create_toggle({ -- option toggle
-                                label = localize('frj_base_price'),
-                                label_scale = 0.4,
-                                info = { localize("frj_base_price_d") },
-                                ref_table = FRJ.config,
-                                ref_value = 'base_price',
-                                callback = function() SMODS.save_mod_config(FRJ) end
-                            }),
-                        }
-                    }
-                }
-            }
-        }
-    }
+-- Reset frj_enable on new game
+frj_start_run = Game.start_run
+---@diagnostic disable-next-line: duplicate-set-field
+Game.start_run = function (self, args)
+    frj_enable = true
+    return frj_start_run(self, args)
 end
 
 
@@ -134,7 +68,6 @@ function create_card_for_shop(area)
 end
 
 
--- Add a Balatro keyboard event
 local frj_keyevent = function (self)
     ---@type Card
     local card = G.CONTROLLER.hovering.target
@@ -151,6 +84,7 @@ local frj_keyevent = function (self)
 end
 
 
+-- Add a Balatro keyboard event
 SMODS.Keybind{
     key_pressed = 'f',
     action = frj_keyevent,
