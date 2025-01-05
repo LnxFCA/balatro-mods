@@ -1,4 +1,4 @@
-function config_tab()
+FRJ_UI.config_tab = function ()
     return {
         n = G.UIT.ROOT,
         config = {
