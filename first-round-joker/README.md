@@ -33,6 +33,6 @@ you activate the "Save selected Joker" option.
 - Possibility of disabling the "Edition" effect applied.
 
 - Instead of using a keyboard key, show a overlay menu where players can pick
-they desired Joker.
+they desired Joker. [Pending]
 
 - Improve integration with other mods as per users request.
