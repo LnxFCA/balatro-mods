@@ -2,7 +2,7 @@
 
 This is a collection of my hand-made mods for [Balatro](https://store.steampowered.com/app/2379780).
 
-All mods in this repository require at least Balatro version `1.0.1-n`.
+All mods in this repository require at least Balatro version `1.0.1n`.
 
 ## Mod list
 
