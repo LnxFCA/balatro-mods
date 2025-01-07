@@ -65,4 +65,4 @@ repository for their licensing information.
 
 ### Projects used (submodules)
 
-- [balatro-mod-env] - Refer to its repository for license details.
+- [balatro-mod-env](https://github.com/LnxFCA/balatro-mod-env) - Refer to its repository for license details.
