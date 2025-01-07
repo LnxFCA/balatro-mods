@@ -60,3 +60,9 @@ git clone --recurse-submodules https://github.com/LnxFCA/balatro-mods.git
 ## License
 
 All source code in this repository is released under the GNU General Public License version 3 or later, unless stated otherwise.
+However, it includes other projects (git submodules) that may have different licenses. Please refer to the respective project
+repository for their licensing information.
+
+### Projects used (submodules)
+
+- [balatro-mod-env] - Refer to its repository for license details.
