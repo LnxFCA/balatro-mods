@@ -13,10 +13,6 @@ All mods in this repository require at least Balatro version `1.0.1n`.
 > ⚠️ This branch (`main`) is for development only, code here is unstable and may not work. If you want the latest
 > working changes use the `release` branch instead.
 
-> Please note that mods here requires the latest working version of `smods` (not necessary the latest git version), if you have any problem with the mod
-> try updating your `smods` version, if you can't update `smods` due to having mods depending on a later version
-> of the former, you can try to create a new issue here.
-
 To know where to install Balatro mods, see the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
 project, or the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
@@ -60,6 +56,37 @@ Developers who want to test things out can clone this repository by using the fo
 ```sh
 git clone --recurse-submodules https://github.com/LnxFCA/balatro-mods.git
 ```
+
+## General troubleshooting
+
+If youre having troubles with a specific mod, please refer to the mod directory to check troubleshooting
+steps for that mod.
+
+Just in case you can try the following things:
+
+- Verify that you're using the latest working version of `smods` (not necessary the latest commit)
+- Be sure that you are using the latest version of the mod
+- Be sure that you got the mod from valid sources:
+  - GitHub releases page
+  - nexusmods
+  - repo `release` branch
+ - If using `git`, make sure you're aren't using the `main` branch.
+
+If you can't update to the latest version of `smods` due to incompatibility with mods that
+requires an earlier version of `smods`, you can create a new issue explaining your problem.
+
+### Creating a new GitHub issue
+
+If your can't find a solution to your problem after searching on the specific mod README
+you can create a new issue here, please have into account the following:
+
+- Specify the mod name, e.g. `first-round-joker` either on the issue label or
+in its description.
+- Upload or paste any screenshots or game logs of the problem you have
+- In the issue description, please put the following information:
+  - game version, e.g. `balatro: 1.0.1n`
+  - smods version, e.g. `smods: 1.0.0~ALPHA-1307d-STEAMODDED`
+  - mod version, e.g. `first-round-joker: 1.0.1n`
 
 ## License
 
