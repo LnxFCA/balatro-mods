@@ -13,6 +13,10 @@ All mods in this repository require at least Balatro version `1.0.1n`.
 > ⚠️ This branch (`main`) is for development only, code here is unstable and may not work. If you want the latest
 > working changes use the `release` branch instead.
 
+> Please note that mods here requires the latest working version of `smods` (not necessary the latest git version), if you have any problem with the mod
+> try updating your `smods` version, if you can't update `smods` due to having mods depending on a later version
+> of the former, you can try to create a new issue here.
+
 To know where to install Balatro mods, see the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
 project, or the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
