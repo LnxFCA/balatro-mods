@@ -36,3 +36,23 @@ you activate the "Save selected Joker" option.
 they desired Joker. [Pending]
 
 - Improve integration with other mods as per users request.
+
+## Troubleshooting
+
+Please note that this don't make unnecessary modifications, so if you have problems not
+related to the shop, then the problem isn't likely related to this mod.
+
+If you have various mods installed, please verify that disabling or uninstalling
+this mod solves the problem for you, if not, its clear that the problem source
+is not this mod.
+
+If your problem happens when this and other mod are both enabled, please open
+a new issue requesting compatibility support, don't forget to include:
+
+- Game version
+- smods version
+- mod name (mod to support).
+- mod url (The mod git repository URL if possible)
+
+On `mod url` don't put a URL to a release file directly, instead put the mod's official homepage
+or the post link on Discord.
