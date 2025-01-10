@@ -1,4 +1,4 @@
-FRJ_UI.config_tab = function ()
+FRJM.UI.config_tab = function ()
     return {
         n = G.UIT.ROOT,
         config = {
@@ -28,9 +28,9 @@ FRJ_UI.config_tab = function ()
                                 label = localize('frj_save_joker'),
                                 label_scale = 0.4,
                                 info = { localize("frj_save_joker_d") },
-                                ref_table = FRJ.config,
+                                ref_table = FRJM.mod.config,
                                 ref_value = 'save_joker',
-                                callback = function() FRJ:save_config() end,
+                                callback = function() FRJM.mod:save_config() end,
                             }),
                         }
                     },
@@ -60,9 +60,9 @@ FRJ_UI.config_tab = function ()
                                 label = localize('frj_base_price'),
                                 label_scale = 0.4,
                                 info = { localize("frj_base_price_d") },
-                                ref_table = FRJ.config,
+                                ref_table = FRJM.mod.config,
                                 ref_value = 'base_price',
-                                callback = function() SMODS.save_mod_config(FRJ) end
+                                callback = function() SMODS.save_mod_config(FRJM.mod) end
                             }),
                         }
                     }
