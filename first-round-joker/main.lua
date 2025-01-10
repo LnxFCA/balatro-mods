@@ -42,8 +42,9 @@ end
 
 FRJM.override.create_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
+    local not_tutorial = not (G.SETTINGS.tutorial_progress and G.SETTINGS.tutorial_progress.forced_shop)
     local card = nil
-    if G.GAME.round == 1 and frj_enable and not not frj_key then  -- should the mod activate?
+    if G.GAME.round == 1 and frj_enable and not_tutorial and (not not frj_key) then  -- should the mod activate?
         frj_enable = false  -- prevents the card from appearing after 1st round
 
         -- create the user selected Joker
