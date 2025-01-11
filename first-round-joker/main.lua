@@ -23,18 +23,23 @@ end
 
 -- Whatever the mod should perform or not
 ---@return boolean
-FRJM.utils.enabled = function ()
+FRJM.utils.enabled = function (area)
     local enabled = FRJM.config.enable -- true at the
     local enabled_for_round = false -- true on round == 1
     local enabled_for_game = false -- false if tutorial in progress
     local enabled_for_key = false -- true if FRJM.config.joker_key isn't nil
+    local enabled_for_area = false -- true if area == G.shop_jokers
 
     if enabled then
         enabled_for_round = G.GAME.round == 1
         enabled_for_game = not (G.SETTINGS.tutorial_progress and G.SETTINGS.tutorial_progress.forced_shop)
         enabled_for_key = FRJM.config.joker_key ~= nil
+        enabled_for_area = G.shop_jokers and area == G.shop_jokers
 
-        enabled = enabled_for_round and enabled_for_game and enabled_for_key
+        enabled = enabled_for_round
+            and enabled_for_game
+            and enabled_for_key
+            and enabled_for_area
     end
 
     return enabled
@@ -71,7 +76,7 @@ end
 FRJM.overrided.create_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
     local card = nil
-    if FRJM.utils.enabled() then  -- should the mod activate?
+    if FRJM.utils.enabled(area) then  -- should the mod activate?
         FRJM.config.enable = false  -- prevents the card from appearing after 1st round
 
         -- create the user selected Joker
