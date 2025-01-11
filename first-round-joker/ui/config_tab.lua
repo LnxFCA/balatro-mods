@@ -1,4 +1,4 @@
-FRJM.UI.config_tab = function ()
+FRJM.mod.config_tab = function ()
     return {
         n = G.UIT.ROOT,
         config = {
@@ -30,7 +30,7 @@ FRJM.UI.config_tab = function ()
                                 info = { localize("frj_save_joker_d") },
                                 ref_table = FRJM.mod.config,
                                 ref_value = 'save_joker',
-                                callback = function() FRJM.mod:save_config() end,
+                                callback = function() FRJM.utils.save_config() end,
                             }),
                         }
                     },
