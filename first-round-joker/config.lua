@@ -1,5 +1,5 @@
 return {
-	key = nil,
+	joker_key = nil,
 	save_joker = false,
-    base_price = false,
+	base_price = false,
 }
