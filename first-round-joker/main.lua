@@ -11,6 +11,9 @@ FRJM.mod_id = FRJM.mod.id or "first-round-joker"
 FRJM.config.enable = true
 FRJM.config.joker_key = (FRJM.mod.config.save_joker and FRJM.mod.config.joker_key) or nil
 
+-- save loaded configuration
+SMODS.save_mod_config(FRJM.mod)
+
 
 ---@param filename string
 FRJM.utils.include = function (filename)
