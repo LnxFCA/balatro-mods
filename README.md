@@ -13,25 +13,48 @@ All mods in this repository require at least Balatro version `1.0.1n`.
 > ⚠️ This branch (`main`) is for development only, code here is unstable and may not work. If you want the latest
 > working changes use the `release` branch instead.
 
-To know where to install Balatro mods, see the
-[lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
-project, or the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
-Once you have the `Mods` directory located on your machine, you're ready to go.
+Dependencies:
 
-There are two ways to install mods from this repository: the easy way and the hard way.
+- [lovely-injector](https://github.com/ethangreen-dev/lovely-injector). Any version.
+
+- [smods](https://github.com/Steamodded/smods).
+Version `1.0.0~ALPHA-1304a-STEAMODDED` or later.
+
+To know where to install Balatro mods and how to install the dependencies, see the
+[lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
+projec page, and the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
+
+Once you have installed the dependencies and located the `Mods` directory located on your machine, you're ready to go.
+
+The installation cover three ways: Easy way, Updating the mod and Git way
 
 ### Easy way
 
-The easy way consists of downloading the latest individual release of the mod of
-your choice [here](https://github.com/LnxFCA/balatro-mods/releases). They are named
+Download the latest individual release of the mod of your choice
+[here](https://github.com/LnxFCA/balatro-mods/releases). They are named
 after the mod folder, e.g., `first-round-joker-v1.0.0.zip`.
 
 Once you have downloaded the file, you can extract its contents inside the `Mods` folder
 directly and enjoy.
 
-### Hard way
+### Updating the mod
 
-The hard way is intended for developers or advanced users who have a basic understanding of `git`.
+> NOTE: The project uses semantic versioning. See [here](https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning).
+
+When updating to a patch/bugfix release, e.g. from `1.0.1`, to `1.0.2`, the installation
+is simple, just extract the release file inside of the `Mods` directory.
+
+When updating from a Major or Minor release, the following steps are recommended to
+prevent incompatibility issues:
+
+- Remove the mod folder from the `Mods` directory. (only when using the easy way)
+- Remove the mod configuration from the Balatro's save directory, usually found in `config/mod-name.jkr`, e.g.
+`config/first-round-joker.jkr`.
+- Restart the game.
+
+### Git way
+
+The git way is intended for developers or advanced users who have a basic understanding of `git`.
 
 Users should clone the `release` branch of the repository since the `main` branch
 has extra code that helps with development but can cause problems when running
@@ -70,7 +93,7 @@ Just in case you can try the following things:
   - GitHub releases page
   - nexusmods
   - repo `release` branch
- - If using `git`, make sure you're aren't using the `main` branch.
+- If using `git`, make sure you're aren't using the `main` branch.
 
 If you can't update to the latest version of `smods` due to incompatibility with mods that
 requires an earlier version of `smods`, you can create a new issue explaining your problem.
