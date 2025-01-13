@@ -12,8 +12,8 @@ See the project's [README](../README.md).
 > NOTE: While this mod provides similar functionality to `Choose First Shop Joker`,
 > this mod is an independent work not related in any way to the former.
 
-To activate the mod, you must hover over a valid Joker card and the activation
-key, by default `F`, you can change it on mod options.
+To activate the mod, you must hover over a valid Joker card (Collections -> Jokers)
+and press the activation key, by default `F`, you can change it on mod options.
 Once a valid Joker card is activated, the selected Joker will appear in the
 first-round shop.
 
