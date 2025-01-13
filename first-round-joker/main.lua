@@ -8,11 +8,27 @@ FRJM.config = {}  -- runtime
 FRJM.mod = SMODS.current_mod
 FRJM.mod_id = FRJM.mod.id or "first-round-joker"
 
-FRJM.config.enable = true
-FRJM.config.joker_key = (FRJM.mod.config.save_joker and FRJM.mod.config.joker_key) or nil
 
--- save loaded configuration
+-- Save mod configuration
 SMODS.save_mod_config(FRJM.mod)
+
+
+--- Load mod runtime configuration
+FRJM.utils.load_config = function ()
+    local config = {}
+
+    config.enable = true
+    config.joker_key = (FRJM.mod.config.save_joker and FRJM.mod.config.joker_key) or nil
+    config.keybind = FRJM.mod.config.default_keybind
+
+    if FRJM.mod.config.use_user_keybind and FRJM.mod.config.user_keybind ~= "" then
+        config.keybind = FRJM.mod.config.user_keybind
+    end
+
+    config.keybind = string.lower(config.keybind)
+
+    FRJM.config = config
+end
 
 
 ---@param filename string
@@ -45,9 +61,12 @@ FRJM.utils.enabled = function (area)
     return enabled
 end
 
--- Load mod files
+-- Starup configuration
 FRJM.utils.include("ui/card_selection.lua")
-FRJM.utils.include("ui/config_tab.lua")
+-- FRJM.utils.include("ui/config_tab.lua")
+FRJM.utils.include("ui/test.lua")
+
+FRJM.utils.load_config()
 
 
 -- save configuration
@@ -58,6 +77,10 @@ FRJM.utils.save_config = function()
     else
         FRJM.mod.config.joker_key = nil
     end
+
+        if FRJM.mod.config.user_keybind == "" or (not FRJM.mod.config.user_keybind) then
+            FRJM.mod.config.user_keybind  = FRJM.mod.config.default_keybind
+        end
 
     SMODS.save_mod_config(FRJM.mod)
 end
@@ -119,7 +142,7 @@ end
 
 -- Add a Balatro keyboard event
 SMODS.Keybind{
-    key_pressed = 'f',
+    key_pressed = FRJM.config.keybind,
     action = FRJM.utils.keyevent,
     event = 'pressed',
     held_keys = {},
