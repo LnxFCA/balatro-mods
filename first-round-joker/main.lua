@@ -63,8 +63,7 @@ end
 
 -- Starup configuration
 FRJM.utils.include("ui/card_selection.lua")
--- FRJM.utils.include("ui/config_tab.lua")
-FRJM.utils.include("ui/test.lua")
+FRJM.utils.include("ui/config_tab.lua")
 
 FRJM.utils.load_config()
 
