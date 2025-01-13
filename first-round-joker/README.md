@@ -35,7 +35,9 @@ Checkout the mod configuration menu to see all configuration options.
 
 The mod has the following features:
 
-- Custom keyboard shortcut (keybind)
+- Custom keyboard shortcut (keybind): In mod options, click the green input text
+and enter your favorite keyboard key.
+
 - Use the Joker card base price (without Negative edition price)
 - Save the selected Joker
 
