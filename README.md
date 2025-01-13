@@ -22,7 +22,7 @@ Version `1.0.0~ALPHA-1304a-STEAMODDED` or later.
 
 To know where to install Balatro mods and how to install the dependencies, see the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
-projec page, and the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
+project page, and the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
 
 Once you have installed the dependencies and located the `Mods` directory located on your machine, you're ready to go.
 
