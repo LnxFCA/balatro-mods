@@ -12,28 +12,36 @@ See the project's [README](../README.md).
 > NOTE: While this mod provides similar functionality to `Choose First Shop Joker`,
 > this mod is an independent work not related in any way to the former.
 
-To activate the mod, you must hover over a valid Joker card and press the `F` key.
+To activate the mod, you must hover over a valid Joker card and the activation
+key, by default `F`, you can change it on mod options.
+
 Once a valid Joker card is activated, the selected Joker will appear in the
 first-round shop.
 
-> NOTE: The Joker will have a "Negative" effect applied. You can disable it
-> in the mod configuration menu.
+The Joker will have a "Negative" effect applied. You can disable it
+in the mod configuration menu.
 
 After you purchase the Joker or click the `Next round` button, the game returns
 to its normal behavior in subsequent rounds.
 
-> NOTE: You can't use this mod on "undiscovered" Jokers. Using the activation
-> process on an "undiscovered" Joker has no effect at all.
+You can't use this mod on "undiscovered" Jokers. Using the activation
+process on an "undiscovered" Joker has no effect at all.
 
 The activation process must be performed every time the game launches, unless
 you activate the "Save selected Joker" option.
 
+## Features
+
+The mod has the following features:
+
+- Custom keyboard shortcut (keybind)
+- Use the Joker card base price (without Negative edition price)
+- Save the selected Joker
+
 ## Planned features
 
-- Possibility of disabling the "Edition" effect applied.
-
-- Instead of using a keyboard key, show a overlay menu where players can pick
-they desired Joker. [Pending]
+- Show an overlay menu where the user can select available Jokers, when the
+activation key is pressed. [doing]
 
 - Improve integration with other mods as per users request.
 
