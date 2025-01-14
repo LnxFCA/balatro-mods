@@ -43,3 +43,30 @@ FRJM.save_config = function(self)
 
     SMODS.save_mod_config(self.mod)
 end
+
+
+-- Show card selection ui
+FRJM.utils.show_card_selection_overlay = function (self)
+    local frjm = self.parent()
+
+    frjm.config.selection_ui_active = true
+
+    G.SETTINGS.paused = true
+    if G.OVERLAY_MENU then G.FUNCS.exit_overlay_menu() end
+
+    G.FUNCS.overlay_menu({
+        definition = FRJM.UI.create_card_selection_ui()
+    })
+end
+
+
+-- Select Joker card
+FRJM.utils.select_joker_card = function (self, card)
+    local frjm = self.parent()
+    local mconfig = frjm.mod.config
+    local mrconfig = frjm.config
+
+    mrconfig.joker_key = card.config.center.key
+
+    if mconfig.save_joker then frjm:save_config() end
+end

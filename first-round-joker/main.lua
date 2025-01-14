@@ -1,6 +1,7 @@
 -- mod globals
 FRJM = {}
 
+-- Initialize the mod
 FRJM.init = function (self)
     -- initialize globals
     self.UI = {}
@@ -17,6 +18,7 @@ FRJM.init = function (self)
     self.config.enable = true
     self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil
     self.config.keybind = mconfig.default_keybind
+    self.config.selection_ui_active = false
 
     if mconfig.use_user_keybind and mconfig.user_keybind ~= "" then
         self.config.keybind = mconfig.user_keybind
@@ -49,24 +51,36 @@ FRJM.include("frjm/ui/config_tab.lua")
 FRJM.include("frjm/ui/card_selection.lua")
 
 
-FRJM.utils.keyevent = function (self)
-    local card = G.CONTROLLER.hovering.target
-    if card:is(Card)  -- check if its a discovered Joker card
-       and card.config.center.set == 'Joker'
-       and card.config.center.discovered
-    then -- get the card key and save it if `save_joker` is enabled
-        FRJM.config.joker_key = card.config.center.key
-        if FRJM.mod.config.save_joker then
-            FRJM:save_config()
+-- Called when activation key is pressed. Default F
+FRJM.activate = function (_)
+    -- TODO: Implement this feature
+    if FRJM.config.selection_ui_active then return end
+
+    FRJM.utils:show_card_selection_overlay()
+
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function ()
+            local card = nil
+
+            if not FRJM.config.selection_ui_active then return false end
+            if not G.CONTROLLER.clicked.target then return false end
+
+            card = G.CONTROLLER.clicked.target
+            if card:is(Card) and card.config.center.set == 'Joker' then
+                FRJM.utils:select_joker_card(card)
+
+                return true
+            end
         end
-    end
+    }))
 end
 
 
 -- Add a Balatro keyboard event
 SMODS.Keybind{
     key_pressed = FRJM.config.keybind,
-    action = FRJM.utils.keyevent,
+    action = FRJM.activate,
     event = 'pressed',
     held_keys = {},
 }
