@@ -38,7 +38,7 @@ FRJM.init = function (self)
     end
 
 
-    -- self (parent)
+    -- parent (self)
     self.utils.parent = function () return self end
 
     -- save init configuration
