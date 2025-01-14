@@ -8,6 +8,7 @@ FRJM.init = function (self)
     self.original = {}
     self.utils = {}
     self.config = {}  -- runtime
+    self.config.card_selection = {}  -- card selection state
 
     self.mod = SMODS.current_mod
     self.mod_id = FRJM.mod.id or "first-round-joker"
@@ -19,6 +20,8 @@ FRJM.init = function (self)
     self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil
     self.config.keybind = mconfig.default_keybind
     self.config.selection_ui_active = false
+    self.config.card_selection.key =  self.config.joker_key
+    self.config.card_selection.name = mconfig.joker_name
 
     if mconfig.use_user_keybind and mconfig.user_keybind ~= "" then
         self.config.keybind = mconfig.user_keybind
@@ -53,7 +56,6 @@ FRJM.include("frjm/ui/card_selection.lua")
 
 -- Called when activation key is pressed. Default F
 FRJM.activate = function (_)
-    -- TODO: Implement this feature
     if FRJM.config.selection_ui_active then return end
 
     FRJM.utils:show_card_selection_overlay()
@@ -63,14 +65,15 @@ FRJM.activate = function (_)
         func = function ()
             local card = nil
 
-            if not FRJM.config.selection_ui_active then return false end
+            if not FRJM.config.selection_ui_active then return true end
             if not G.CONTROLLER.clicked.target then return false end
 
             card = G.CONTROLLER.clicked.target
-            if card:is(Card) and card.config.center.set == 'Joker' then
+            if card:is(Card)
+               and card.config.center.set == 'Joker'
+               and card.config.center.key ~= FRJM.config.card_selection.key
+            then
                 FRJM.utils:select_joker_card(card)
-
-                return true
             end
         end
     }))

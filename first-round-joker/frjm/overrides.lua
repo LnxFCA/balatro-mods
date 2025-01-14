@@ -40,3 +40,12 @@ function create_card_for_shop(area)
 
     return card
 end
+
+
+FRJM.original.exit_overlay_menu = G.FUNCS.exit_overlay_menu
+G.FUNCS.exit_overlay_menu = function ()
+    local mrconfig = FRJM.config
+
+    FRJM.original.exit_overlay_menu()
+    if mrconfig.selection_ui_active then mrconfig.selection_ui_active = false end
+end
