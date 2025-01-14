@@ -17,17 +17,18 @@ FRJM.init = function (self)
     local mconfig = self.mod.config
 
     self.config.enable = true
-    self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil
+    self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil  -- load from config
     self.config.keybind = mconfig.default_keybind
-    self.config.selection_ui_active = false
-    self.config.card_selection.key =  self.config.joker_key
-    self.config.card_selection.name = mconfig.joker_name
+    self.config.selection_ui_active = false  -- selection overlay state
+    self.config.card_selection.key =  self.config.joker_key  -- selection info state
+    self.config.card_selection.name = mconfig.joker_name  -- selection info state
 
+    -- load the custom keybind if active
     if mconfig.use_user_keybind and mconfig.user_keybind ~= "" then
         self.config.keybind = mconfig.user_keybind
     end
 
-    self.config.keybind = string.lower(self.config.keybind)
+    self.config.keybind = string.lower(self.config.keybind)  -- keybind is stored in uppercase
 
 
     -- include func
@@ -56,18 +57,23 @@ FRJM.include("frjm/ui/card_selection.lua")
 
 -- Called when activation key is pressed. Default F
 FRJM.activate = function (_)
+    -- don't active when the selection overlay is visible
     if FRJM.config.selection_ui_active then return end
 
+    -- show the selection overlay
     FRJM.utils:show_card_selection_overlay()
 
+    -- handle the selection event
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function ()
             local card = nil
 
+            -- don't handle anything if the overlay isn't active
             if not FRJM.config.selection_ui_active then return true end
             if not G.CONTROLLER.clicked.target then return false end
 
+            -- handle the clicked card if different from previous card
             card = G.CONTROLLER.clicked.target
             if card:is(Card)
                and card.config.center.set == 'Joker'

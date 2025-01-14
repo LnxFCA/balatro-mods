@@ -42,6 +42,7 @@ function create_card_for_shop(area)
 end
 
 
+-- Reset selection overlay state when closed
 FRJM.original.exit_overlay_menu = G.FUNCS.exit_overlay_menu
 G.FUNCS.exit_overlay_menu = function ()
     local mrconfig = FRJM.config

@@ -30,15 +30,16 @@ FRJM.save_config = function(self)
     local mconfig = self.mod.config  -- mod configuration
     local mrconfig = self.config -- runtime mod configuration
 
-    -- save the current Joker key if save_joker is enabled
-    if mconfig.save_joker then
+
+    if mconfig.save_joker then  -- save the current Joker key if save_joker is enabled
         mconfig.joker_key = mrconfig.joker_key
         mconfig.joker_name = mrconfig.card_selection.name
-    else
+    else  -- reset to default
         mconfig.joker_key = nil
         mconfig.joker_name = localize('k_none')
     end
 
+    -- reset keybind to default if invalid keybind is provided
     if mconfig.user_keybind == "" or (not mconfig.user_keybind) then
         mconfig.user_keybind  = mconfig.default_keybind
     end
@@ -53,7 +54,7 @@ FRJM.utils.show_card_selection_overlay = function (self)
 
     frjm.config.selection_ui_active = true
 
-    G.SETTINGS.paused = true
+    G.SETTINGS.paused = true  -- pauses the game
     if G.OVERLAY_MENU then G.FUNCS.exit_overlay_menu() end
 
     G.FUNCS.overlay_menu({
@@ -68,9 +69,11 @@ FRJM.utils.select_joker_card = function (self, card)
     local mconfig = frjm.mod.config
     local mrconfig = frjm.config
 
+    -- update selection information
     mrconfig.card_selection.key = card.config.center.key
     mrconfig.card_selection.name = card.config.center.name
-    mrconfig.joker_key = card.config.center.key
+
+    mrconfig.joker_key = card.config.center.key  -- store on runtime configuration
 
     if mconfig.save_joker then frjm:save_config() end
 end
