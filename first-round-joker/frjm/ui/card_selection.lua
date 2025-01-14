@@ -7,7 +7,9 @@ FRJM.UI.selected_card_ui = function ()
         config = {
             align = "cm",
             minh = 0.5,
-            colour = G.C.GREEN,
+            colour = G.C.BLACK,
+            r = 0.1,
+            padding = 0.2,
         },
         nodes = {
             {
@@ -18,9 +20,9 @@ FRJM.UI.selected_card_ui = function ()
                             ref_table = card_selection, ref_value = 'name',
                             prefix = localize('frj_joker_text_selected')
                         }},
-                        colours = { G.C.WHITE },
+                        colours = { HEX("D7D9DB") },
                         shadow = true,
-                        scale = 0.4,
+                        scale = 0.45,
                     })
                 }
             }
@@ -47,7 +49,7 @@ FRJM.UI.create_card_selection_ui = function ()
 
     -- insert selection information UI
     ---@see create_UIBox_generic_options
-    table.insert(jokers_collection.nodes[1].nodes[1].nodes, 2, FRJM.UI.selected_card_ui())
+    table.insert(jokers_collection.nodes[1].nodes[1].nodes, 1, FRJM.UI.selected_card_ui())
 
     ---@type UIDef
     return jokers_collection
