@@ -61,9 +61,8 @@ FRJM.utils.enabled = function (area)
     return enabled
 end
 
--- Starup configuration
-FRJM.utils.include("ui/card_selection.lua")
-FRJM.utils.include("ui/config_tab.lua")
+-- Mod starup
+FRJM.utils.include("frjm/ui/config_tab.lua")
 
 FRJM.utils.load_config()
 
