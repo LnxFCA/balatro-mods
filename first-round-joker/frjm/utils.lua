@@ -77,3 +77,25 @@ FRJM.utils.select_joker_card = function (self, card)
 
     if mconfig.save_joker then frjm:save_config() end
 end
+
+
+---@class DebugFuncT
+---@field short_src string
+---@field linedefined integer
+---@field name string
+
+
+---@param msg string | nil
+---@param funcv function | DebugFuncT | nil
+FRJM.debug = function (self, msg, funcv)
+    local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
+
+    local func = (type(funcv) == "function" and debug.getinfo(funcv)) or funcv
+    if func then
+        message = string.format(message, func.short_src, func.linedefined, func.name or "anonymous", msg)
+    else
+        message = msg or ""
+    end
+
+    sendDebugMessage(message, self.mod_id)
+end
