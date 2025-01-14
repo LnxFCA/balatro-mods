@@ -24,8 +24,8 @@ FRJM.init = function (self)
     self.config.card_selection.name = mconfig.joker_name  -- selection info state
 
     -- load the custom keybind if active
-    if mconfig.use_user_keybind and mconfig.user_keybind ~= "" then
-        self.config.keybind = mconfig.user_keybind
+    if mconfig.use_custom_keybind and mconfig.custom_keybind ~= "" then
+        self.config.keybind = mconfig.custom_keybind
     end
 
     self.config.keybind = string.lower(self.config.keybind)  -- keybind is stored in uppercase

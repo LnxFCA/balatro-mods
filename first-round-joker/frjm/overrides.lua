@@ -50,3 +50,10 @@ G.FUNCS.exit_overlay_menu = function ()
     FRJM.original.exit_overlay_menu()
     if mrconfig.selection_ui_active then mrconfig.selection_ui_active = false end
 end
+
+
+--- Add game restart
+G.FUNCS.frjm_restart_game = function (_)
+    SMODS.save_all_config()
+    SMODS.restart_game()
+end

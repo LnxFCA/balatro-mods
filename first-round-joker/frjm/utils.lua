@@ -40,8 +40,8 @@ FRJM.save_config = function(self)
     end
 
     -- reset keybind to default if invalid keybind is provided
-    if mconfig.user_keybind == "" or (not mconfig.user_keybind) then
-        mconfig.user_keybind  = mconfig.default_keybind
+    if mconfig.custom_keybind == "" or (not mconfig.custom_keybind) then
+        mconfig.custom_keybind  = mconfig.default_keybind
     end
 
     SMODS.save_mod_config(self.mod)
