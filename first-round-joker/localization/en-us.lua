@@ -7,6 +7,7 @@ return {
             frj_base_price_d = "Use the Joker's base price (price without edition effect)",
             frj_user_keybind = "Use custom keybind",
             frj_user_keybind_d = "Custom keyboard shortcut to activate the mod. Default: F",
+            frj_joker_text_selected = "Selected: ",
         }
     }
 }

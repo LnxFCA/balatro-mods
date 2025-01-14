@@ -33,8 +33,10 @@ FRJM.save_config = function(self)
     -- save the current Joker key if save_joker is enabled
     if mconfig.save_joker then
         mconfig.joker_key = mrconfig.joker_key
+        mconfig.joker_name = mrconfig.card_selection.name
     else
         mconfig.joker_key = nil
+        mconfig.joker_name = localize('k_none')
     end
 
     if mconfig.user_keybind == "" or (not mconfig.user_keybind) then
@@ -66,6 +68,8 @@ FRJM.utils.select_joker_card = function (self, card)
     local mconfig = frjm.mod.config
     local mrconfig = frjm.config
 
+    mrconfig.card_selection.key = card.config.center.key
+    mrconfig.card_selection.name = card.config.center.name
     mrconfig.joker_key = card.config.center.key
 
     if mconfig.save_joker then frjm:save_config() end

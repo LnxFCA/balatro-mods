@@ -5,4 +5,5 @@ return {
     user_keybind = 'F',
     default_keybind = 'F',
     use_user_keybind = false,
+    joker_name = localize('k_none'),
 }
