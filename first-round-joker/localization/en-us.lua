@@ -19,7 +19,7 @@ return {
                 "NOTE: A game restart is required for changes to take effect.",
             },
 
-            frj_joker_text_selected = "Currently Selected: ",
+            frj_joker_text_selected = "FRJ: ",
             frj_game_restart_btn = "Restart Game",
         }
     }

@@ -13,7 +13,7 @@ return {
                 "Nota: Es necesario reiniciar el juego para aplicar los cambios.",
             },
 
-            frj_joker_text_selected = "Seleccionado: ",
+            frj_joker_text_selected = "FRJ: ",
             frj_game_restart_btn = "Reiniciar juego",
         }
     }
