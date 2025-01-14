@@ -1,7 +1,7 @@
 -- mod globals
 FRJM = {}
 FRJM.UI = {}
-FRJM.overrided = {}
+FRJM.original = {}
 FRJM.utils = {}
 FRJM.config = {}  -- runtime
 
@@ -63,6 +63,7 @@ end
 
 -- Mod starup
 FRJM.utils.include("frjm/ui/config_tab.lua")
+FRJM.utils.include("frjm/overrides.lua")
 
 FRJM.utils.load_config()
 
@@ -81,46 +82,6 @@ FRJM.utils.save_config = function()
         end
 
     SMODS.save_mod_config(FRJM.mod)
-end
-
-
--- Reset FRJ every game run
-FRJM.overrided.start_run = Game.start_run
----@diagnostic disable-next-line: duplicate-set-field
-Game.start_run = function (self, args)
-    FRJM.config.enable = true
-
-    return FRJM.overrided.start_run(self, args)
-end
-
-
-FRJM.overrided.create_card_for_shop = create_card_for_shop
-function create_card_for_shop(area)
-    local card = nil
-    if FRJM.utils.enabled(area) then  -- should the mod activate?
-        FRJM.config.enable = false  -- prevents the card from appearing after 1st round
-
-        -- create the user selected Joker
-        card = SMODS.create_card({
-            set = 'Joker',
-            area = area,
-            key = FRJM.config.joker_key,
-            edition = { negative = true }
-        })
-
-        -- Base price?
-        if FRJM.mod.config.base_price then
-            card.extra_cost = 0 + G.GAME.inflation
-            card.cost = card.base_cost + card.extra_cost
-        end
-
-        -- Show
-        create_shop_card_ui(card, 'Joker', area)
-    else  -- default behavior
-        card = FRJM.overrided.create_card_for_shop(area)
-    end
-
-    return card
 end
 
 
