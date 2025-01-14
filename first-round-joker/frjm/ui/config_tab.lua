@@ -1,4 +1,6 @@
 FRJM.mod.config_tab = function ()
+    local mconfig = FRJM.mod.config
+
     ---@type UIDef
     return {
         n = G.UIT.ROOT,
@@ -31,9 +33,9 @@ FRJM.mod.config_tab = function ()
                                 label = localize('frj_save_joker'),
                                 label_scale = 0.4,
                                 info = { localize("frj_save_joker_d") },
-                                ref_table = FRJM.mod.config,
+                                ref_table = mconfig,
                                 ref_value = 'save_joker',
-                                callback = function() FRJM.utils.save_config() end,
+                                callback = function () FRJM:save_config() end
                             }),
                         }
                     },
@@ -50,9 +52,9 @@ FRJM.mod.config_tab = function ()
                                 label = localize('frj_base_price'),
                                 label_scale = 0.4,
                                 info = { localize("frj_base_price_d") },
-                                ref_table = FRJM.mod.config,
+                                ref_table = mconfig,
                                 ref_value = 'base_price',
-                                callback = FRJM.utils.save_config,
+                                callback = function () FRJM:save_config() end
                             }),
                         }
                     },
@@ -76,9 +78,9 @@ FRJM.mod.config_tab = function ()
                                         label = localize('frj_user_keybind'),
                                         label_scale = 0.4,
                                         info = { localize("frj_user_keybind_d") },
-                                        ref_table = FRJM.mod.config,
+                                        ref_table = mconfig,
                                         ref_value = 'use_user_keybind',
-                                        callback =  FRJM.utils.save_config,
+                                        callback = function () FRJM:save_config() end
                                     }),
                                     {
                                         n = G.UIT.R,
@@ -93,11 +95,11 @@ FRJM.mod.config_tab = function ()
                                                 text_scale = 0.4,
                                                 max_length = 1,
                                                 all_caps = true,
-                                                prompt_text = FRJM.mod.config.user_keybind,
-                                                ref_table = FRJM.mod.config,
+                                                prompt_text = mconfig.user_keybind,
+                                                ref_table = mconfig,
                                                 ref_value = 'user_keybind',
                                                 keyboard_offset = 1,
-                                                callback = FRJM.utils.save_config,
+                                                callback = function () FRJM:save_config() end
                                             }),
                                         }
                                     },
