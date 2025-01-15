@@ -15,7 +15,7 @@ function create_card_for_shop(area)
     local mrconfig = FRJM.config
     local card = nil
 
-    if FRJM:enabled(area) then  -- should the mod activate?
+    if FRJM:check(area) then  -- should the mod activate?
         mrconfig.enable = false  -- prevents the card from appearing after 1st round
 
         -- create the user selected Joker

@@ -1,5 +1,8 @@
+---@diagnostic disable missing-field
+
 -- mod globals
-FRJM = {}
+FRJM = {} ---@type FRJM
+
 
 -- Initialize the mod
 FRJM.init = function (self)
@@ -11,12 +14,12 @@ FRJM.init = function (self)
     self.config.card_selection = {}  -- card selection state
 
     self.mod = SMODS.current_mod
-    self.mod_id = FRJM.mod.id or "first-round-joker"
+    self.mod_id = self.mod.id or "first-round-joker"
 
     -- initialize runtime configuration
     local mconfig = self.mod.config
 
-    self.config.enable = true
+    self.config.enabled = true
     self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil  -- load from config
     self.config.keybind = mconfig.default_keybind
     self.config.selection_ui_active = false  -- selection overlay state
@@ -32,7 +35,6 @@ FRJM.init = function (self)
 
 
     -- dynamically load and execute a file from the mod directory
-    ---@param filename string
     self.include = function (filename)
         SMODS.load_file(filename, self.mod_id)()
     end
