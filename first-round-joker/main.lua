@@ -23,7 +23,7 @@ FRJM.init = function (self)
     self.config.card_selection.key =  self.config.joker_key  -- selection info state
     self.config.card_selection.name = mconfig.joker_name  -- selection info state
 
-    -- load the custom keybind if active
+    -- use the custom keybind if enabled
     if mconfig.use_custom_keybind and mconfig.custom_keybind ~= "" then
         self.config.keybind = mconfig.custom_keybind
     end
@@ -31,14 +31,14 @@ FRJM.init = function (self)
     self.config.keybind = string.lower(self.config.keybind)  -- keybind is stored in uppercase
 
 
-    -- include func
+    -- dynamically load and execute a file from the mod directory
     ---@param filename string
     self.include = function (filename)
         SMODS.load_file(filename, self.mod_id)()
     end
 
 
-    -- parent (self)
+    -- store a instance of self
     self.utils.parent = function () return self end
 
     -- save init configuration
@@ -46,7 +46,7 @@ FRJM.init = function (self)
 end
 
 
--- FRJM starup
+-- FRJM setup
 FRJM:init()
 
 FRJM.include("frjm/overrides.lua")
@@ -71,11 +71,10 @@ FRJM.activate = function (_)
 
             -- don't handle anything if the overlay isn't active
             if not FRJM.config.selection_ui_active then return true end
-            if not G.CONTROLLER.clicked.target then return false end
 
             -- handle the clicked card if different from previous card
             card = G.CONTROLLER.clicked.target
-            if card:is(Card)
+            if card and card:is(Card)
                and card.config.center.set == 'Joker'
                and card.config.center.key ~= FRJM.config.card_selection.key
             then
