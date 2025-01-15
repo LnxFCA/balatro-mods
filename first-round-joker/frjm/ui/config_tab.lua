@@ -150,7 +150,7 @@ FRJM.mod.config_tab = function ()
                                         config = {
                                             text = localize('frj_game_restart_btn'),
                                             colour = G.C.UI.TEXT_LIGHT,
-                                            scale = 0.35,
+                                            scale = 0.4,
                                         }
                                     },
                                 },
