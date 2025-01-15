@@ -37,14 +37,6 @@
 ---@field keybind string mod activation keybind
 ---@field selection_ui_active boolean selection overlay status
 ---@field card_selection FRJM.RConfig.Selection
----@field shop_save FRJM.RConfig.ShopSave
-
-
----@class FRJM.RConfig.ShopSave
----@field key string | nil shop card key
----@field active boolean status
----@field purchased boolean card purchased?
----@field rerol boolean shop cards reloaded?
 
 
 ---@class FRJM.RConfig.Selection
