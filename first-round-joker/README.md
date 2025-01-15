@@ -33,12 +33,12 @@ To start using the mod, you need to select a Joker card first, follow these step
 select your desired Joker card:
 
 1. Press the **activation key** (**F** by default). This will open the **selection overlay**:
-![frjm-overlay](./assets/frjm_overlay.png)
+![frjm-overlay](./images/frjm_overlay.png)
 *Figure 1: Selection overlay*
 
 2. In the **selection overlay**, choose your preferred card by **clicking** on it. 
 The name of the selected card will appear at the top:
-![frjm-overlay-selection](./assets/frjm_card_selection.png)
+![frjm-overlay-selection](./images/frjm_card_selection.png)
 *Figure 2: Joker card selection*
 
 3. Once you have selected your favorite Joker, close the overlay by clicking 
@@ -58,7 +58,7 @@ the **activation key** again.
 You can access the mod configuration through the **smods** mod manager panel, you can
 access it by clicking the **MODS** button on the main menu.
 
-![frjm-config-tab](./assets/frjm_config_tab.png)
+![frjm-config-tab](./images/frjm_config_tab.png)
 *Figure 3: FRJM configuration tab*
 
 The mod provides the following configuration options:
@@ -82,7 +82,7 @@ appear in the first round shop.
 You can see the current **activation key** on the mod's configuration tab, as shown
 in the **Figure 4** below.
 
-![frjm-custom-keybind-option](./assets/frjm_custom_keybind_option.png)
+![frjm-custom-keybind-option](./images/frjm_custom_keybind_option.png)
 *Figure 4: Activation key option*
 
 To change the **activation key**, follow these steps:
@@ -95,7 +95,7 @@ enable it (see **Figure 4**).
 3. The text input will turn **blue**, allowing you to delete the existing key and type
 the new **activation key** (see **Figure 5**). Press the **Enter** key to save the changes. 
 
-![frjm-custom-key-change](./assets/frjm_custom_keybind_change.png)
+![frjm-custom-key-change](./images/frjm_custom_keybind_change.png)
 *Figure 5: Change activation key*
 
 - **Optional**: Click the **Restart Game** button to restart the game so that the changes 
