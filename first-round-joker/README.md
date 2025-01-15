@@ -3,68 +3,115 @@
 This is a simple [Balatro](https://store.steampowered.com/app/2379780) mod
 that ensures a specific Joker card appears in the shop during the first round.
 
+## Features
+
+- **Easy Installation**: The mod uses `smods` which makes the mod install and uninstall easier.
+
+- **Easy Integration:** The mod seamlessly integrates with the game's UI and mechanics.
+
+- **Custom Keybind Support:** Change the **activation key** to suit your preferences.
+Requires restart the game.
+
 ## Installation
 
 See the project's [README](../README.md).
 
 ## Usage
 
-> NOTE: While this mod provides similar functionality to `Choose First Shop Joker`,
-> this mod is an independent work not related in any way to the former.
+The mod does not select any card by default.  It only allows you to
+select **discovered** Jokers. A discovered Joker is one that you have purchased
+at least once, you can check your discovered Jokers on **COLLECTION** -> **Jokers**.
 
-To activate the mod, you must hover over a valid Joker card (Collections -> Jokers)
-and press the activation key, by default `F`, you can change it on mod options.
-Once a valid Joker card is activated, the selected Joker will appear in the
-first-round shop.
+### Joker selection
 
-The Joker will have a "Negative" effect applied. You can disable it
-in the mod configuration menu (planned).
+To start using the mod, you need to select a Joker card first, follow these steps to
+select your desired Joker card:
 
-After you purchase the Joker or click the `Next round` button, the game returns
-to its normal behavior in subsequent rounds.
+1. Press the **activation key** (**F** by default). This will open the **selection overlay**:
+![frjm-overlay](./assets/frjm_overlay.png)
+*Figure 1: Selection overlay*
 
-> NOTE: You can't use this mod on "undiscovered" Jokers. Using the activation
-> process on an "undiscovered" Joker has no effect at all.
+2. In the **selection overlay**, choose your preferred card by **clicking** on it. 
+The name of the selected card will appear at the top:
+![frjm-overlay-selection](./assets/frjm_card_selection.png)
+*Figure 2: Joker card selection*
 
-The activation process must be performed every time the game launches, unless
-you activate the "Save selected Joker" option.
+3. Once you have selected your favorite Joker, close the overlay by clicking 
+the **Back** button or pressing the **Escape** (ESC) key.
 
-Checkout the mod configuration menu to see all configuration options.
+The selected card will appear in the first round shop with a "**Negative**" edition modifier.
+If the card price is too high, you can enable the **Use Base Joker Price** option 
+in the configuration tab. You can change the selected Joker at any time by pressing
+the **activation key** again.
 
-## Features
+> **Note:** The **Joker selection** process is required every time you open or restart the
+> game unless you enable the **Persist Selected Joker** option.
+> See [Configuration](#configuration) for more details.
 
-The mod has the following features:
+## Configuration
 
-- Custom keyboard shortcut (keybind): In mod options, click the green input text,
-after you enter your preferred key you must restart the game. To activate the custom
-keybind you must first activate the equivalent option.
+You can access the mod configuration through the **smods** mod manager panel, you can
+access it by clicking the **MODS** button on the main menu.
 
-- Use the Joker card base price (without Negative edition price)
-- Save the selected Joker
+![frjm-config-tab](./assets/frjm_config_tab.png)
+*Figure 3: FRJM configuration tab*
 
-## Planned features
+The mod provides the following configuration options:
 
-- Show an overlay menu where the user can select available Jokers, when the
-activation key is pressed. [doing]
+> You can see the detailed option description in the mod configuration tab.
 
-- Improve integration with other mods as per users request.
+- **Persist Selected Joker**: Enables the Joker card save feature. This is disabled by default.
+
+- **Use Base Joker Price**: Reduces the Joker card price. This is disabled by default.
+
+- **Enable Custom Keybind**: Allows using a custom **activation key**.
+See [Activation key](#activation-key) for more details. This is disabled by default.
+
+- **Activation Key**: Specifies a custom **activation key**. The default is **F**. Changing this requires a restart.
+
+### Activation key
+The **activation key** is the keyboard key used to open the Joker card
+selection overlay. This overlay allows you to choose the Joker card that will
+appear in the first round shop.
+
+You can see the current **activation key** on the mod's configuration tab, as shown
+in the **Figure 4** below.
+
+![frjm-custom-keybind-option](./assets/frjm_custom_keybind_option.png)
+*Figure 4: Activation key option*
+
+To change the **activation key**, follow these steps:
+
+1. On the mod configuration tab, search for the **Enable Custom Keybind** option and
+enable it (see **Figure 4**).
+
+2. Click the **green text input** where the current **activation key** is displayed (see **Figure 4**).
+
+3. The text input will turn **blue**, allowing you to delete the existing key and type
+the new **activation key** (see **Figure 5**). Press the **Enter** key to save the changes. 
+
+![frjm-custom-key-change](./assets/frjm_custom_keybind_change.png)
+*Figure 5: Change activation key*
+
+- **Optional**: Click the **Restart Game** button to restart the game so that the changes 
+take effect.
 
 ## Troubleshooting
 
-Please note that this don't make unnecessary modifications, so if you have problems not
-related to the shop, then the problem isn't likely related to this mod.
+Please note that this mod does not make unnecessary modifications.
+If you encounter issues unrelated to the shop, it is unlikely that this mod is the cause.
 
-If you have various mods installed, please verify that disabling or uninstalling
-this mod solves the problem for you, if not, its clear that the problem source
-is not this mod.
+If you have multiple mods installed, verify the source of the issue by disabling
+or uninstalling this mod. If the problem persists after doing so, 
+it is clear that the issue is not caused by this mod.
 
-If your problem happens when this and other mod are both enabled, please open
-a new issue requesting compatibility support, don't forget to include:
+If the problem occurs when this mod is enabled alongside another mod,
+please open a new issue requesting compatibility support. Be sure to
+include the following information:
 
-- Game version
-- smods version
-- mod name (mod to support).
-- mod url (The mod git repository URL if possible)
+- **Game version**
+- **smods version**
+- **Mod name** (the mod requiring compatibility support, not this mod.)
+- **Mod URL** (the mod's official homepage or git repository, if possible)
 
-On `mod url` don't put a URL to a release file directly, instead put the mod's official homepage
-or the post link on Discord.
+> Note: For the **Mod URL**, do not link directly to a release file. Instead, provide the mod's official homepage or the relevant post link on Discord.
