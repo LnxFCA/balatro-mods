@@ -57,7 +57,7 @@ which depends on your OS:
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | Linux/Deck    | `%LIBRARY%/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods`         |
 | Default Linux | `$HOME/.steam/root/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods` |
-| Windows       | `C:\Users\%User%\AppData\Roaming\Balatro\Mods` or ``%AppData%/Balatro/Mods`                               |
+| Windows       | `C:\Users\%User%\AppData\Roaming\Balatro\Mods` or `%AppData%/Balatro/Mods`                               |
 | macOS         | `/Users/$USER/Library/Application Support/Balatro/Mods`                                                   |
 
 
