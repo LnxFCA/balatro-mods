@@ -102,6 +102,7 @@ Install steps:
 which can be accessed by clicking the **MODS** button on the game's main menu.
 
 #### 2. Using Git
+
 To install all mods in the repository, you can clone the `release` branch
 of **balatro-mods** using Git.
 This method is recommended if you want to install all available mods in the
