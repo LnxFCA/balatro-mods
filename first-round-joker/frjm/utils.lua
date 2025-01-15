@@ -1,9 +1,9 @@
 -- Whatever the mod should perform or not
 ---@return boolean
-FRJM.enabled = function (self, area)
+FRJM.check = function (self, area)
     local mrconfig = self.config
 
-    local enabled = mrconfig.enable -- always true at starup
+    local enabled = mrconfig.enabled -- always true at starup
     local enabled_for_round = false -- true on round == 1
     local enabled_for_game = false -- false if tutorial in progress
     local enabled_for_key = false -- true if FRJM.config.joker_key isn't nil
@@ -87,7 +87,8 @@ end
 
 ---@param msg string | nil
 ---@param funcv function | DebugFuncT | nil
-FRJM.debug = function (self, msg, funcv)
+FRJM.utils.debug = function (self, msg, funcv)
+    local parent = self.parent()
     local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
 
     local func = (type(funcv) == "function" and debug.getinfo(funcv)) or funcv
@@ -97,5 +98,5 @@ FRJM.debug = function (self, msg, funcv)
         message = msg or ""
     end
 
-    sendDebugMessage(message, self.mod_id)
+    sendDebugMessage(message, parent.mod_id)
 end
