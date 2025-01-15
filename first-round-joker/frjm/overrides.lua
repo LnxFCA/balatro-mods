@@ -3,7 +3,7 @@
 -- Reset FRJ every game run
 FRJM.original.start_run = Game.start_run
 Game.start_run = function(self, args)
-    FRJM.config.enable = true
+    FRJM.config.enabled = true
 
     return FRJM.original.start_run(self, args)
 end
@@ -16,7 +16,7 @@ function create_card_for_shop(area)
     local card = nil
 
     if FRJM:check(area) then  -- should the mod activate?
-        mrconfig.enable = false  -- prevents the card from appearing after 1st round
+        mrconfig.enabled = false  -- prevents the card from appearing after 1st round
 
         -- create the user selected Joker
         card = SMODS.create_card({
