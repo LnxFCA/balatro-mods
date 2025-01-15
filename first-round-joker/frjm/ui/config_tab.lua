@@ -25,13 +25,15 @@ FRJM.mod.config_tab = function ()
                         config = {
                             align = "cm",
                             padding = 0.1,
-                            colour = G.C.GREY,
+                            colour = G.C.L_BLACK,
                             r = 0.1,
                         },
                         nodes = {
                             create_toggle({ -- option toggle
                                 label = localize('frj_save_joker'),
                                 info = localize("frj_save_joker_d"),
+                                active_colour = G.C.BLUE,
+                                inactive_colour = G.C.WHITE,
                                 ref_table = mconfig,
                                 ref_value = 'save_joker',
                                 callback = function () FRJM:save_config() end
@@ -43,13 +45,15 @@ FRJM.mod.config_tab = function ()
                         config = {
                             align = "cm",
                             padding = 0.1,
-                            colour = G.C.GREY,
+                            colour = G.C.L_BLACK,
                             r = 0.1,
                         },
                         nodes = {
                             create_toggle({ -- option toggle
                                 label = localize('frj_base_price'),
                                 info = localize("frj_base_price_d"),
+                                active_colour = G.C.BLUE,
+                                inactive_colour = G.C.BLUE,
                                 ref_table = mconfig,
                                 ref_value = 'base_price',
                                 callback = function () FRJM:save_config() end
@@ -61,7 +65,7 @@ FRJM.mod.config_tab = function ()
                         config = {
                             align = "cm",
                             padding = 0.1,
-                            colour = G.C.GREY,
+                            colour = G.C.L_BLACK,
                             minh = 1.8,
                             r = 0.1,
                         },
@@ -75,6 +79,8 @@ FRJM.mod.config_tab = function ()
                                     create_toggle({ -- option toggle
                                         label = localize('frj_use_custom_keybind'),
                                         info = localize("frj_use_custom_keybind_d"),
+                                        active_colour = G.C.BLUE,
+                                        inactive_colour = G.C.WHITE,
                                         ref_table = mconfig,
                                         ref_value = 'use_custom_keybind',
                                         callback = function () FRJM:save_config() end
@@ -144,7 +150,7 @@ FRJM.mod.config_tab = function ()
                                         config = {
                                             text = localize('frj_game_restart_btn'),
                                             colour = G.C.UI.TEXT_LIGHT,
-                                            scale = 0.3,
+                                            scale = 0.35,
                                         }
                                     },
                                 },
