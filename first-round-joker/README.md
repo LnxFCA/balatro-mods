@@ -3,6 +3,9 @@
 This is a simple [Balatro](https://store.steampowered.com/app/2379780) mod
 that ensures a specific Joker card appears in the shop during the first round.
 
+> :warning: If you're using mod version `1.x.x`, please update to the latest `v2.x.x` version. This version includes new features and major improvements.
+> For update instructions, refer to the [README](../README.md).
+
 ## Features
 
 - **Easy Installation**: The mod uses `smods` which makes the mod install and uninstall easier.
@@ -21,6 +24,8 @@ See the project's [README](../README.md).
 The mod does not select any card by default.  It only allows you to
 select **discovered** Jokers. A discovered Joker is one that you have purchased
 at least once, you can check your discovered Jokers on **COLLECTION** -> **Jokers**.
+
+> **Note**: These usage instructions apply only to mod version `v2.x.x` or later.
 
 ### Joker selection
 
