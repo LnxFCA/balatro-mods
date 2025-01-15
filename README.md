@@ -4,112 +4,211 @@ This is a collection of my hand-made mods for [Balatro](https://store.steampower
 
 All mods in this repository require at least Balatro version `1.0.1n`.
 
+## Table of Contents
+- [Introduction](#balatro-mods)
+- [Mod List](#mod-list)
+- [Installation](#installation)
+    - [Requirements](#requirements)
+    - [Methods](#installation-methods)
+- [Updating](#updating)
+- [Troubleshooting](#general-troubleshooting)
+- [License](#license)
+
 ## Mod list
 
-- [first-round-joker](./first-round-joker) (First Round Joker): Ensures a specific Joker card appears in the shop during the first round.
+- [first-round-joker](./first-round-joker) (First Round Joker): Ensures a specific
+Joker card appears in the shop during the first round.
 
 ## Installation
 
-> ⚠️ This branch (`main`) is for development only, code here is unstable and may not work. If you want the latest
-> working changes use the `release` branch instead.
+> :warning: **Development Branch Warning:** This branch (`main`) is for development only.
+> Code here is unstable and may not work. For stable releases, please switch to the `release` branch.
 
-Dependencies:
+This repository contains all my mods for **Balatro**.
+Each mod is located in its respective directory
+(e.g., `first-round-joker` is in the `first-round-joker` directory).
 
-- [lovely-injector](https://github.com/ethangreen-dev/lovely-injector). Any version.
+The installation steps are similar for all mods, but some mods may require specific instructions.
+These will be listed in the individual mod's **README.md** under the **Installation** section.
 
-- [smods](https://github.com/Steamodded/smods).
-Version `1.0.0~ALPHA-1304a-STEAMODDED` or later.
+> **Important**: If you're updating from an older version of the mod,
+> please refer to the [Updating](#updating) section to ensure a clean installation and avoid issues.
 
-To know where to install Balatro mods and how to install the dependencies, see the
+---
+
+### Requirements
+
+Before installing any mod, ensure the following core dependencies are installed:
+
+| Dependency          | Description                                  | Link                                                                   |
+|---------------------|----------------------------------------------|------------------------------------------------------------------------|
+| **smods**           | Mod loader for Balatro.                      | [GitHub Repository](https://github.com/Steamodded/smods)               |
+| **lovely-injector** | Used by **smods** to inject mods at runtime. | [GitHub Repository](https://github.com/ethangreen-dev/lovely-injector) |
+
+Refer to the respective repositories for detailed installation instructions.
+
+> :warning: **Note**: Some mods may have additional dependencies.
+> Check the mod's `README.md` for details.
+
+Once the core dependencies are installed, locate Balatro's `Mods` directory,
+which depends on your OS:
+
+| OS            | Path                                                                                                      |
+|---------------|-----------------------------------------------------------------------------------------------------------|
+| Linux/Deck    | `%LIBRARY%/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods`         |
+| Default Linux | `$HOME/.steam/root/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods` |
+| Windows       | `C:\Users\%User%\AppData\Roaming\Balatro\Mods` or ``%AppData%/Balatro/Mods`                               |
+| macOS         | `/Users/$USER/Library/Application Support/Balatro/Mods`                                                   |
+
+
+> **Note**: **Linux / Deck**: Replace `%LIBRARY%` with your Steam Library path.
+If you don’t use a custom library, then use the **Default Linux** path.
+
+For further help, visit the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
-project page, and the [Steamodded Wiki](https://github.com/Steamodded/smods/wiki/#step-3-installing-steamodded).
+project page or the [smods wiki](https://github.com/Steamodded/smods/wiki#step-3-installing-steamodded).
 
-Once you have installed the dependencies and located the `Mods` directory located on your machine, you're ready to go.
+### Installation methods
 
-The installation cover three ways: Easy way, Updating the mod and Git way
+You can install the mods in one of the following ways:
 
-### Easy way
+#### Method 1: Release File (Recommended)
 
-Download the latest individual release of the mod of your choice
-[here](https://github.com/LnxFCA/balatro-mods/releases). They are named
-after the mod folder, e.g., `first-round-joker-v1.0.0.zip`.
+The easiest way to install a mod is by downloading the release file from either:
 
-Once you have downloaded the file, you can extract its contents inside the `Mods` folder
-directly and enjoy.
+- [GitHub releases page](https://github.com/LnxFCA/balatro-mods/releases)
+- [NexusMods](https://next.nexusmods.com/profile/LnxFCA/mods?gameId=6217)
 
-### Updating the mod
+This method is ideal for installing a single mod.
 
-> NOTE: The project uses semantic versioning. See [here](https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning).
+The release file on GitHub follows the naming scheme: `%mod-dir-name%-v%VERSION%.zip`
 
-When updating to a patch/bugfix release, e.g. from `1.0.1`, to `1.0.2`, the installation
-is simple, just extract the release file inside of the `Mods` directory.
+- `%mod-dir-name%` is replaced by the mod directory name (e.g., `first-round-joker`).
+- `%VERSION%` is replaced by the version number of the mod (e.g., `first-round-joker-v2.0.0.zip`).
 
-When updating from a Major or Minor release, the following steps are recommended to
-prevent incompatibility issues:
+On NexusMods, the file name is slightly different, but the version can be found in the **Files** tab.
 
-- Remove the mod folder from the `Mods` directory. (only when using the easy way)
-- Remove the mod configuration from the Balatro's save directory, usually found in `config/mod-name.jkr`, e.g.
-`config/first-round-joker.jkr`.
-- Restart the game.
+Install steps:
 
-### Git way
+1. Download the mod release from:
+   - [GitHub Releases](https://github.com/LnxFCA/balatro-mods/releases)
+   - [NexusMods](https://next.nexusmods.com/profile/LnxFCA/mods?gameId=6217)
 
-The git way is intended for developers or advanced users who have a basic understanding of `git`.
+2. Extract the file into your Balatro `Mods` directory (see [Requirements](#requirements) for help).
 
-Users should clone the `release` branch of the repository since the `main` branch
-has extra code that helps with development but can cause problems when running
-the mod.
+3. After extraction, you will find a directory named after the mod (e.g., `Mods/first-round-joker`).
 
-To clone the `release` branch, you can execute the following command in the command-line:
+4. The mod is now installed. You can configure it through the **smods** mods panel,
+which can be accessed by clicking the **MODS** button on the game's main menu.
 
-```sh
-git clone -b release https://github.com/LnxFCA/balatro-mods.git
+#### 2. Using Git
+To install all mods in the repository, you can clone the `release` branch
+of **balatro-mods** using Git.
+This method is recommended if you want to install all available mods in the
+repository at once, and it also simplifies updating all mods.
+
+> **Note**: When using this method, it is necessary to clean up the `Mods`
+> directory and reinstall the dependencies after successfully cloning the repository.
+
+To clone the repository, run the following command:
+
+```bash
+git clone --branch release https://github.com/LnxFCA/balatro-mods.git Mods
 ```
 
-After successfully cloning the repository, users can get the latest version of the mods by using:
+To update, run the following command:
 
-```sh
-git pull --all
+```shell
+git pull origin release
 ```
 
-The `release` branch doesn't have any files like `README.md`, etc. It only contains the most recent version of all mods (code that isn't in a public release yet).
+## Updating
 
-Developers who want to test things out can clone this repository by using the following command:
+When updating to a new major version (e.g., from `v1.x.x` to `v2.x.x`) or a new
+minor version (e.g., from `v1.1.x` to `v1.2.x`),
+it’s important to follow these steps to prevent potential issues or a "dirty installation."
 
-```sh
-git clone --recurse-submodules https://github.com/LnxFCA/balatro-mods.git
-```
+> **Note**: These steps are only necessary for major or minor version updates
+> (e.g., `v1.x.x` → `v2.x.x` or `v1.1.x` → `v1.2.x`).
+> Patch updates (e.g., `v1.1.0` → `v1.1.1`) usually only include bug fixes
+> and can be applied directly.
 
-## General troubleshooting
+Follow the instructions carefully to ensure the mod functions as expected:
 
-If youre having troubles with a specific mod, please refer to the mod directory to check troubleshooting
-steps for that mod.
+1. **Uninstall Previous Version**:
+Before installing the new version, ensure you fully uninstall the previous version.
+This can usually be done by deleting the mod folder from the `Mods` directory. This
+is not necessary when using the git installation method.
 
-Just in case you can try the following things:
+2. **Clean Configuration Files**:
+After successfully uninstalling the old version, you need to remove the old 
+configuration files from the configuration directory.
+The configuration directory (`config`) is located in the same Balatro data directory
+as the `Mods` folder. The configuration file will have the same name as the mod directory.
+For example, the configuration file for the `first-round-joker`
+mod will be located at the relative path: `Balatro/config/first-round-joker.jkr`.
 
-- Verify that you're using the latest working version of `smods` (not necessary the latest commit)
-- Be sure that you are using the latest version of the mod
-- Be sure that you got the mod from valid sources:
-  - GitHub releases page
-  - nexusmods
-  - repo `release` branch
-- If using `git`, make sure you're aren't using the `main` branch.
+3. **Install the New Version**: Follow the [installation instructions](#installation)
+to install the latest version of the mod.
 
-If you can't update to the latest version of `smods` due to incompatibility with mods that
-requires an earlier version of `smods`, you can create a new issue explaining your problem.
+4. **Check for Additional Steps**: Some updates may introduce changes that require
+additional steps or configuration.
+Make sure to check the mod README.md for any specific instructions related to the new version.
+
+5. **Verify the Update**: After installation, launch the game to ensure the mod is
+working correctly. If you encounter any issues, please refer to the
+[troubleshooting section](#general-troubleshooting) or open a new issue on the GitHub repository.
+
+> **Note**: If you're updating from an old version, it’s strongly recommended
+> to delete the mod folder completely before reinstalling to avoid potential conflicts
+> with outdated files or settings. It also helps keeping the mod folder clean by
+> removing unused files.
+
+## General Troubleshooting
+
+If you are experiencing issues with a specific mod, please check the
+mod's directory for troubleshooting steps related to that mod.
+
+In general, you can try the following:
+
+- Verify that you are using the latest stable version of `smods`
+(this may not necessarily be the latest commit).
+
+- Ensure that you are using the latest version of the mod.
+
+- Confirm that you downloaded the mod from a valid source:
+    - The GitHub releases page.
+    - Nexus Mods.
+    - The repository's `release` branch.
+
+- If using `git`, make sure you are not on the `main` branch.
+
+If you cannot update to the latest version of `smods` due to incompatibility with
+mods requiring an older version, you may create a new issue explaining your problem.
+
+---
 
 ### Creating a new GitHub issue
 
-If your can't find a solution to your problem after searching on the specific mod README
-you can create a new issue here, please have into account the following:
+If you cannot find a solution after reviewing the specific mod's README,
+you can create a new issue.
 
-- Specify the mod name, e.g. `first-round-joker` either on the issue label or
-in its description.
-- Upload or paste any screenshots or game logs of the problem you have
-- In the issue description, please put the following information:
-  - game version, e.g. `balatro: 1.0.1n`
-  - smods version, e.g. `smods: 1.0.0~ALPHA-1307d-STEAMODDED`
-  - mod version, e.g. `first-round-joker: 1.0.1n`
+Please include the following information to assist in troubleshooting:
+
+1. **Specify the mod name**: Include the mod name, such as `first-round-joker`, 
+either in the issue label or in its description.
+
+2. **Provide visual or log evidence**: Upload or paste any relevant screenshots or
+game logs that illustrate the problem.
+
+3. **Include detailed information**: Add the following details to the issue description:
+
+- **Mod Name**: (e.g., `first-round-joker`)
+- **Game Version**: (e.g., `balatro: 1.0.1n`)
+- **smods Version**: (e.g., `1.0.0~ALPHA-1307d-STEAMODDED`)
+- **Mod Version**: (e.g., `first-round-joker: 1.1.1`)
+
+By providing this information, you will help developers identify and address your issue more efficiently.
 
 ## License
 
