@@ -73,6 +73,11 @@ FRJM.utils.select_joker_card = function (self, card)
     mrconfig.card_selection.key = card.config.center.key
     mrconfig.card_selection.name = card.config.center.name
 
+    if G.SETTINGS.language ~= 'en-us' then
+        mrconfig.card_selection.name = localize({ key = mrconfig.card_selection.key, set = 'Joker', type = 'name_text' })
+            or mrconfig.card_selection.name
+    end
+
     mrconfig.joker_key = card.config.center.key  -- store on runtime configuration
 
     if mconfig.save_joker then frjm:save_config() end
