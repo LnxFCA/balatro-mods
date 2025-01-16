@@ -9,8 +9,8 @@ return {
 
             frj_base_price = "Use Base Joker Price",
             frj_base_price_d = {
-                "Sets the Joker card's price to its base value",
-                "ignoring any additional cost from applied effects or editions.",
+                "Sets the Joker card's price to its base value ignoring",
+                "any additional cost from applied effects or editions.",
             },
 
             frj_use_custom_keybind = "Enable Custom Keybind",

@@ -9,8 +9,8 @@ return {
 
             frj_base_price = "Usar precio base del Joker",
             frj_base_price_d = {
-                "Configura el precio de la carta Joker a su valor original",
-                "sin tomar en cuenta los costos adicionales de los efectos o ediciones aplicadas.",
+                "Configura el precio de la carta Joker a su valor original sin tomar",
+                "en cuenta los costos adicionales de los efectos o ediciones aplicadas.",
             },
 
             frj_use_custom_keybind = "Habilitar tecla personalizada",

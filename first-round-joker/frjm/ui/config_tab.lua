@@ -1,3 +1,44 @@
+---@type fun(args: table, info_args: table | nil): UIDef
+FRJM.UI.create_config_tab_toggle = function(args, info_args)
+    local toggle = create_toggle(args)
+
+    info_args = info_args or {}
+    local info = {}
+    for _, v in ipairs(args.info or {}) do
+        table.insert(info, {
+            n = G.UIT.R,
+            config = {
+                align = info_args.align or "cm",
+                minh = info_args.minh or 0.005,
+            },
+            nodes = {{
+                n = G.UIT.T,
+                config = {
+                    text = v,
+                    scale = info_args.scale or 0.3,
+                    colour = info_args.colour or HEX("b8c7d4"),
+                },
+            }},
+        })
+    end
+
+    info = {
+        n = G.UIT.R,
+        config = {
+            align = "cm",
+            minh = args.minh or 0.05,
+        },
+        nodes = info,
+    }
+
+    if args.info then
+        toggle.nodes[2] = info
+    end
+
+    return toggle
+end
+
+
 FRJM.mod.config_tab = function ()
     local mconfig = FRJM.mod.config
 
@@ -6,7 +47,7 @@ FRJM.mod.config_tab = function ()
         n = G.UIT.ROOT,
         config = {
             r = 0.1,
-            minw = 6,
+            minw = 8.8,
             align = "cm",
             padding = 0.1,
             colour = G.C.BLACK,
@@ -29,13 +70,14 @@ FRJM.mod.config_tab = function ()
                             r = 0.1,
                         },
                         nodes = {
-                            create_toggle({ -- option toggle
+                            FRJM.UI.create_config_tab_toggle({ -- option toggle
                                 label = localize('frj_save_joker'),
                                 info = localize("frj_save_joker_d"),
                                 active_colour = G.C.BLUE,
                                 inactive_colour = G.C.WHITE,
                                 ref_table = mconfig,
                                 ref_value = 'save_joker',
+                                w = 6,
                                 callback = function () FRJM:save_config() end
                             }),
                         },
@@ -49,7 +91,7 @@ FRJM.mod.config_tab = function ()
                             r = 0.1,
                         },
                         nodes = {
-                            create_toggle({ -- option toggle
+                            FRJM.UI.create_config_tab_toggle({ -- option toggle
                                 label = localize('frj_base_price'),
                                 info = localize("frj_base_price_d"),
                                 active_colour = G.C.BLUE,
@@ -76,7 +118,7 @@ FRJM.mod.config_tab = function ()
                                     align = "cm",
                                 },
                                 nodes = {
-                                    create_toggle({ -- option toggle
+                                    FRJM.UI.create_config_tab_toggle({ -- option toggle
                                         label = localize('frj_use_custom_keybind'),
                                         info = localize("frj_use_custom_keybind_d"),
                                         active_colour = G.C.BLUE,
