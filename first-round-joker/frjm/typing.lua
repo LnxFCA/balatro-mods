@@ -13,12 +13,19 @@
 ---@field utils FRJM.Utils
 ---@field save_config fun(self: FRJM)
 ---@field check fun(self: FRJM, area: any): boolean
+---@field project_page FRJM.ProjectPage
 
 
 ---@class FRJM.Mod
 ---@field config FRJM.MConfig mod local configuration
 ---@field id string mod id
----@field config_tab fun() : UIDef mod configuration tab
+---@field author string[] author list
+---@field name string mod long name
+---@field display_name string mod short name
+---@field description string mod description
+---@field version string mod version
+---@field config_tab fun(): UIDef mod configuration tab
+---@field extra_tabs fun(): table extra tabs
 
 
 ---@class FRJM.MConfig
@@ -49,3 +56,9 @@
 ---@field show_card_selection_overlay fun(self: FRJM.Utils)
 ---@field select_joker_card fun(self: FRJM.Utils, card: table)
 ---@field debug fun(self: FRJM.Utils, msg: string, funcv: any)
+
+
+---@class FRJM.ProjectPage
+---@field nexusmods string
+---@field github string
+---@field gitlab string

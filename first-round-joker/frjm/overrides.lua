@@ -57,3 +57,11 @@ G.FUNCS.frjm_restart_game = function (_)
     SMODS.save_all_config()
     SMODS.restart_game()
 end
+
+
+-- Open project page links on web browser
+G.FUNCS.frjm_open_project_page = function (e)
+    if (not e.config.ref_value) and (not e.config.ref_table) then return end
+
+    love.system.openURL(e.config.ref_table[e.config.ref_value])
+end

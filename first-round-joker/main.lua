@@ -12,6 +12,7 @@ FRJM.init = function (self)
     self.utils = {}
     self.config = {}  -- runtime
     self.config.card_selection = {}  -- card selection state
+    self.project_page = {}  -- revelant project links
 
     self.mod = SMODS.current_mod
     self.mod_id = self.mod.id or "first-round-joker"
@@ -55,7 +56,8 @@ FRJM.include("frjm/overrides.lua")
 FRJM.include("frjm/utils.lua")
 FRJM.include("frjm/ui/config_tab.lua")
 FRJM.include("frjm/ui/card_selection.lua")
-
+FRJM.include("frjm/ui/extra_tabs.lua")
+FRJM.include("frjm/info.lua")
 
 -- Called when activation key is pressed. Default F
 FRJM.activate = function (_)
