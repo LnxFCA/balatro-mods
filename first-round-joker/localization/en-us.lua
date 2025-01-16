@@ -21,6 +21,6 @@ return {
 
             frj_joker_text_selected = "FRJ: ",
             frj_game_restart_btn = "Restart Game",
-        }
-    }
+        },
+    },
 }
