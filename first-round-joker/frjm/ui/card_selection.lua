@@ -37,7 +37,7 @@ FRJM.UI.create_card_selection_ui = function ()
 
     -- filter jokers
     for _, v in ipairs(G.P_CENTER_POOLS.Joker) do
-        if v.discovered then table.insert(jokers, v) end
+        if v.discovered or FRJM.mod.config.disable_restriction then table.insert(jokers, v) end
     end
 
     -- generate collection UI

@@ -40,6 +40,12 @@ return {
                 "Muestra un botón llamado 'FRJM' en el menú principal,",
                 "que cumple la misma función que la tecla de activación.",
             },
+
+            frj_disable_restriction = "Desactivar Restricción de Jokers",
+            frj_disable_restriction_d = {
+                "Permite seleccionar Jokers No Descubiertos y Bloqueados.",
+                "¡Advertencia: Esto es como un Súper Modo Trampa!",
+            },
         },
     },
 }

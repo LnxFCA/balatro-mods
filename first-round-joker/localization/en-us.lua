@@ -40,6 +40,12 @@ return {
                 "Displays a button labeled 'FRJM' on the main menu,",
                 "which serves the same purpose as the activation key.",
             },
+
+            frj_disable_restriction = "Disable Joker Restriction",
+            frj_disable_restriction_d = {
+                "Allows selection of Undiscovered and Locked Jokers.",
+                "Warning: This is like Super Cheat Mode!",
+            },
         },
     },
 }
