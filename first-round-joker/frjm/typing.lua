@@ -4,7 +4,7 @@
 ---@class FRJM
 ---@field mod FRJM.Mod mod instance. `SMODS.current_mod`
 ---@field mod_id string mod id
----@field UI { [string]: fun(): UIDef } mod UI definitions
+---@field UI { [string]: fun() | fun(): UIDef } mod UI definitions
 ---@field original table original game functions
 ---@field config FRJM.RConfig mod runtime configuration
 ---@field init fun(self: FRJM)
@@ -17,16 +17,8 @@
 ---@field update_keybind fun(self: FRJM)
 
 
----@class FRJM.Mod
----@field config FRJM.MConfig mod local configuration
----@field id string mod id
----@field author string[] author list
----@field name string mod long name
----@field display_name string mod short name
----@field description string mod description
----@field version string mod version
----@field config_tab fun(): UIDef mod configuration tab
----@field extra_tabs fun(): table extra tabs
+---@class FRJM.Mod : SMODS_T.Mod
+---@field config FRJM.MConfig
 
 
 ---@class FRJM.MConfig
@@ -46,8 +38,8 @@
 ---@field keybind string mod activation keybind
 ---@field selection_ui_active boolean selection overlay status
 ---@field card_selection FRJM.RConfig.Selection
----@field frjm_button UIBoxT string
----@field keybind_obj table string
+---@field frjm_button UIBoxT
+---@field keybind_obj SMODS.Keybind
 
 
 ---@class FRJM.RConfig.Selection
@@ -68,7 +60,7 @@
 ---@field gitlab string
 
 
----@class UIBoxT : Object
+---@class UIBoxT : BALATRO_T.ObjectClass
 ---@field remove fun()
 ---@field draw fun()
 ---@field recalculate fun()
