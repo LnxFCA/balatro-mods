@@ -105,3 +105,21 @@ FRJM.utils.debug = function (self, msg, funcv)
 
     sendDebugMessage(message, parent.mod_id)
 end
+
+
+-- Update the SMODS.Keybind object
+FRJM.update_keybind = function (self)
+    local mconfig = self.mod.config
+    local mrconfig = self.config
+
+    mrconfig.keybind = mconfig.custom_keybind
+    -- check keybind and status
+    if string.len(mrconfig.keybind or "") ~= 1 or not mconfig.use_custom_keybind then
+        mrconfig.keybind = mconfig.default_keybind  -- reset to default
+    end
+
+    mrconfig.keybind = string.lower(mrconfig.keybind)  -- keybind is awlays stored in uppercase
+    if mrconfig.keybind_obj then
+        self.config.keybind_obj.key_pressed = mrconfig.keybind  -- update keybind
+    end
+end

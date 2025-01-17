@@ -160,7 +160,10 @@ FRJM.mod.config_tab = function ()
                                         inactive_colour = G.C.WHITE,
                                         ref_table = mconfig,
                                         ref_value = 'use_custom_keybind',
-                                        callback = function() FRJM:save_config() end
+                                        callback = function()
+                                            FRJM:save_config()
+                                            FRJM:update_keybind()
+                                        end,
                                     }),
                                     {
                                         n = G.UIT.R,
@@ -178,7 +181,10 @@ FRJM.mod.config_tab = function ()
                                                 ref_table = mconfig,
                                                 ref_value = 'custom_keybind',
                                                 keyboard_offset = 1,
-                                                callback = function() FRJM:save_config() end
+                                                callback = function()
+                                                    FRJM:save_config()
+                                                    FRJM:update_keybind()
+                                                end,
                                             }),
                                         },
                                     },
@@ -198,39 +204,6 @@ FRJM.mod.config_tab = function ()
                                     h = 0.05,
                                     w = 0,
                                 }
-                            }
-                        },
-                    },
-                    {
-                        n = G.UIT.R,
-                        config = {
-                            align = "bm",
-                            padding = 0.1,
-                        },
-                        nodes = {
-                            {
-                                n = G.UIT.C,
-                                config = {
-                                    align = "cm",
-                                    maxw = 3.5,
-                                    maxh = 2.5,
-                                    colour = G.C.RED,
-                                    padding = 0.2,
-                                    r = 0.1,
-                                    hover = true,
-                                    shadow = true,
-                                    button = 'frjm_restart_game',
-                                },
-                                nodes = {
-                                    {
-                                        n = G.UIT.T,
-                                        config = {
-                                            text = localize('frj_game_restart_btn'),
-                                            colour = G.C.UI.TEXT_LIGHT,
-                                            scale = 0.4,
-                                        }
-                                    },
-                                },
                             }
                         },
                     },

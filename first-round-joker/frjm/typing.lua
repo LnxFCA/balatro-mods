@@ -14,6 +14,7 @@
 ---@field save_config fun(self: FRJM)
 ---@field check fun(self: FRJM, area: any): boolean
 ---@field project_page FRJM.ProjectPage
+---@field update_keybind fun(self: FRJM)
 
 
 ---@class FRJM.Mod
@@ -46,6 +47,7 @@
 ---@field selection_ui_active boolean selection overlay status
 ---@field card_selection FRJM.RConfig.Selection
 ---@field frjm_button UIBoxT string
+---@field keybind_obj table string
 
 
 ---@class FRJM.RConfig.Selection

@@ -43,9 +43,6 @@ FRJM.init = function (self)
 
     -- store a instance of self
     self.utils.parent = function () return self end
-
-    -- save init configuration
-    SMODS.save_mod_config(self.mod)
 end
 
 
@@ -58,6 +55,8 @@ FRJM.include("frjm/ui/config_tab.lua")
 FRJM.include("frjm/ui/card_selection.lua")
 FRJM.include("frjm/ui/extra_tabs.lua")
 FRJM.include("frjm/info.lua")
+
+FRJM:save_config()
 
 -- Called when activation key is pressed. Default F
 FRJM.activate = function (_)
@@ -90,7 +89,7 @@ end
 
 
 -- Add a Balatro keyboard event
-SMODS.Keybind{
+FRJM.config.keybind_obj = SMODS.Keybind{
     key_pressed = FRJM.config.keybind,
     action = FRJM.activate,
     event = 'pressed',
