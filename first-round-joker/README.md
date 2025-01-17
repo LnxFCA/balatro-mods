@@ -22,9 +22,9 @@ See the project's [README](../README.md).
 
 ## Usage
 
-The mod does not select any card by default.  It only allows you to
-select **discovered** Jokers. A discovered Joker is one that you have purchased
-at least once, you can check your discovered Jokers on **COLLECTION** -> **Jokers**.
+The mod does not select any card by default.
+~~It only allows you to select **discovered** Jokers.~~ (This restriction can be disabled in the mod configuration).
+A discovered Joker is one that you have purchased at least once, you can check your discovered Jokers on **COLLECTION** -> **Jokers**.
 
 > **Note**: These usage instructions apply only to mod version `v2.x.x` or later.
 
@@ -78,6 +78,10 @@ The mod provides the following configuration options:
 - **Persist Selected Joker**: Enables the Joker card save feature. This is disabled by default.
 
 - **Use Base Joker Price**: Reduces the Joker card price. This is disabled by default.
+
+- **Enable FRJM Button**: If enabled, adds a button to the main menu screen that functions as the **activation key** when clicked.
+
+- **Disable Joker Restriction**: Allow selecting Undiscovered and Locked Jokers.
 
 - **Enable Custom Keybind**: Allows using a custom **activation key**.
 See [Activation key](#activation-key) for more details. This is disabled by default.
