@@ -65,3 +65,17 @@ G.FUNCS.frjm_open_project_page = function (e)
 
     love.system.openURL(e.config.ref_table[e.config.ref_value])
 end
+
+
+FRJM.original.main_menu = G.main_menu
+function G.main_menu (self, change_context)
+    FRJM.original.main_menu(self, change_context)
+
+    if FRJM.mod.config.enable_frjm_button then
+        FRJM.UI.create_frjm_button()
+    end
+end
+
+G.FUNCS.frjm_buttonn_callback = function ()
+    FRJM:activate()
+end

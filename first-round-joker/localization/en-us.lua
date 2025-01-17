@@ -34,7 +34,13 @@ return {
             },
 
             frj_project_page = {
-                "For more information check the project on:"
+                "For more information check the project on:",
+            },
+
+            frj_enable_button = "Enable FRJM Button",
+            frj_enable_button_d = {
+                "Displays a button labeled 'FRJM' on the main menu,",
+                "which serves the same purpose as the activation key.",
             },
         },
     },

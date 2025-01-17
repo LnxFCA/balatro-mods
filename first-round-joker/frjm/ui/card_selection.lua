@@ -24,9 +24,9 @@ FRJM.UI.selected_card_ui = function ()
                         shadow = true,
                         scale = 0.45,
                     })
-                }
-            }
-        }
+                },
+            },
+        },
     }
 end
 
@@ -53,4 +53,50 @@ FRJM.UI.create_card_selection_ui = function ()
 
     ---@type UIDef
     return jokers_collection
+end
+
+
+---@overload fun()
+FRJM.UI.create_frjm_button = function ()
+    FRJM.config.frjm_button = UIBox({
+        ---@type UIDef
+        definition = {
+            n = G.UIT.ROOT,
+            config = {
+                algin = "cm",
+                colour = G.C.UI.TRANSPARENT_LIGHT,
+                r = 0.1,
+            },
+            nodes = {{
+                n = G.UIT.C,
+                config = {
+                    align = "cm",
+                    padding = 0.2,
+                    minw = 2,
+                    colour = G.C.BLUE,
+                    r = 0.1,
+                    shadow = true,
+                    hover = true,
+                    button = 'frjm_buttonn_callback'
+                },
+                nodes = {{
+                    n = G.UIT.T,
+                    config = {
+                        text = "FRJM",
+                        scale = 0.5,
+                        colour = G.C.UI.TEXT_LIGHT,
+                    }
+                }},
+            }},
+        },
+        config = {
+            algin = "tli",
+            bond = "Weak",
+            offset = {
+                x = 0,
+                y = 0.3,
+            }
+        },
+        major = G.ROOM_ATTACH,
+    })
 end
