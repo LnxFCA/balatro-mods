@@ -41,7 +41,7 @@ end
 
 FRJM.mod.config_tab = function ()
     local mconfig = FRJM.mod.config
-    local mrconfig = FRJM.config
+    local mrconfig = FRJM.state
 
     ---@type UIDef
     return {

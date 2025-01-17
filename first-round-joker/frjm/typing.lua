@@ -6,7 +6,7 @@
 ---@field mod_id string mod id
 ---@field UI { [string]: fun() | fun(): UIDef } mod UI definitions
 ---@field original table original game functions
----@field config FRJM.RConfig mod runtime configuration
+---@field state FRJM.RConfig mod runtime configuration
 ---@field init fun(self: FRJM)
 ---@field include fun(self: FRJM, filename: string)
 ---@field activate fun(self: any)

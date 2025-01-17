@@ -1,12 +1,12 @@
 -- Whatever the mod should perform or not
 ---@return boolean
 FRJM.check = function (self, area)
-    local mrconfig = self.config
+    local mrconfig = self.state
 
     local enabled = mrconfig.enabled -- always true at starup
     local enabled_for_round = false -- true on round == 1
     local enabled_for_game = false -- false if tutorial in progress
-    local enabled_for_key = false -- true if FRJM.config.joker_key isn't nil
+    local enabled_for_key = false -- true if FRJM.state.joker_key isn't nil
     local enabled_for_area = false -- true if area == G.shop_jokers
 
     if enabled then
@@ -28,7 +28,7 @@ end
 -- Save mod configuration
 FRJM.save_config = function(self)
     local mconfig = self.mod.config  -- mod configuration
-    local mrconfig = self.config -- runtime mod configuration
+    local mrconfig = self.state -- runtime mod configuration
 
 
     if mconfig.save_joker then  -- save the current Joker key if save_joker is enabled
@@ -52,7 +52,7 @@ end
 FRJM.utils.show_card_selection_overlay = function (self)
     local frjm = self.parent()
 
-    frjm.config.selection_ui_active = true
+    frjm.state.selection_ui_active = true
 
     G.SETTINGS.paused = true  -- pauses the game
     if G.OVERLAY_MENU then G.FUNCS.exit_overlay_menu() end
@@ -67,7 +67,7 @@ end
 FRJM.utils.select_joker_card = function (self, card)
     local frjm = self.parent()
     local mconfig = frjm.mod.config
-    local mrconfig = frjm.config
+    local mrconfig = frjm.state
 
     -- update selection information
     mrconfig.card_selection.key = card.config.center.key
@@ -110,7 +110,7 @@ end
 -- Update the SMODS.Keybind object
 FRJM.update_keybind = function (self)
     local mconfig = self.mod.config
-    local mrconfig = self.config
+    local mrconfig = self.state
 
     mrconfig.keybind = mconfig.custom_keybind
     -- check keybind and status
@@ -120,6 +120,6 @@ FRJM.update_keybind = function (self)
 
     mrconfig.keybind = string.lower(mrconfig.keybind)  -- keybind is awlays stored in uppercase
     if mrconfig.keybind_obj then
-        self.config.keybind_obj.key_pressed = mrconfig.keybind  -- update keybind
+        self.state.keybind_obj.key_pressed = mrconfig.keybind  -- update keybind
     end
 end

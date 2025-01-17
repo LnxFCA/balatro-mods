@@ -3,7 +3,7 @@
 -- Reset FRJ every game run
 FRJM.original.start_run = Game.start_run
 Game.start_run = function(self, args)
-    FRJM.config.enabled = true
+    FRJM.state.enabled = true
 
     return FRJM.original.start_run(self, args)
 end
@@ -12,7 +12,7 @@ end
 FRJM.original.create_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
     local mconfig = FRJM.mod.config
-    local mrconfig = FRJM.config
+    local mrconfig = FRJM.state
     local card = nil
 
     if FRJM:check(area) then  -- should the mod activate?
@@ -45,7 +45,7 @@ end
 -- Reset selection overlay state when closed
 FRJM.original.exit_overlay_menu = G.FUNCS.exit_overlay_menu
 G.FUNCS.exit_overlay_menu = function ()
-    local mrconfig = FRJM.config
+    local mrconfig = FRJM.state
 
     FRJM.original.exit_overlay_menu()
     if mrconfig.selection_ui_active then mrconfig.selection_ui_active = false end
