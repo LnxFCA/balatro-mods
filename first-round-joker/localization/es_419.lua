@@ -24,7 +24,7 @@ return {
 
             frj_description = {
                 "Asegura que un Joker específico aparezca",
-                "en la tienda durante la primera ronda."
+                "en la tienda durante la primera ronda.",
             },
 
             frj_developed_by = "Desarrollado por ",
@@ -35,7 +35,13 @@ return {
 
             frj_project_page = {
                 "Para más información, consulta el proyecto en: ",
-            }
+            },
+
+            frj_enable_button = "Habilitar Botón FRJM",
+            frj_enable_button_d = {
+                "Muestra un botón llamado 'FRJM' en el menú principal,",
+                "que cumple la misma función que la tecla de activación.",
+            },
         },
     },
 }

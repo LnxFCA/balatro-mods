@@ -33,7 +33,15 @@ return {
                 "Gracias a SMODS por hacerlo facil.",
             },
 
-            frj_project_page = "Para más información, consulta el proyecto en: "
+            frj_project_page = {
+                "Para más información, consulta el proyecto en: ",
+            },
+
+            frj_enable_button = "Activar Botón FRJM",
+            frj_enable_button_d = {
+                "Muestra un botón llamado 'FRJM' en el menú principal,",
+                "que cumple la misma función que la tecla de activación.",
+            },
         },
     },
 }

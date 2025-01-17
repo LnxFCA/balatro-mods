@@ -36,6 +36,7 @@
 ---@field default_keybind string mod activation default keybind
 ---@field use_custom_keybind boolean use mod activation custom keybind status
 ---@field joker_name string | nil saved Joker name
+---@field enable_frjm_button boolean show FRJM button?
 
 
 ---@class FRJM.RConfig
@@ -44,6 +45,7 @@
 ---@field keybind string mod activation keybind
 ---@field selection_ui_active boolean selection overlay status
 ---@field card_selection FRJM.RConfig.Selection
+---@field frjm_button UIBoxT string
 
 
 ---@class FRJM.RConfig.Selection
@@ -62,3 +64,9 @@
 ---@field nexusmods string
 ---@field github string
 ---@field gitlab string
+
+
+---@class UIBoxT : Object
+---@field remove fun()
+---@field draw fun()
+---@field recalculate fun()

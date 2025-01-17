@@ -41,6 +41,7 @@ end
 
 FRJM.mod.config_tab = function ()
     local mconfig = FRJM.mod.config
+    local mrconfig = FRJM.config
 
     ---@type UIDef
     return {
@@ -72,7 +73,7 @@ FRJM.mod.config_tab = function ()
                         nodes = {
                             FRJM.UI.create_config_tab_toggle({ -- option toggle
                                 label = localize('frj_save_joker'),
-                                info = localize("frj_save_joker_d"),
+                                info = localize('frj_save_joker_d'),
                                 active_colour = G.C.BLUE,
                                 inactive_colour = G.C.WHITE,
                                 ref_table = mconfig,
@@ -93,9 +94,9 @@ FRJM.mod.config_tab = function ()
                         nodes = {
                             FRJM.UI.create_config_tab_toggle({ -- option toggle
                                 label = localize('frj_base_price'),
-                                info = localize("frj_base_price_d"),
+                                info = localize('frj_base_price_d'),
                                 active_colour = G.C.BLUE,
-                                inactive_colour = G.C.BLUE,
+                                inactive_colour = G.C.WHITE,
                                 ref_table = mconfig,
                                 ref_value = 'base_price',
                                 callback = function () FRJM:save_config() end
@@ -108,7 +109,41 @@ FRJM.mod.config_tab = function ()
                             align = "cm",
                             padding = 0.1,
                             colour = G.C.L_BLACK,
-                            minh = 1.8,
+                            r = 0.1,
+                        },
+                        nodes = {{
+                            n = G.UIT.C,
+                            config = {
+                                align = "cm",
+                            },
+                            nodes = {
+                                FRJM.UI.create_config_tab_toggle({
+                                    label = localize('frj_enable_button'),
+                                    info = localize('frj_enable_button_d'),
+                                    active_colour = G.C.BLUE,
+                                    inactive_colour = G.C.WHITE,
+                                    ref_table = mconfig,
+                                    ref_value = 'enable_frjm_button',
+                                    callback = function()
+                                        FRJM:save_config()
+
+                                        if mconfig.enable_frjm_button and G.STAGE == G.STAGES.MAIN_MENU then
+                                            FRJM.UI.create_frjm_button()
+                                        elseif mrconfig.frjm_button then
+                                            mrconfig.frjm_button:remove()
+                                            mrconfig.frjm_button:recalculate()
+                                        end
+                                    end,
+                                }),
+                            },
+                        }},
+                    },
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            padding = 0.1,
+                            colour = G.C.L_BLACK,
                             r = 0.1,
                         },
                         nodes = {
@@ -120,12 +155,12 @@ FRJM.mod.config_tab = function ()
                                 nodes = {
                                     FRJM.UI.create_config_tab_toggle({ -- option toggle
                                         label = localize('frj_use_custom_keybind'),
-                                        info = localize("frj_use_custom_keybind_d"),
+                                        info = localize('frj_use_custom_keybind_d'),
                                         active_colour = G.C.BLUE,
                                         inactive_colour = G.C.WHITE,
                                         ref_table = mconfig,
                                         ref_value = 'use_custom_keybind',
-                                        callback = function () FRJM:save_config() end
+                                        callback = function() FRJM:save_config() end
                                     }),
                                     {
                                         n = G.UIT.R,
@@ -143,7 +178,7 @@ FRJM.mod.config_tab = function ()
                                                 ref_table = mconfig,
                                                 ref_value = 'custom_keybind',
                                                 keyboard_offset = 1,
-                                                callback = function () FRJM:save_config() end
+                                                callback = function() FRJM:save_config() end
                                             }),
                                         },
                                     },
