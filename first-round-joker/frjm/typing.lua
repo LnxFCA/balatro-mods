@@ -30,6 +30,7 @@
 ---@field use_custom_keybind boolean use mod activation custom keybind status
 ---@field joker_name string | nil saved Joker name
 ---@field enable_frjm_button boolean show FRJM button?
+---@field disable_restriction boolean disable discovered Joker restriction
 
 
 ---@class FRJM.RConfig

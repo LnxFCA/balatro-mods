@@ -124,6 +124,11 @@ FRJM.mod.config_tab = function ()
                             end
                         end,
                     }),
+                    FRJM.UI.create_config_option_toggle({
+                        label = localize('frj_disable_restriction'),
+                        info = localize('frj_disable_restriction_d'),
+                        ref_value = 'disable_restriction',
+                    }),
                     FRJM.UI.create_config_option({
                         n = G.UIT.C,
                         config = {
