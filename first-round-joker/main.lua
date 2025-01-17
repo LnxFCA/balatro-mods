@@ -10,8 +10,8 @@ FRJM.init = function (self)
     self.UI = {}
     self.original = {}
     self.utils = {}
-    self.config = {}  -- runtime
-    self.config.card_selection = {}  -- card selection state
+    self.state = {}  -- runtime
+    self.state.card_selection = {}  -- card selection state
     self.project_page = {}  -- revelant project links
 
     self.mod = SMODS.current_mod
@@ -20,19 +20,19 @@ FRJM.init = function (self)
     -- initialize runtime configuration
     local mconfig = self.mod.config
 
-    self.config.enabled = true
-    self.config.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil  -- load from config
-    self.config.keybind = mconfig.default_keybind
-    self.config.selection_ui_active = false  -- selection overlay state
-    self.config.card_selection.key =  self.config.joker_key  -- selection info state
-    self.config.card_selection.name = mconfig.joker_name  -- selection info state
+    self.state.enabled = true
+    self.state.joker_key = (mconfig.save_joker and mconfig.joker_key) or nil  -- load from config
+    self.state.keybind = mconfig.default_keybind
+    self.state.selection_ui_active = false  -- selection overlay state
+    self.state.card_selection.key =  self.state.joker_key  -- selection info state
+    self.state.card_selection.name = mconfig.joker_name  -- selection info state
 
     -- use the custom keybind if enabled
     if mconfig.use_custom_keybind and mconfig.custom_keybind ~= "" then
-        self.config.keybind = mconfig.custom_keybind
+        self.state.keybind = mconfig.custom_keybind
     end
 
-    self.config.keybind = string.lower(self.config.keybind)  -- keybind is stored in uppercase
+    self.state.keybind = string.lower(self.state.keybind)  -- keybind is stored in uppercase
 
 
     -- dynamically load and execute a file from the mod directory
@@ -61,7 +61,7 @@ FRJM:save_config()
 -- Called when activation key is pressed. Default F
 FRJM.activate = function (_)
     -- don't active when the selection overlay is visible
-    if FRJM.config.selection_ui_active then return end
+    if FRJM.state.selection_ui_active then return end
 
     -- show the selection overlay
     FRJM.utils:show_card_selection_overlay()
@@ -73,13 +73,13 @@ FRJM.activate = function (_)
             local card = nil
 
             -- don't handle anything if the overlay isn't active
-            if not FRJM.config.selection_ui_active then return true end
+            if not FRJM.state.selection_ui_active then return true end
 
             -- handle the clicked card if different from previous card
             card = G.CONTROLLER.clicked.target
             if card and card:is(Card)
                and card.config.center.set == 'Joker'
-               and card.config.center.key ~= FRJM.config.card_selection.key
+               and card.config.center.key ~= FRJM.state.card_selection.key
             then
                 FRJM.utils:select_joker_card(card)
             end
@@ -89,8 +89,8 @@ end
 
 
 -- Add a Balatro keyboard event
-FRJM.config.keybind_obj = SMODS.Keybind{
-    key_pressed = FRJM.config.keybind,
+FRJM.state.keybind_obj = SMODS.Keybind{
+    key_pressed = FRJM.state.keybind,
     action = FRJM.activate,
     event = 'pressed',
     held_keys = {},

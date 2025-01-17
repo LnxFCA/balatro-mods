@@ -1,5 +1,5 @@
 FRJM.UI.selected_card_ui = function ()
-    local card_selection = FRJM.config.card_selection
+    local card_selection = FRJM.state.card_selection
 
     ---@type UIDef
     return {
@@ -58,7 +58,7 @@ end
 
 ---@overload fun()
 FRJM.UI.create_frjm_button = function ()
-    FRJM.config.frjm_button = UIBox({
+    FRJM.state.frjm_button = UIBox({
         ---@type UIDef
         definition = {
             n = G.UIT.ROOT,
