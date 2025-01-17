@@ -16,11 +16,9 @@ return {
             frj_use_custom_keybind = "Habilitar tecla personalizada",
             frj_use_custom_keybind_d = {
                 "Permite personalizar la tecla para activar el mod.",
-                "Nota: Debes reiniciar el juego para que los cambios tengan efecto.",
             },
 
             frj_joker_text_selected = "FRJ: ",
-            frj_game_restart_btn = "Reiniciar juego",
 
             frj_description = {
                 "Asegura que un Joker específico aparezca",

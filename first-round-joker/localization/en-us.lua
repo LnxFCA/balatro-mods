@@ -16,11 +16,9 @@ return {
             frj_use_custom_keybind = "Enable Custom Keybind",
             frj_use_custom_keybind_d = {
                 "Allows the activation key for the mod to be customized.",
-                "NOTE: A game restart is required for changes to take effect.",
             },
 
             frj_joker_text_selected = "FRJ: ",
-            frj_game_restart_btn = "Restart Game",
 
             frj_description = {
                 "Ensures that a specific Joker card appears",
