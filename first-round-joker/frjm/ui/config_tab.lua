@@ -79,6 +79,7 @@ end
 FRJM.mod.config_tab = function ()
     local mconfig = FRJM.mod.config
     local mrconfig = FRJM.state
+    mrconfig.selection_ui_active = true
 
     ---@type UIDef
     return {
