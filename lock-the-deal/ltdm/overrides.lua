@@ -77,13 +77,30 @@ end
 -- TODO: Implement other things
 ---@param e Moveable
 function G.FUNCS.ltd_can_lock_unlock(e)
+    -- Check for the "Buy" button
     if ((e.config.ref_table.children.buy_button or {}).states or {}).visible and e.config.ref_table.children.ltd_button then
-        if LTDM.state.lock_table[e.config.ref_table.config.center.key] then
-            e.config.colour = HEX("6C757D")
-            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and 0.3) or -0.15
+        if ((e.config.ref_table.children.buy_and_use_button or {}).states or {}).visible then
+            -- Align Buy and Use button, and the LTD button.
+            -- TODO: Tested in English and Spanish, need to test in other languages.
+            e.config.ref_table.children.buy_and_use_button.alignment.offset.y = -0.44  -- move u
+            e.UIBox.alignment.offset.y = 0.59  -- move down
         else
-            e.config.colour = HEX("FFA726")
-            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and 0.78) or -0.55
+            -- Reset custom alignment if Buy and Use button is not visible
+            e.UIBox.alignment.offset.y = 0
+        end
+
+        -- Change the button color according
+        if LTDM.state.lock_table[e.config.ref_table.config.center.key] then
+            e.config.colour = HEX("6C757D")  -- Gray
+
+            -- Fix button alignment
+            -- TODO: Tested on English only, test on other supported languages
+            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.25) or -0.15
+        else
+            e.config.colour = HEX("FFA726")  -- Light Orange
+
+            -- Reset button alignment
+            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.65) or -0.55
         end
     end
 end

@@ -1,19 +1,17 @@
 ---@param card BALATRO_T.Card
 function LTDM.UIDEF.add_ltd_button(card)
-    local align = "cr"
     local offset = { x = -0.55, y = 0 }
 
     if card.ability.consumeable then
-        align = "cl"
-        offset.x = 0.75
+        offset.x = -0.65
     end
 
     ---@type UIDef
     local button = {
         n = G.UIT.ROOT,
         config = {
-            id = 'ltd_button', ref_table = card, minh = 0.8, padding = 0.1, align = align,
-            colour = HEX("007BFF"), shadow = true, r = 0.08, minw = 1.6, button = 'ltd_lock_unlock',
+            id = 'ltd_button', ref_table = card, minh = 0.8, padding = 0.1, align = "cr",
+            shadow = true, r = 0.08, minw = 1.6, button = 'ltd_lock_unlock',
             hover = true, func = 'ltd_can_lock_unlock',
         },
         nodes = {{
@@ -30,7 +28,7 @@ function LTDM.UIDEF.add_ltd_button(card)
     card.children.ltd_button = UIBox({
         definition = button,
         config = {
-            align = align,
+            align = "cr",
             offset = offset,
             major = card,
             bond = 'Weak',
