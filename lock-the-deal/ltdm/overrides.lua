@@ -3,6 +3,7 @@
 LTDM.original.create_card_for_shop = create_card_for_shop
 ---@param area BALATRO_T.CardArea The card
 function create_card_for_shop(area)
+    -- TODO: Implement locked card logic
     return LTDM.original.create_card_for_shop(area)
 end
 
@@ -18,11 +19,14 @@ function create_shop_card_ui(card, type, area)
     -- Only accept cards for now
     if area ~= G.shop_jokers then return true end
 
+    -- Set initial button text
     if LTDM.state.lock_table[card.config.center.key] then
         LTDM.state.ltd_button_text[card.config.center.key] = localize('ltd_button_locked')
     else
         LTDM.state.ltd_button_text[card.config.center.key] = localize('ltd_button_lock')
     end
+
+    -- TODO: Check if this is needed
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.35,
@@ -77,8 +81,8 @@ end
 -- TODO: Implement other things
 ---@param e Moveable
 function G.FUNCS.ltd_can_lock_unlock(e)
-    -- Check for the "Buy" button
-    if ((e.config.ref_table.children.buy_button or {}).states or {}).visible and e.config.ref_table.children.ltd_button then
+    -- Check if the card is highlighted
+    if e.config.ref_table.highlighted then
         if ((e.config.ref_table.children.buy_and_use_button or {}).states or {}).visible then
             -- Align Buy and Use button, and the LTD button.
             -- TODO: Tested in English and Spanish, need to test in other languages.

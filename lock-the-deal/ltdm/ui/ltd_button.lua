@@ -2,6 +2,7 @@
 function LTDM.UIDEF.add_ltd_button(card)
     local offset = { x = -0.55, y = 0 }
 
+    -- Fix alignment
     if card.ability.consumeable then
         offset.x = -0.65
     end
