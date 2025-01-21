@@ -1,0 +1,14 @@
+{
+  "id": "lock-the-deal",
+  "name": "Lock the Deal",
+  "author": ["LnxFCA"],
+  "display_name": "LTD",
+  "description": "Adds a Lock feature to shop items, allowing players to save cards for future rounds or re-rolls.",
+  "prefix": "ltd",
+  "main_file": "main.lua",
+  "priority": -1,
+  "badge_colour": "0D1217",
+  "badge_text_colour": "D7D9DB",
+  "version": "1.0.0",
+  "dependencies": []
+}
