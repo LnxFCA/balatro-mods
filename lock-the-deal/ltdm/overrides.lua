@@ -34,7 +34,7 @@ function create_shop_card_ui(card, type, area)
     -- TODO: Check if this is needed
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
-        delay = 0.35,
+        delay = 0.30,
         blocking = false,
         blockable = false,
         func = function ()
@@ -61,4 +61,30 @@ function G.FUNCS.buy_from_shop(e)
 
         LTDM.utils:remove_card(card.config.center.key)
     end
+end
+
+
+LTDM.original.start_run = Game.start_run
+function Game.start_run(self, args)
+    -- New round, reset LTDM state
+    if not args.savetext then
+    end
+
+    LTDM.original.start_run(self)
+end
+
+LTDM.original.save_progress = Game.save_progress
+function Game.save_progress(self)
+    -- Is safe to save the lock_table
+    if self.STATE ~= self.STATES.SHOP and self.STAGE == self.STAGES.RUN then
+        -- TODO: Implement this
+    end
+    LTDM.original.save_progress(self)
+end
+
+
+LTDM.original.save_settings = Game.save_settings
+function Game.save_settings(self)
+    -- TODO: Check if need custom behavior
+    LTDM.original.save_settings(self)
 end
