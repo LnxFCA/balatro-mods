@@ -40,6 +40,7 @@ LTDM:init()
 LTDM.include("ltdm/ui/config_tab.lua")
 LTDM.include("ltdm/ui/ltd_button.lua")
 LTDM.include("ltdm/overrides.lua")
+LTDM.include("ltdm/callbacks.lua")
 LTDM.include("ltdm/utils.lua")
 
 

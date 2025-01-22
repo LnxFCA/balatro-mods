@@ -2,7 +2,7 @@ function LTDM.utils.lock_card(self, card)
     local parent = self.parent()
     local key = card.config.center.key
 
-    parent.state.ltd_button_text[key] = localize('ltd_button_locked')
+    parent.state.ltd_button_text[key].text = localize('ltd_button_locked')
     parent.state.lock_table[key] = {
         key = key,
         set = card.config.center.set,
@@ -16,7 +16,7 @@ function LTDM.utils.unlock_card(self, key)
 
     if not parent.state.lock_table[key] then return end
     parent.state.lock_table[key] = nil
-    parent.state.ltd_button_text[key] = localize('ltd_button_lock')
+    parent.state.ltd_button_text[key].text = localize('ltd_button_lock')
 end
 
 
