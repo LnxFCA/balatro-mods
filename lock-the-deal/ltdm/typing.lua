@@ -16,7 +16,7 @@
 ---@field lock_keybind string Active lock/unlock Keybind
 ---@field keybind_status_text string Error text for keybind
 ---@field keybind SMODS.Keybind? SMODS.Keybind instance
----@field ltd_button_text table<string, string>
+---@field ltd_button_text table<string, { text: string, popup_title: string, popup_text: string }>
 
 
 ---@class LTDM.Config
