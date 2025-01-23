@@ -27,6 +27,7 @@ function LTDM.UIDEF.config_create_option_toggle(args)
 
     local toggle = create_toggle(toggle_args)
 
+    -- Create info text rows
     if args.info then
         local info = {}
         for _, v in ipairs(args.info or {}) do
@@ -36,6 +37,7 @@ function LTDM.UIDEF.config_create_option_toggle(args)
             }}})
         end
 
+        -- Replace info with ours
         if info then
             info = { n = G.UIT.R, config = { align = "cm" }, nodes = info }
             toggle.nodes[2] = info

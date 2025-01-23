@@ -4,6 +4,7 @@ LTDM.original.create_card_for_shop = create_card_for_shop
 ---@param area BALATRO_T.CardArea The card
 function create_card_for_shop(area)
     -- TODO: Implement locked card logic
+
     return LTDM.original.create_card_for_shop(area)
 end
 
@@ -25,6 +26,7 @@ function create_shop_card_ui(card, type, area)
     else
         LTDM.state.ltd_button_text[card.config.center.key] = {}
         LTDM.state.ltd_button_text[card.config.center.key].text = localize('ltd_button_lock')
+        card.ltdm_state = { lockd = false, uid = }
 
         -- TODO: This can't go here
         LTDM.state.ltd_button_text[card.config.center.key].popup_title = "Cost"
@@ -88,3 +90,4 @@ function Game.save_settings(self)
     -- TODO: Check if need custom behavior
     LTDM.original.save_settings(self)
 end
+

@@ -15,8 +15,11 @@ return {
             ltd_lock_keybind_invalid = "Invalid key",
             ltd_lock_keybind_exist = "Key already in use",
 
-            ltd_button_lock = "Lock",
-            ltd_button_locked = "Locked"
+            ltd_button_lock = "LOCK",
+            ltd_button_locked = "LOCKED",
+
+            ltd_button_tooltip_title = "Cost",
+            ltd_button_tooltip_free = "Free | $0",
         }
     }
 }
