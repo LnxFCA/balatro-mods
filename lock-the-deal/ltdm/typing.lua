@@ -3,10 +3,13 @@
 
 --- Represents a locked card
 ---@class LTDM.LockItem
+---@field id string The unique key identifier
 ---@field key string The locked card key
----@field set string The card set
----@field editon BALATRO_T.Card.Edition The card editon
----@field cost number The card cost
+---@field price number The item price
+---@field set string The item set, e.g Joker, Tarot, Voucher
+---@field edition table<string, boolean?>? The card edition
+---@field ehnacement string? The ehnacement key. See `G.P_CENTERS`
+---@field seal string? The seal name. See `Card.seal`
 
 
 ---@class LTDM.State
@@ -32,13 +35,12 @@
 ---@field parent fun(): LTDM Return the parent LTDM instance
 ---@field check_keybind fun(self: LTDM.Utils): number 0 if keybind valid, 1 if keybind invalid, 2 if keybind exists
 ---@field update_lock_keybind fun(self: LTDM.Utils): boolean? Set the mod lock/unlock keybind to state.lock_keybind. Assumes that config.lock_keybind is always valid.
----@field lock_card fun(self: LTDM.Utils, card: BALATRO_T.Card) Lock a card
----@field unlock_card fun(self: LTDM.Utils, key: string) Unlock a card
----@field remove_card fun(self: LTDM.Utils, key: string) Removes a card from lock_table and ltd_button_text.
 ---@field keybind_activate fun(self: LTDM.Utils) Runs when lock/unlock keybind is pressed. Must invoked as `:keybind_activate()`. Checks for `config.lock_keybind_enable`.
 ---@field activate fun(self: LTDM.Utils, e: BALATRO_T.UIElement) Runs when the user clicks the lock/unlock button
 ---@field debug fun(self, msg: string?, funcv: function | { short_src: string, linedefined: number, name: string } | nil)
 ---@field save_config fun(self: LTDM.Utils) Save mod configuration
+---@field generate_uuid fun(): string Returns a UUID v4 string
+---@field get_ehnacement_key fun(ability: BALATRO_T.Card.Ability): string? Returns the key of the enhancement
 
 ---@class LTDM
 ---@field state LTDM.State Mod state
@@ -48,6 +50,7 @@
 ---@field UIDEF table<string, function> UI definition functions
 ---@field utils LTDM.Utils Mod utility functions
 ---@field include fun(filename: string) Load `filename` inside mod context
+---@field mt table<string, any>
 local LTDM = {}
 
 
@@ -63,3 +66,6 @@ LTDM.GameStatus = {
 
 --- Initialize the mod
 function LTDM.init(self) end
+
+
+---@class LTDM.Card : BALATRO_T.Card

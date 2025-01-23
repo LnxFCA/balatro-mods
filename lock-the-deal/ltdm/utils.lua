@@ -1,33 +1,3 @@
-function LTDM.utils.lock_card(self, card)
-    local parent = self.parent()
-    local key = card.config.center.key
-
-    parent.state.ltd_button_text[key].text = localize('ltd_button_locked')
-    parent.state.lock_table[key] = {
-        key = key,
-        set = card.config.center.set,
-        editon = card.edition,
-        cost = card.cost,
-    }
-end
-
-function LTDM.utils.unlock_card(self, key)
-    local parent = self.parent()
-
-    if not parent.state.lock_table[key] then return end
-    parent.state.lock_table[key] = nil
-    parent.state.ltd_button_text[key].text = localize('ltd_button_lock')
-end
-
-
-function LTDM.utils.remove_card(self, key)
-    local parent = self.parent()
-
-    if not parent.state.lock_table[key] then return end
-    parent.state.lock_table[key] = nil
-    parent.state.ltd_button_text[key] = nil
-end
-
 function LTDM.utils.keybind_activate(self)
     print("Hello World!")
 end
@@ -87,6 +57,31 @@ function LTDM.utils.save_config(self)
     end
 
     SMODS.save_mod_config(parent.mod)
+end
+
+
+function LTDM.utils.generate_uuid()
+    local template = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+    local uuid = template:gsub("[xy]", function (c)
+        return string.format("%x", (c == "x" and math.random(0, 15) or math.random(8, 11)))
+    end)
+
+    return uuid
+end
+
+
+function LTDM.utils.get_ehnacement_key(ability)
+    if not ability then return nil end
+    local key = nil
+    for k, v in ipairs(G.P_CENTERS) do
+        if v.name == ability.name and v.set == "Enhanced" then
+            key = k
+
+            break
+        end
+    end
+
+    return key
 end
 
 
