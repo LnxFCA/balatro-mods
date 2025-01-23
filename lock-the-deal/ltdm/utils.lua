@@ -98,4 +98,3 @@ function LTDM.utils.debug(self, msg, funcv)
 
     sendDebugMessage(message, parent.mod_id)
 end
-
