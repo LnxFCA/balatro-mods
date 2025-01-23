@@ -61,8 +61,15 @@ function G.FUNCS.buy_from_shop(e)
         card.children.ltd_button:remove()
         card.children.ltd_button = nil
 
-        LTDM.utils:remove_card(card.config.center.key)
     end
+end
+
+
+LTDM.original.use_card = G.FUNCS.use_card
+-- Remove the Voucher
+-- TODO: Check or card.set == Voucher
+function G.FUNCS.use_card(e, mute, nosave)
+    LTDM.original.use_card(e, mute, nosave)
 end
 
 
@@ -74,6 +81,7 @@ function Game.start_run(self, args)
 
     LTDM.original.start_run(self)
 end
+
 
 LTDM.original.save_progress = Game.save_progress
 function Game.save_progress(self)

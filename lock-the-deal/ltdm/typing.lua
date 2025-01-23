@@ -13,19 +13,14 @@
 
 
 ---@class LTDM.State
----@field lock_table table<string, LTDM.LockItem> Table with locked cards information
----@field lock_number number The number of current locked cards
----@field run_status LTDM.GameStatus Mod current state. If true, then is in-game
 ---@field lock_keybind string Active lock/unlock Keybind
 ---@field keybind_status_text string Error text for keybind
 ---@field keybind SMODS.Keybind? SMODS.Keybind instance
----@field ltd_button_text table<string, { text: string, popup_title: string, popup_text: string }>
+---@field ltd table
 
 
 ---@class LTDM.Config
 ---@field frjm_integration boolean Enable integration with FRJM
----@field lock_table table<string, LTDM.LockItem> Table with locked cards information
----@field lock_number number THe number of current locked cards
 ---@field lock_keybind_enable boolean Enable lock keybind
 ---@field lock_default_keybind string Default lock/unlock keybind
 ---@field lock_keybind string Keybind to trigger lock/unlock action
@@ -36,11 +31,11 @@
 ---@field check_keybind fun(self: LTDM.Utils): number 0 if keybind valid, 1 if keybind invalid, 2 if keybind exists
 ---@field update_lock_keybind fun(self: LTDM.Utils): boolean? Set the mod lock/unlock keybind to state.lock_keybind. Assumes that config.lock_keybind is always valid.
 ---@field keybind_activate fun(self: LTDM.Utils) Runs when lock/unlock keybind is pressed. Must invoked as `:keybind_activate()`. Checks for `config.lock_keybind_enable`.
----@field activate fun(self: LTDM.Utils, e: BALATRO_T.UIElement) Runs when the user clicks the lock/unlock button
 ---@field debug fun(self, msg: string?, funcv: function | { short_src: string, linedefined: number, name: string } | nil)
 ---@field save_config fun(self: LTDM.Utils) Save mod configuration
 ---@field generate_uuid fun(): string Returns a UUID v4 string
 ---@field get_ehnacement_key fun(ability: BALATRO_T.Card.Ability): string? Returns the key of the enhancement
+
 
 ---@class LTDM
 ---@field state LTDM.State Mod state
@@ -57,15 +52,6 @@ local LTDM = {}
 ---@class LTDM.Mod : SMODS_T.Mod
 ---@field config LTDM.Config
 
----@enum LTDM.GameStatus
-LTDM.GameStatus = {
-    NEW_RUN = 1, --- A new run
-    LOAD_RUN = 2, --- A existent run
-}
-
 
 --- Initialize the mod
 function LTDM.init(self) end
-
-
----@class LTDM.Card : BALATRO_T.Card

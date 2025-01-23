@@ -2,10 +2,7 @@
 
 -- globals
 LTDM = {} ---@type LTDM
-LTDM.GameStatus = {
-    NEW_RUN = 1, --- A new run
-    LOAD_RUN = 2, --- A existent run
-}
+
 
 function LTDM.init(self)
     self.state = {}
@@ -17,10 +14,6 @@ function LTDM.init(self)
     self.mod = SMODS.current_mod
     self.mod_id = self.mod.id
 
-    self.state.lock_number = 0
-    self.state.lock_table = {}
-    self.state.ltd_button_text = {}
-    self.state.run_status = LTDM.GameStatus.NEW_RUN
     self.state.keybind_status_text = ""
 
 
@@ -31,7 +24,6 @@ function LTDM.init(self)
 
 
     function self.utils.parent() return self end
-
 end
 
 
