@@ -71,9 +71,12 @@ end
 
 
 function LTDM.utils.get_ehnacement_key(ability)
+    -- Check for ability
     if not ability then return nil end
+
     local key = nil
     for k, v in ipairs(G.P_CENTERS) do
+        -- Check for valid card
         if v.name == ability.name and v.set == "Enhanced" then
             key = k
 
@@ -82,6 +85,20 @@ function LTDM.utils.get_ehnacement_key(ability)
     end
 
     return key
+end
+
+
+function LTDM.utils.copy_table(stable)
+    local output = {}
+    for k, v in pairs(stable) do
+        if type(v) == 'table' then
+            output[k] = LTDM.utils.copy_table(v)
+        else
+            output[k] = v
+        end
+    end
+
+    return output
 end
 
 

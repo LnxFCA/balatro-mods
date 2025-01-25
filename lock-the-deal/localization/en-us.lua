@@ -19,7 +19,7 @@ return {
             ltd_button_locked = "LOCKED",
 
             ltd_button_tooltip_title = "Cost",
-            ltd_button_tooltip_free = "Free | $0",
+            ltd_button_tooltip_free = "Free",
         }
     }
 }
