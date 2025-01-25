@@ -1,17 +1,14 @@
 -- Called when the lock/unlock button is clicked
 -- TODO: Implement lock_list and more
 function G.FUNCS.ltd_lock_unlock(e)
-    local card = e.config.ref_table ---@type BALATRO_T.Card
-    local card_key = card.config.center.key
+    local card = e.config.ref_table ---@type LTDM.Card
 
-    -- Card locked
-    if LTDM.state.lock_table[card_key] then
-        LTDM.utils:unlock_card(card_key)
-        return
+    -- Lock/unlock card
+    if not card.ltdm_state.locked then
+        LTDM.state.ltd:lock_item(card)
+    else
+        LTDM.state.ltd:unlock_item(card.ltdm_state.id)
     end
-
-    -- Lock card
-    LTDM.utils:lock_card(card)
 end
 
 
@@ -32,18 +29,25 @@ function G.FUNCS.ltd_can_lock_unlock(e)
             e.UIBox.alignment.offset.y = 0
         end
 
-        -- Change the button color according
-        if LTDM.state.lock_table[e.config.ref_table.config.center.key] then
-            e.config.colour = HEX("6C757D")  -- Gray
-
-            -- Fix button alignment
-            -- TODO: Tested on English only, test on other supported languages
-            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.25) or -0.15
+        -- Disable button when player can't afford
+        if e.config.ref_table.ltdm_state.no_locked and LTDM.state.ltd.price > (G.GAME.dollars - G.GAME.bankrupt_at) then
+            e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+            e.config.button = nil
         else
-            e.config.colour = HEX("FFA726")  -- Light Orange
+            e.config.button = 'ltd_lock_unlock'
+            -- Change the button color according
+            if e.config.ref_table.ltdm_state.locked then
+                e.config.colour = HEX("6C757D")  -- Gray
 
-            -- Reset button alignment
-            e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.65) or -0.55
+                -- Fix button alignment
+                -- TODO: Tested on English only, test on other supported languages
+                e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.25) or -0.15
+            else
+                e.config.colour = HEX("FFA726")  -- Light Orange
+
+                -- Reset button alignment
+                e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.65) or -0.55
+            end
         end
     end
 end

@@ -10,8 +10,9 @@ function LTDM.init(self)
     self.state = {}
     self.UIDEF = {}
     self.utils = {}
+    self.mt = {}
 
-    self.mod = SMODS.current_mod
+    self.mod = SMODS.current_mod  --[[@as LTDM.Mod]]
     self.mod_id = self.mod.id
 
     self.state.keybind_status_text = ""
@@ -29,6 +30,7 @@ end
 
 -- Initialize mod
 LTDM:init()
+LTDM.include("ltdm/ltd.lua")
 LTDM.include("ltdm/ui/config_tab.lua")
 LTDM.include("ltdm/ui/ltd_button.lua")
 LTDM.include("ltdm/overrides.lua")
@@ -45,3 +47,7 @@ SMODS.save_mod_config(LTDM.mod)
 
 -- Initialize keybind
 LTDM.utils:update_lock_keybind()
+
+
+-- Initialize state
+LTDM.state.ltd = LTDM.mt.State:new()
