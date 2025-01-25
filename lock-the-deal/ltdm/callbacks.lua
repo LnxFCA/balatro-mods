@@ -26,7 +26,7 @@ function G.FUNCS.ltd_can_lock_unlock(e)
             e.UIBox.alignment.offset.y = 0.59  -- move down
         else
             -- Reset custom alignment if Buy and Use button is not visible
-            e.UIBox.alignment.offset.y = 0
+            -- e.UIBox.alignment.offset.y = e.UIBox.alignment.alignment.y
         end
 
         -- Disable button when player can't afford
@@ -41,12 +41,28 @@ function G.FUNCS.ltd_can_lock_unlock(e)
 
                 -- Fix button alignment
                 -- TODO: Tested on English only, test on other supported languages
-                e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.25) or -0.15
+                if e.config.ref_table.ability.set == 'Booster' then
+                    e.UIBox.alignment.offset.x = -0.43
+                elseif e.config.ref_table.ability.consumeable then
+                    e.UIBox.alignment.offset.x = -0.25
+                elseif e.config.ref_table.ability.set == 'Voucher' then
+                    e.UIBox.alignment.offset.x = -0.35
+                else
+                    e.UIBox.alignment.offset.x = -0.15
+                end
             else
                 e.config.colour = HEX("FFA726")  -- Light Orange
 
                 -- Reset button alignment
-                e.UIBox.alignment.offset.x = (e.config.ref_table.ability.consumeable and -0.65) or -0.55
+                if e.config.ref_table.ability.set == 'Booster' then
+                    e.UIBox.alignment.offset.x = -0.8
+                elseif e.config.ref_table.ability.consumeable then
+                    e.UIBox.alignment.offset.x = -0.65
+                elseif e.config.ref_table.ability.set == 'Voucher' then
+                    e.UIBox.alignment.offset.x = -0.75
+                else
+                    e.UIBox.alignment.offset.x = -0.54
+                end
             end
         end
     end
