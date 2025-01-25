@@ -73,3 +73,29 @@ if ltdm_voucher then
     G.shop_vouchers:emplace(card)
 elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
 '''
+
+
+# Booster pack
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+match_indent = true
+pattern = "if not G.GAME.current_round.used_packs[i] then"
+position = "at"
+payload = '''
+local ltdm_booster_pack = LTDM.state.ltd:get_lock_item('booster')
+if ltdm_booster_pack then
+    G.GAME.current_round.used_packs[i] = ltdm_booster_pack.key
+elseif not G.GAME.current_round.used_packs[i] then
+'''
+
+# Booster pack mark
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+match_indent = true
+pattern = "create_shop_card_ui(card, 'Booster', G.shop_booster)"
+position = "before"
+payload = '''
+card.ltdm_saved_id = ltdm_booster_pack and ltdm_booster_pack.id
+'''

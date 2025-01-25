@@ -40,14 +40,20 @@ function create_shop_card_ui(card, type, area)
     -- Create primary card UI
     LTDM.original.create_shop_card_ui(card, type, area)
 
-    -- Limit block items
-    if (area ~= G.shop_jokers and area ~= G.shop_vouchers) and not card.ltdm_saved_id then
+    -- Skip on card opening
+    if card.opening then return true end
+
+    -- -- Skip booster packs if disabled
+    if (area == G.shop_booster and not LTDM.mod.config.booster_pack_enabled) and not card.ltdm_saved_id then
+        return true
+    elseif (area ~= G.shop_jokers and area ~= G.shop_vouchers and area ~= G.shop_booster) and not card.ltdm_saved_id then
         return true
     end
 
     -- Register the item
     LTDM.state.ltd:register(card,
-        (area == G.shop_jokers and "jokers") or (area == G.shop_vouchers and "vouchers") or "other")
+        (area == G.shop_jokers and "jokers") or (area == G.shop_vouchers and "vouchers") or
+        (area == G.shop_booster and "booster") or "other")
 
     -- TODO: Check if this is needed
     G.E_MANAGER:add_event(Event({

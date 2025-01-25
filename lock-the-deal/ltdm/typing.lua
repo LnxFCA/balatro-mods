@@ -36,6 +36,7 @@
 ---@field lock_default_keybind string Default lock/unlock keybind
 ---@field lock_keybind string Keybind to trigger lock/unlock action
 ---@field ltd? LTDM.mt.State.Saved Saved state, use LTDM.ltd:load_saved(mod)
+---@field booster_pack_enabled boolean Enable LTD for booster packs
 
 
 ---@class LTDM.Utils
@@ -69,6 +70,7 @@ local LTDM = {}
 ---@class LTDM.Card : BALATRO_T.Card
 ---@field ltdm_state LTDM.LockItem.State The card local state
 ---@field ltdm_saved_id? string The saved it for this card
+---@field opening boolean? Opening pack status
 
 
 --- Initialize the mod

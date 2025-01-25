@@ -74,6 +74,13 @@ LTDM.mod.config_tab = function ()
                 }),
                 LTDM.UIDEF.config_create_option_box({
                     LTDM.UIDEF.config_create_option_toggle({
+                        label = localize('ltd_booster_pack_enable'),
+                        info = localize('ltd_booster_pack_enable_d'),
+                        ref_value = 'booster_pack_enabled',
+                    }),
+                }),
+                LTDM.UIDEF.config_create_option_box({
+                    LTDM.UIDEF.config_create_option_toggle({
                         label = localize('ltd_lock_keybind'),
                         info = localize('ltd_lock_keybind_d'),
                         ref_value = 'lock_keybind_enable',
