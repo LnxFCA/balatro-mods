@@ -37,7 +37,8 @@ FRJM.init = function (self)
 
     -- dynamically load and execute a file from the mod directory
     self.include = function (filename)
-        SMODS.load_file(filename, self.mod_id)()
+        local chunk = SMODS.load_file(filename, self.mod_id)
+        if chunk then chunk() end
     end
 
 
@@ -55,6 +56,13 @@ FRJM.include("frjm/ui/config_tab.lua")
 FRJM.include("frjm/ui/card_selection.lua")
 FRJM.include("frjm/ui/extra_tabs.lua")
 FRJM.include("frjm/info.lua")
+FRJM.include("common/main.lua")
+
+
+if not LNXFCA or not LNXFCA.initialized and lnxfca_common_init then
+    lnxfca_common_init()
+end
+
 
 FRJM:save_config()
 
