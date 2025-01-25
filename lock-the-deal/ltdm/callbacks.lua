@@ -15,7 +15,7 @@ end
 -- Called when the card is being drawn, lock/unlock button
 -- is only shown when the card is highlighted.
 -- TODO: Implement other things
----@param e Moveable
+---@param e LTDM.Button
 function G.FUNCS.ltd_can_lock_unlock(e)
     -- Check if the card is highlighted
     if e.config.ref_table.highlighted then
@@ -42,26 +42,26 @@ function G.FUNCS.ltd_can_lock_unlock(e)
                 -- Fix button alignment
                 -- TODO: Tested on English only, test on other supported languages
                 if e.config.ref_table.ability.set == 'Booster' then
-                    e.UIBox.alignment.offset.x = -0.43
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.locked_offset_x.booster
                 elseif e.config.ref_table.ability.consumeable then
-                    e.UIBox.alignment.offset.x = -0.25
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.locked_offset_x.consumeable
                 elseif e.config.ref_table.ability.set == 'Voucher' then
-                    e.UIBox.alignment.offset.x = -0.35
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.locked_offset_x.voucher
                 else
-                    e.UIBox.alignment.offset.x = -0.15
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.locked_offset_x.other
                 end
             else
                 e.config.colour = HEX("FFA726")  -- Light Orange
 
                 -- Reset button alignment
                 if e.config.ref_table.ability.set == 'Booster' then
-                    e.UIBox.alignment.offset.x = -0.8
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.lock_offset_x.booster
                 elseif e.config.ref_table.ability.consumeable then
-                    e.UIBox.alignment.offset.x = -0.65
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.lock_offset_x.consumeable
                 elseif e.config.ref_table.ability.set == 'Voucher' then
-                    e.UIBox.alignment.offset.x = -0.75
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.lock_offset_x.voucher
                 else
-                    e.UIBox.alignment.offset.x = -0.54
+                    e.UIBox.alignment.offset.x = e.config.ltd_btn_conf.lock_offset_x.other
                 end
             end
         end

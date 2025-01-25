@@ -73,5 +73,21 @@ local LTDM = {}
 ---@field opening boolean? Opening pack status
 
 
+---@class LTDM.ButtonConfig
+---@field width number Button minwidth
+---@field label_scale number Button label scale
+---@field lock_offset_x { voucher: number, other: number, booster: number, consumeable: number }
+---@field locked_offset_x { voucher: number, other: number, booster: number, consumeable: number }
+
+
+---@class LTDM.Button.Config : BALATRO_T.UIDef.Config.Common
+---@field ref_table LTDM.Card
+---@field ltd_btn_conf LTDM.ButtonConfig
+
+---@class LTDM.Button : BALATRO_T.Moveable
+---@field UIRoot BALATRO_T.UIBox
+---@field UIBox BALATRO_T.UIBox
+---@field config LTDM.Button.Config
+
 --- Initialize the mod
 function LTDM.init(self) end
