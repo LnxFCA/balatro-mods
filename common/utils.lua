@@ -1,0 +1,26 @@
+function LNXFCA.utils.copy_table(stable)
+    local output = {}
+    for k, v in pairs(stable) do
+        if type(v) == 'table' then
+            output[k] = LNXFCA.utils.copy_table(v)
+        else
+            output[k] = v
+        end
+    end
+
+    return output
+end
+
+
+function LNXFCA.utils.debug(mod_id, msg, funcv)
+    local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
+
+    local func = (type(funcv) == "function" and debug.getinfo(funcv)) or funcv
+    if func then
+        message = string.format(message, func.short_src, func.linedefined, func.name or "anonymous", msg)
+    else
+        message = msg or ""
+    end
+
+    sendDebugMessage(message, mod_id)
+end
