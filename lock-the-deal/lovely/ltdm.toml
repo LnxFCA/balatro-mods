@@ -59,19 +59,22 @@ match_indent = true
 pattern = '''
 if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
 '''
-position = "at"
+position = "before"
 payload = '''
 local ltdm_voucher = LTDM.state.ltd:get_lock_item('vouchers')
 if ltdm_voucher then
-    local card = Card(G.shop_vouchers.T.x + G.shop_vouchers.T.w/2, G.shop_vouchers.T.y, G.CARD_W, G.CARD_H,
-    G.P_CARDS.empty, G.P_CENTERS[ltdm_voucher.key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+    G.GAME.current_round.voucher = ltdm_voucher.key
+end
+'''
 
-    card.shop_voucher = true
-    card.ltdm_saved_id = ltdm_voucher.id
-    create_shop_card_ui(card, 'Voucher', G.shop_vouchers)
-    card:start_materialize()
-    G.shop_vouchers:emplace(card)
-elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+match_indent = true
+pattern = "create_shop_card_ui(card, 'Voucher', G.shop_vouchers)"
+position = "before"
+payload = '''
+card.ltdm_saved_id = ltdm_voucher and ltdm_voucher.id
 '''
 
 
