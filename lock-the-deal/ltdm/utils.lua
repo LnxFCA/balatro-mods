@@ -86,32 +86,3 @@ function LTDM.utils.get_ehnacement_key(ability)
 
     return key
 end
-
-
-function LTDM.utils.copy_table(stable)
-    local output = {}
-    for k, v in pairs(stable) do
-        if type(v) == 'table' then
-            output[k] = LTDM.utils.copy_table(v)
-        else
-            output[k] = v
-        end
-    end
-
-    return output
-end
-
-
-function LTDM.utils.debug(self, msg, funcv)
-    local parent = self.parent()
-    local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
-
-    local func = (type(funcv) == "function" and debug.getinfo(funcv)) or funcv
-    if func then
-        message = string.format(message, func.short_src, func.linedefined, func.name or "anonymous", msg)
-    else
-        message = msg or ""
-    end
-
-    sendDebugMessage(message, parent.mod_id)
-end

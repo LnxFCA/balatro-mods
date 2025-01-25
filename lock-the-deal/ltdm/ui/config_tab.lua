@@ -1,53 +1,3 @@
---- Create a new configuration option box.
----@param content UIDef[]
----@return UIDef
-function LTDM.UIDEF.config_create_option_box(content)
-    return {
-        n = G.UIT.R,
-        config = {
-            align = "cm",
-            colour = G.C.L_BLACK,
-            r = 0.1,
-            padding = 0.1,
-        },
-        nodes = content
-    }
-end
-
-
---- Create a toggle widget
----@param args table
----@return UIDef
-function LTDM.UIDEF.config_create_option_toggle(args)
-    local toggle_args = args or {}
-    toggle_args.ref_table = toggle_args.ref_table or LTDM.mod.config
-    toggle_args.inactive_colour = G.C.WHITE
-    toggle_args.active_colour = G.C.BLUE
-    toggle_args.callback = toggle_args.callback or function() LTDM.utils:save_config() end
-
-    local toggle = create_toggle(toggle_args)
-
-    -- Create info text rows
-    if args.info then
-        local info = {}
-        for _, v in ipairs(args.info or {}) do
-            table.insert(info, { n = G.UIT.R, config = { align = "cm", minh = 0.005, }, nodes = {{
-                n = G.UIT.T,
-                config = { text = v, scale = 0.3, colour = HEX("b8c7d4"), },
-            }}})
-        end
-
-        -- Replace info with ours
-        if info then
-            info = { n = G.UIT.R, config = { align = "cm" }, nodes = info }
-            toggle.nodes[2] = info
-        end
-    end
-
-    return toggle
-end
-
-
 LTDM.mod.config_tab = function ()
     ---@type UIDef
     return {
@@ -65,25 +15,37 @@ LTDM.mod.config_tab = function ()
                 padding = 0.2,
             },
             nodes = {
-                LTDM.UIDEF.config_create_option_box({
-                    LTDM.UIDEF.config_create_option_toggle({
+                LNXFCA.UIDEF.config_create_option_box({
+                    LNXFCA.UIDEF.config_create_option_toggle({
                         label = localize('ltd_frjm_integration'),
                         info = localize('ltd_frjm_integration_d'),
+                        ref_table = LTDM.mod.config,
                         ref_value = 'frjm_integration',
+                        callback = function ()
+                            LTDM.utils:save_config()
+                        end,
                     })
                 }),
-                LTDM.UIDEF.config_create_option_box({
-                    LTDM.UIDEF.config_create_option_toggle({
+                LNXFCA.UIDEF.config_create_option_box({
+                    LNXFCA.UIDEF.config_create_option_toggle({
                         label = localize('ltd_booster_pack_enable'),
                         info = localize('ltd_booster_pack_enable_d'),
+                        ref_table = LTDM.mod.config,
                         ref_value = 'booster_pack_enabled',
+                        callback = function ()
+                            LTDM.utils:save_config()
+                        end,
                     }),
                 }),
-                LTDM.UIDEF.config_create_option_box({
-                    LTDM.UIDEF.config_create_option_toggle({
+                LNXFCA.UIDEF.config_create_option_box({
+                    LNXFCA.UIDEF.config_create_option_toggle({
                         label = localize('ltd_lock_keybind'),
                         info = localize('ltd_lock_keybind_d'),
+                        ref_table = LTDM.mod.config,
                         ref_value = 'lock_keybind_enable',
+                        callback = function ()
+                            LTDM.utils:save_config()
+                        end,
                     }),
                     {
                         n = G.UIT.R,

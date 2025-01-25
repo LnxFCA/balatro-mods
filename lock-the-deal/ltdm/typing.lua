@@ -44,11 +44,9 @@
 ---@field check_keybind fun(self: LTDM.Utils): number 0 if keybind valid, 1 if keybind invalid, 2 if keybind exists
 ---@field update_lock_keybind fun(self: LTDM.Utils): boolean? Set the mod lock/unlock keybind to state.lock_keybind. Assumes that config.lock_keybind is always valid.
 ---@field keybind_activate fun(self: LTDM.Utils) Runs when lock/unlock keybind is pressed. Must invoked as `:keybind_activate()`. Checks for `config.lock_keybind_enable`.
----@field debug fun(self, msg: string?, funcv: function | { short_src: string, linedefined: number, name: string } | nil)
 ---@field save_config fun(self: LTDM.Utils) Save mod configuration
 ---@field generate_uuid fun(): string Returns a UUID v4 string
 ---@field get_ehnacement_key fun(ability: BALATRO_T.Card.Ability): string? Returns the key of the enhancement
----@field copy_table fun(t: table<any, any>): table Copy a table using deep copy excluding functions.
 
 
 ---@class LTDM

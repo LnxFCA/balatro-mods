@@ -5,7 +5,8 @@
     "../dev/balatro",
     "../dev/balatro-dev",
     "../dev/smods/src",
-    "../dev/smods-dev"
+    "../dev/smods-dev",
+    "../common"
   ],
   "diagnostics.disable": [
     "lowercase-global"

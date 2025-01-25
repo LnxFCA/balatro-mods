@@ -36,6 +36,12 @@ LTDM.include("ltdm/ui/ltd_button.lua")
 LTDM.include("ltdm/overrides.lua")
 LTDM.include("ltdm/callbacks.lua")
 LTDM.include("ltdm/utils.lua")
+LTDM.include("common/main.lua")
+
+
+if not LNXFCA or not LNXFCA.initialized then
+    lnxfca_common_init()
+end
 
 
 -- Set sane configuration defaults
