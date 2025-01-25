@@ -3,10 +3,13 @@
 -- Reset FRJ every game run
 FRJM.original.start_run = Game.start_run
 Game.start_run = function(self, args)
-    FRJM.state.enabled = true
+    if not args.savetext then
+        FRJM.state.enabled = true
+    end
 
     return FRJM.original.start_run(self, args)
 end
+
 
 -- Apply custom Joker card
 FRJM.original.create_card_for_shop = create_card_for_shop
@@ -75,6 +78,7 @@ function G.main_menu (self, change_context)
         FRJM.UI.create_frjm_button()
     end
 end
+
 
 G.FUNCS.frjm_buttonn_callback = function ()
     FRJM:activate()
