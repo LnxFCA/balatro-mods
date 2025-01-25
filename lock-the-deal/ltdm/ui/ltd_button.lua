@@ -3,8 +3,14 @@ function LTDM.UIDEF.add_ltd_button(card)
     local offset = { x = -0.55, y = 0 }
 
     -- Fix alignment
-    if card.ability.consumeable then
+    if card.ability.consumeable or card.ability.set == 'Booster' then
         offset.x = -0.65
+    end
+
+    -- Fix Voucher alignment
+    if card.ability.set == 'Voucher' then
+        offset.x = -0.75
+        offset.y = 0.2
     end
 
     ---@type UIDef
