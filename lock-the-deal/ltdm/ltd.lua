@@ -288,7 +288,7 @@ function LTDM.mt.State.load_saved(self, mod)
     if not mod then return end
 
     -- Make a deep copy of the table to prevent errors
-    self.saved_state = LTDM.utils.copy_table(mod.config.ltd or {})
+    self.saved_state = LNXFCA.utils.copy_table(mod.config.ltd or {})
 
     self:load()
 end
@@ -301,7 +301,7 @@ function LTDM.mt.State.save(self, mod)
     if not mod then return end
 
     -- Save a deep copy of the table to prevent errors
-    mod.config.ltd = LTDM.utils.copy_table({
+    mod.config.ltd = LNXFCA.utils.copy_table({
         lock_list = self.lock_list,
         local_state = self.local_state,
         length = self.length,
