@@ -102,11 +102,7 @@ function LTDM.UIDEF.get_ltd_button_conf()
     if not config then return ltd_button_defaults.default end
 
     -- Load defaults
-    for k, v in pairs(ltd_button_defaults.default) do
-        if not config[k] then config[k] = v end
-    end
-
-    return config
+    return setmetatable(config, { __index = ltd_button_defaults.default })
 end
 
 
