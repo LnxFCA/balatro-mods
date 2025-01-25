@@ -26,7 +26,7 @@ function G.FUNCS.ltd_can_lock_unlock(e)
             e.UIBox.alignment.offset.y = 0.59  -- move down
         else
             -- Reset custom alignment if Buy and Use button is not visible
-            -- e.UIBox.alignment.offset.y = e.UIBox.alignment.alignment.y
+            e.UIBox.alignment.offset.y = 0
         end
 
         -- Disable button when player can't afford
