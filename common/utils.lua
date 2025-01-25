@@ -24,3 +24,10 @@ function LNXFCA.utils.debug(mod_id, msg, funcv)
 
     sendDebugMessage(message, mod_id)
 end
+
+
+function LNXFCA.include(path, mod_id)
+    local chunk = SMODS.load_file(path, mod_id)
+
+    if chunk then chunk() end
+end

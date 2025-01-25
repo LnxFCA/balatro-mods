@@ -23,6 +23,7 @@
 ---@field UIDEF LnxFCA.UIDEF
 ---@field is_mod boolean
 ---@field utils LnxFCA.Utils
+---@field include fun(path: string, mod_id: string?) Load a file in the current context.
 LNXFCA = {}
 
 function lnxfca_common_init() end
