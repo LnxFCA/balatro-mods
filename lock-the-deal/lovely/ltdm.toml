@@ -49,3 +49,27 @@ match_indent = true
 pattern = "self.config.center_key = cardTable.save_fields.center"
 position = "after"
 payload = "self.ltdm_saved_id = cardTable.save_fields.ltdm_saved_id"
+
+
+# Voucher support
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+match_indent = true
+pattern = '''
+if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
+'''
+position = "at"
+payload = '''
+local ltdm_voucher = LTDM.state.ltd:get_lock_item('vouchers')
+if ltdm_voucher then
+    local card = Card(G.shop_vouchers.T.x + G.shop_vouchers.T.w/2, G.shop_vouchers.T.y, G.CARD_W, G.CARD_H,
+    G.P_CARDS.empty, G.P_CENTERS[ltdm_voucher.key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+
+    card.shop_voucher = true
+    card.ltdm_saved_id = ltdm_voucher.id
+    create_shop_card_ui(card, 'Voucher', G.shop_vouchers)
+    card:start_materialize()
+    G.shop_vouchers:emplace(card)
+elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
+'''
