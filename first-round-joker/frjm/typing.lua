@@ -52,7 +52,6 @@
 ---@field parent fun(): FRJM
 ---@field show_card_selection_overlay fun(self: FRJM.Utils)
 ---@field select_joker_card fun(self: FRJM.Utils, card: table)
----@field debug fun(self: FRJM.Utils, msg: string, funcv: any)
 
 
 ---@class FRJM.ProjectPage

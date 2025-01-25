@@ -84,29 +84,6 @@ FRJM.utils.select_joker_card = function (self, card)
 end
 
 
----@class DebugFuncT
----@field short_src string
----@field linedefined integer
----@field name string
-
-
----@param msg string | nil
----@param funcv function | DebugFuncT | nil
-FRJM.utils.debug = function (self, msg, funcv)
-    local parent = self.parent()
-    local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
-
-    local func = (type(funcv) == "function" and debug.getinfo(funcv)) or funcv
-    if func then
-        message = string.format(message, func.short_src, func.linedefined, func.name or "anonymous", msg)
-    else
-        message = msg or ""
-    end
-
-    sendDebugMessage(message, parent.mod_id)
-end
-
-
 -- Update the SMODS.Keybind object
 FRJM.update_keybind = function (self)
     local mconfig = self.mod.config
