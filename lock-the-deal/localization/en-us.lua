@@ -20,6 +20,11 @@ return {
 
             ltd_button_tooltip_title = "Cost",
             ltd_button_tooltip_free = "Free",
+
+            ltd_booster_pack_enable = "Enable Booster Pack Lock",
+            ltd_booster_pack_enable_d = {
+                "Allow locking booster packs",
+            },
         }
     }
 }
