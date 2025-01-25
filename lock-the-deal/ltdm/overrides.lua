@@ -6,14 +6,14 @@ function create_card_for_shop(area)
     if LTDM.state.ltd.length == 0 then
         return LTDM.original.create_card_for_shop(area)
     end
-    -- TODO: Implement locked card logic
 
     -- Get a locked item info for `area`
-    local lock_item = LTDM.state.ltd:get_lock_item(area)
+    local lock_item = LTDM.state.ltd:get_lock_item(area == G.shop_jokers and 'jokers' or nil)
 
     -- Use defaults if not item available for this area
     if not lock_item then return LTDM.original.create_card_for_shop(area) end
 
+    ---@as LTDM.Card
     local card = SMODS.create_card({
         area = area,
         set = lock_item.set,

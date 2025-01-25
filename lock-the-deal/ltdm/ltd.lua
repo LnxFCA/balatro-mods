@@ -207,10 +207,13 @@ end
 
 --- Get a un-generated lock item for specific area.
 ---@param self LTDM.mt.State
----@param area BALATRO_T.CardArea
+---@param area string?
 ---@return LTDM.LockItem? Lock item data or nil
 function LTDM.mt.State.get_lock_item(self, area)
-    local item_area = (area == G.shop_jokers and 'jokers') or (area == G.shop_vouchers and 'vouchers') or nil
+    -- Check lock size
+    if self.length == 0 then return nil end
+
+    local item_area = area
     local item = nil
 
     -- Check for supported items
