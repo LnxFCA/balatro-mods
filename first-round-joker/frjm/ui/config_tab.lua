@@ -50,13 +50,6 @@ FRJM.mod.config_tab = function ()
                         ref_value = 'enable_frjm_button',
                         callback = function ()
                             FRJM:save_config()
-
-                            if mconfig.enable_frjm_button and G.STAGE == G.STAGES.MAIN_MENU then
-                                FRJM.UI.create_frjm_button()
-                            elseif mrconfig.frjm_button then
-                                mrconfig.frjm_button:remove()
-                                mrconfig.frjm_button:recalculate()
-                            end
                         end,
                     }),
                 }),

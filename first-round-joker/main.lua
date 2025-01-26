@@ -103,3 +103,6 @@ FRJM.state.keybind_obj = SMODS.Keybind{
     event = 'pressed',
     held_keys = {},
 }
+
+-- Start FRJM button
+FRJM.UI.create_frjm_button()

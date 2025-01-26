@@ -80,6 +80,14 @@ function G.main_menu (self, change_context)
 end
 
 
-G.FUNCS.frjm_buttonn_callback = function ()
+G.FUNCS.frjm_button_callback = function ()
     FRJM:activate()
+end
+
+G.FUNCS.can_frjm_button = function(e)
+    if FRJM.mod.config.enable_frjm_button and G.STAGE == G.STAGES.MAIN_MENU then
+        e.UIBox.states.visible = true
+    else
+        e.UIBox.states.visible = false
+    end
 end

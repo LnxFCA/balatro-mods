@@ -58,7 +58,7 @@ end
 
 ---@overload fun()
 FRJM.UI.create_frjm_button = function ()
-    FRJM.state.frjm_button = UIBox({
+    UIBox({
         ---@type UIDef
         definition = {
             n = G.UIT.ROOT,
@@ -77,7 +77,8 @@ FRJM.UI.create_frjm_button = function ()
                     r = 0.1,
                     shadow = true,
                     hover = true,
-                    button = 'frjm_buttonn_callback'
+                    button = 'frjm_button_callback',
+                    func = 'can_frjm_button',
                 },
                 nodes = {{
                     n = G.UIT.T,
