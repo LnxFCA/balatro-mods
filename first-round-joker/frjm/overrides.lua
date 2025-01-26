@@ -71,12 +71,10 @@ end
 
 
 FRJM.original.main_menu = G.main_menu
-function G.main_menu (self, change_context)
+function G.main_menu(self, change_context)
     FRJM.original.main_menu(self, change_context)
 
-    if FRJM.mod.config.enable_frjm_button then
-        FRJM.UI.create_frjm_button()
-    end
+    FRJM.UI.create_frjm_button()
 end
 
 
