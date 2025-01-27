@@ -1,32 +1,19 @@
 FRJM.UI.selected_card_ui = function ()
-    local card_selection = FRJM.state.card_selection
-
     ---@type UIDef
     return {
         n = G.UIT.R,
-        config = {
-            align = "cm",
-            minh = 0.5,
-            colour = G.C.BLACK,
-            r = 0.1,
-            padding = 0.2,
-        },
-        nodes = {
-            {
-                n = G.UIT.O,
-                config = {
-                    object = DynaText({
-                        string = {{
-                            ref_table = card_selection, ref_value = 'name',
-                            prefix = localize('frj_joker_text_selected')
-                        }},
-                        colours = { HEX("D7D9DB") },
-                        shadow = true,
-                        scale = 0.45,
-                    })
-                },
+        config = { align = "cm", minh = 0.5, colour = G.C.BLACK, r = 0.1, padding = 0.2, },
+        nodes = {{
+            n = G.UIT.O,
+            config = {
+                object = DynaText({
+                    string = {{ ref_table = FRJM.state.card_selection, ref_value = 'name', prefix = localize('frj_joker_text_selected'), }},
+                    colours = { HEX("D7D9DB") },
+                    shadow = true,
+                    scale = 0.45,
+                })
             },
-        },
+        }},
     }
 end
 
@@ -61,43 +48,16 @@ FRJM.UI.create_frjm_button = function ()
     UIBox({
         ---@type UIDef
         definition = {
-            n = G.UIT.ROOT,
-            config = {
-                algin = "cm",
-                colour = G.C.UI.TRANSPARENT_LIGHT,
-                r = 0.1,
-            },
+            n = G.UIT.ROOT, config = { algin = "cm", colour = G.C.UI.TRANSPARENT_LIGHT, r = 0.1, },
             nodes = {{
                 n = G.UIT.C,
                 config = {
-                    align = "cm",
-                    padding = 0.2,
-                    minw = 2,
-                    colour = G.C.BLUE,
-                    r = 0.1,
-                    shadow = true,
-                    hover = true,
-                    button = 'frjm_button_callback',
-                    func = 'can_frjm_button',
+                    align = "cm", padding = 0.2, minw = 2, colour = G.C.BLUE, r = 0.1, shadow = true, hover = true,
+                    button = 'frjm_button_callback', func = 'can_frjm_button',
                 },
-                nodes = {{
-                    n = G.UIT.T,
-                    config = {
-                        text = "FRJM",
-                        scale = 0.5,
-                        colour = G.C.UI.TEXT_LIGHT,
-                    }
-                }},
+                nodes = {{ n = G.UIT.T, config = { text = "FRJM", scale = 0.5, colour = G.C.UI.TEXT_LIGHT, }}},
             }},
         },
-        config = {
-            algin = "tli",
-            bond = "Weak",
-            offset = {
-                x = 0,
-                y = 0.3,
-            }
-        },
-        major = G.ROOM_ATTACH,
+        config = { algin = "tli", bond = "Weak", offset = { x = 0, y = 0.3, }, major = G.ROOM_ATTACH },
     })
 end
