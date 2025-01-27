@@ -15,7 +15,6 @@ end
 FRJM.original.create_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
     if not FRJM:can_activate(area) then return FRJM.original.create_card_for_shop(area) end
-
     FRJM.state.enabled = false  -- prevents the card from appearing after 1st round
 
     -- create the user selected Joker
