@@ -26,6 +26,14 @@ return {
             ltd_booster_pack_enable_d = {
                 "Permite bloquear pacotes na loja.",
             },
+
+            ltd_mod_about_label = "Sobre",
+            ltd_mod_description = {
+                "Lock the Deal melhora sua experiência no Balatro",
+                "permitindo que você bloqueie itens da loja para",
+                "rodadas futuras ou re-rolls, adicionando",
+                "flexibilidade e estratégia ao jogo.",
+            },
         },
     },
 }
