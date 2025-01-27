@@ -1,6 +1,6 @@
 -- Whatever the mod should perform or not
 ---@return boolean
-FRJM.check = function (self, area)
+FRJM.can_activate = function (self, area)
     local mrconfig = self.state
 
     local enabled = mrconfig.enabled -- always true at starup

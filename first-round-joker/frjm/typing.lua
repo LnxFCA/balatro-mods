@@ -2,17 +2,17 @@
 
 
 ---@class FRJM
----@field mod FRJM.Mod Mod instance. `SMODS.current_mod`
+---@field mod FRJM.Mod | SMODS_T.Mod Mod instance. `SMODS.current_mod`
 ---@field mod_id string Mod id
 ---@field UI { [string]: fun() | fun(): UIDef } Mod UI definitions
 ---@field original table Original game functions
----@field state FRJM.Mod.Config Mod runtime configuration
+---@field state FRJM.State Mod runtime configuration
 ---@field init fun(self: FRJM)
----@field include fun(self: FRJM, filename: string)
+---@field include fun(filename: string)
 ---@field activate fun(self: any)
 ---@field utils FRJM.Utils
 ---@field save_config fun(self: FRJM)
----@field check fun(self: FRJM, area: any): boolean
+---@field can_activate fun(self: FRJM, area: BALATRO_T.CardArea): boolean
 ---@field update_keybind fun(self: FRJM)
 
 

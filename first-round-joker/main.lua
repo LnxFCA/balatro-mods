@@ -1,4 +1,4 @@
----@diagnostic disable missing-field
+---@diagnostic disable:missing-fields
 
 -- mod globals
 FRJM = {} ---@type FRJM
@@ -12,10 +12,9 @@ FRJM.init = function (self)
     self.utils = {}
     self.state = {}  -- runtime
     self.state.card_selection = {}  -- card selection state
-    self.project_page = {}  -- revelant project links
 
     self.mod = SMODS.current_mod
-    self.mod_id = self.mod.id or "first-round-joker"
+    self.mod_id = self.mod.id
 
     -- initialize runtime configuration
     local mconfig = self.mod.config
@@ -78,13 +77,11 @@ FRJM.activate = function (_)
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function ()
-            local card = nil
-
             -- don't handle anything if the overlay isn't active
             if not FRJM.state.selection_ui_active then return true end
 
             -- handle the clicked card if different from previous card
-            card = G.CONTROLLER.clicked.target
+            local card = G.CONTROLLER.clicked.target
             if card and card:is(Card)
                and card.config.center.set == 'Joker'
                and card.config.center.key ~= FRJM.state.card_selection.key
