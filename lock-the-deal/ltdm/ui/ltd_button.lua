@@ -80,7 +80,7 @@ local ltd_button_defaults = {
             voucher = -0.75,
             other = -0.54,
             consumeable = -0.65,
-            booster = -0.8,
+            booster = -0.81,
         },
     },
 }
