@@ -50,10 +50,15 @@ function create_shop_card_ui(card, type, area)
         return true
     end
 
+    local force_lock = false
+    if LTDM.mod.config.frjm_integration and card.frjm_shop_joker then
+        force_lock = true
+    end
+
     -- Register the item
     LTDM.state.ltd:register(card,
         (area == G.shop_jokers and "jokers") or (area == G.shop_vouchers and "vouchers") or
-        (area == G.shop_booster and "booster") or "other")
+        (area == G.shop_booster and "booster") or "other", force_lock)
 
     -- TODO: Check if this is needed
     G.E_MANAGER:add_event(Event({
