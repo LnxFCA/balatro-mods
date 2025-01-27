@@ -4,6 +4,7 @@
 ---@field price_mult integer
 ---@field price integer
 ---@field local_state table<string, LTDM.LockItem.State?>
+---@field forced_length integer
 
 
 ---@class LTDM.mt.State
@@ -12,7 +13,8 @@
 ---@field price_mult integer Used to calculate the lock price
 ---@field price integer The current lock price
 ---@field local_state table<string, LTDM.LockItem.State?>
----@field _generated_items table<string, boolean?>? The current generated items.
+---@field forced_length integer Then number of force unlcked items
+---@field _generated_items table<string, boolean?> The current generated items.
 ---@field saved_state LTDM.mt.State.Saved?
 LTDM.mt.State = {}
 
@@ -37,7 +39,9 @@ function LTDM.mt.State.init(self, saved_state)
     self.local_state = {}
     self.length = 0
     self.price_mult = 1
+    self.forced_length = 0
     self.price = 1
+    self._generated_items = {}
     self.saved_state = saved_state
 
     if self.saved_state then self:load() end
@@ -54,8 +58,13 @@ function LTDM.mt.State.lock_item(self, card)
     -- Update lock list size
     self.length = self.length + 1
 
-    -- Update use money
-    self:ease_dollars(card.ltdm_state.id)
+    -- Force unlock don't cost money
+    if self.local_state[card.ltdm_state.id].force_lock then
+        self.forced_length = self.forced_length + 1
+    else
+        -- Update use money
+        self:ease_dollars(card.ltdm_state.id)
+    end
 
     -- Update item local state
     self.local_state[card.ltdm_state.id].no_locked = false
@@ -91,6 +100,7 @@ function LTDM.mt.State.unlock_item(self, id)
     for i, v in ipairs(self.lock_list) do
         if v.id == id then
             self.length = self.length - 1  -- Set new length
+            if v.state.force_lock then self.forced_length = self.forced_length - 1 end
             table.remove(self.lock_list, i)  -- Remove the item
         end
     end
@@ -122,6 +132,9 @@ end
 ---@param mult integer? The new price
 function LTDM.mt.State.update_price_mult(self, mult)
     self.price_mult = mult or self.price_mult + 1
+
+    -- price_mult can't be zero
+    if self.price_mult <= 0 then self.price_mult = 1 end
     self.price = 1 * self.price_mult
 
     -- Update all
@@ -170,7 +183,7 @@ end
 ---@param card LTDM.Card
 ---@param area string
 ---@return LTDM.LockItem.State? Card local state
-function LTDM.mt.State.register(self, card, area)
+function LTDM.mt.State.register(self, card, area, force_lock)
     if not card then return end
 
     -- Load card state from ID
@@ -185,7 +198,8 @@ function LTDM.mt.State.register(self, card, area)
             button = { price = '$' .. 1 * self.price_mult, label = localize('ltd_button_lock'), },
             key = card.config.center.key,
             locked = false,
-            area = area
+            area = area,
+            force_lock = force_lock,
         }
     end
 
@@ -194,6 +208,12 @@ function LTDM.mt.State.register(self, card, area)
 
     -- Store item local status
     self.local_state[ltdm_state.id] = ltdm_state
+
+    -- Force unclock
+    if force_lock then
+        self._generated_items[card.ltdm_state.id] = true
+        self:lock_item(card)
+    end
 end
 
 
@@ -219,9 +239,6 @@ function LTDM.mt.State.get_lock_item(self, area)
     -- Check for supported items
     if not item_area then return nil end
 
-    -- Initialize generator
-    if not self._generated_items then self._generated_items = {} end
-
     -- Generate item for `area`
     for _, v in ipairs(self.lock_list) do
         if not self._generated_items[v.id] and v.state.area == item_area then
@@ -244,8 +261,8 @@ end
 function LTDM.mt.State.reset_lock(self)
     -- Update price
     self.price_mult = 1
-    self:update_price_mult(self.length + self.price_mult)
-    self._generated_items = nil
+    self:update_price_mult((self.length + self.price_mult) - self.forced_length)
+    self._generated_items = {}
 end
 
 
@@ -307,6 +324,7 @@ function LTDM.mt.State.save(self, mod)
         length = self.length,
         price_mult = self.price_mult,
         price = self.price,
+        forced_length = self.forced_length,
     })
 
     -- Save the state to disk

@@ -9,6 +9,7 @@
 ---@field locked boolean The lock status of the item
 ---@field index integer? The index of the card in the current area
 ---@field area string The area the item belongs to.
+---@field force_lock boolean Force lock status
 
 
 --- Represents a locked card
@@ -69,6 +70,7 @@ local LTDM = {}
 ---@field ltdm_state LTDM.LockItem.State The card local state
 ---@field ltdm_saved_id? string The saved it for this card
 ---@field opening boolean? Opening pack status
+---@field frjm_shop_joker boolean? FRJM integration
 
 
 ---@class LTDM.ButtonConfig
