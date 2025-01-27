@@ -1,9 +1,9 @@
 -- Whatever the mod should perform or not
 ---@return boolean
 FRJM.can_activate = function (self, area)
-    local mrconfig = self.state
+    local state = self.state
 
-    local enabled = mrconfig.enabled -- always true at starup
+    local enabled = state.enabled -- always true at starup
     local enabled_for_round = false -- true on round == 1
     local enabled_for_game = false -- false if tutorial in progress
     local enabled_for_key = false -- true if FRJM.state.joker_key isn't nil
@@ -12,7 +12,7 @@ FRJM.can_activate = function (self, area)
     if enabled then
         enabled_for_round = G.GAME.round == 1
         enabled_for_game = not (G.SETTINGS.tutorial_progress and G.SETTINGS.tutorial_progress.forced_shop)
-        enabled_for_key = mrconfig.joker_key ~= nil
+        enabled_for_key = state.joker_key ~= nil
         enabled_for_area = G.shop_jokers and area == G.shop_jokers
 
         enabled = enabled_for_round
