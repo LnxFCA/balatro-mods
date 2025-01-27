@@ -8,10 +8,7 @@ return {
         { label = 'GitHub', link = 'https://github.com/LnxFCA/balatro-mods', bg_colour = HEX("FFFFFF"), fg_colour = G.C.UI.TEXT_DARK, },
         { label = 'NexusMods', link = 'https://www.nexusmods.com/balatro/mods/105', bg_colour = G.C.ORANGE, },
     },
-    updates = {
-        check_url = 'https://github.com/LnxFCA/balatro-mods/raw/refs/heads/release/first-round-joker/VERSION',
-        download_page = 'https://www.nexusmods.com/balatro/mods/105',
-    },
+    updates = 'https://www.nexusmods.com/balatro/mods/105',
     documentation = {
         {
             label = "Usage Guide",
