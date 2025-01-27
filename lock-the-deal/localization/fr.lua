@@ -25,6 +25,15 @@ return {
             ltd_booster_pack_enable_d = {
                 "Permet de verrouiller les boosters dans la boutique.",
             },
+
+            ltd_mod_about_label = "À propos",
+            ltd_mod_description = {
+                "Lock the Deal améliore votre expérience de jeu",
+                "dans Balatro en vous permettant de verrouiller",
+                "les objets de la boutique pour les prochaines",
+                "manches ou re-rolls, ajoutant flexibilité et",
+                "stratégie à vos parties.",
+            },
         },
     },
 }

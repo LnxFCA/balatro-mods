@@ -26,6 +26,14 @@ return {
             ltd_booster_pack_enable_d = {
                 "Permite bloquear sobres en la tienda.",
             },
+
+            ltd_mod_about_label = "Acerca de",
+            ltd_mod_description = {
+                "Lock the Deal mejora tu experiencia en Balatro",
+                "al permitirte bloquear objetos de la tienda para",
+                "futuras rondas o re-roles, añadiendo flexibilidad",
+                "y estrategia a tus partidas.",
+            },
         },
     },
 }

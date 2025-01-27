@@ -25,6 +25,14 @@ return {
             ltd_booster_pack_enable_d = {
                 "Ermöglicht das Sperren von Boostern im Shop.",
             },
+
+            ltd_mod_about_label = "Über",
+            ltd_mod_description = {
+                "Lock the Deal verbessert dein Spielerlebnis in Balatro,",
+                "indem es dir ermöglicht, Shop-Artikel für zukünftige",
+                "Runden oder Re-Rolls zu sperren und mehr Flexibilität",
+                "und Strategie in deine Spiele bringt.",
+            },
         }
     }
 }
