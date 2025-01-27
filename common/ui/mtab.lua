@@ -49,7 +49,7 @@ end
 function LNXFCA.UIDEF.create_about_tab(info)
     local lnxfca_common = localize('lnxfca_common')
 
-    info.developed_by = lnxfca_common.developed_by_fmt:format(table.concat(info.author, ','))
+    info.developed_by = info.developed_by or lnxfca_common.developed_by_fmt:format(table.concat(info.author, ','))
 
     ---@type UIDef
     return {
@@ -102,7 +102,7 @@ function LNXFCA.UIDEF.create_about_tab(info)
                     n = G.UIT.R, config = { align = "cm", padding = 0.1, },
                     nodes = {{ n = G.UIT.C, config = { align = "cm", }, nodes = {
                         LNXFCA.UIDEF.create_open_button({
-                            label = lnxfca_common.update_fmt, link = info.updates.download_page, padding = 0.2,
+                            label = lnxfca_common.update_fmt, link = info.updates, padding = 0.2,
                             bg_colour = G.C.UI.TRANSPARENT_DARK, fg_colour = HEX("5684c4"),
                         }),
                     }}},

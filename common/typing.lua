@@ -27,8 +27,7 @@
 ---@field version string Mod version (from mod.version)
 ---@field links LNXFCA.UIDEF.OpenButtonArgs[] External mod links to create buttons for, e.g. GitHub
 ---@field copyright? string Bottom-left copyright notice
----@field updates { check_url: string, download_page: string } WIP: Link to the mod downloads page
-
+---@field updates string Updates and more info page
 
 ---@class LNXFCA.UIDEF.OpenButtonArgs
 ---@field link string Link to open in browser
