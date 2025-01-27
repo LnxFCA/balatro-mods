@@ -25,7 +25,9 @@ function lnxfca_common_init()
     end
 
     -- Load shared modules
-    include("ui/config_tab.lua")
+    include("ui/mtab.lua")
+    include("ui/text.lua")
+    include("ui/other.lua")
     include("utils.lua")
 
     LNXFCA.initialized = true
