@@ -20,19 +20,10 @@ return {
 
             frj_joker_text_selected = "FRJ: ",
 
-            frj_description = {
+            frj_mod_about_label = "About",
+            frj_mod_description = {
                 "Ensures that a specific Joker card appears",
                 "in the shop during the first round.",
-            },
-
-            frj_developed_by = "Developed by ",
-
-            frj_credits = {
-                "Thanks to SMODS to make it easy.",
-            },
-
-            frj_project_page = {
-                "For more information check the project on:",
             },
 
             frj_enable_button = "Enable FRJM Button",
