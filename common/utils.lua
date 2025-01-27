@@ -12,6 +12,11 @@ function LNXFCA.utils.copy_table(stable)
 end
 
 
+function LNXFCA.utils.open_link(link)
+    return love.system.openURL(link)
+end
+
+
 function LNXFCA.utils.debug(mod_id, msg, funcv)
     local message = (msg and funcv and "%s:%d %s() - %s") or (funcv and "%s:%d %s()") or ""
 
