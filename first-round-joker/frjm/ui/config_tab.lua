@@ -5,20 +5,9 @@ FRJM.mod.config_tab = function ()
 
     ---@type UIDef
     return {
-        n = G.UIT.ROOT,
-        config = {
-            r = 0.1,
-            minw = 8,
-            align = "cm",
-            padding = 0.1,
-            colour = G.C.BLACK,
-        },
+        n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "cm", padding = 0.1, colour = G.C.BLACK, },
         nodes = {{
-            n = G.UIT.C,
-            config = {
-                align = "cm",
-                padding = 0.2,
-            },
+            n = G.UIT.C, config = { align = "cm", padding = 0.2, },
             nodes = {
                 LNXFCA.UIDEF.config_create_option_box({
                     LNXFCA.UIDEF.config_create_option_toggle({
@@ -76,18 +65,11 @@ FRJM.mod.config_tab = function ()
                         end,
                     }),
                     {
-                        n = G.UIT.R,
-                        config = { align = "cm"},
+                        n = G.UIT.R, config = { align = "cm"},
                         nodes = {
                             create_text_input({
-                                colour = G.C.GREEN,
-                                w = 1,
-                                text_scale = 0.4,
-                                max_length = 1,
-                                all_caps = true,
-                                prompt_text = FRJM.mod.config.custom_keybind,
-                                ref_table = FRJM.mod.config,
-                                ref_value = 'custom_keybind',
+                                colour = G.C.GREEN, w = 1, text_scale = 0.4, max_length = 1, all_caps = true,
+                                prompt_text = FRJM.mod.config.custom_keybind, ref_table = FRJM.mod.config, ref_value = 'custom_keybind',
                                 callback = function ()
                                     FRJM:save_config()
                                     FRJM:update_keybind()
