@@ -25,6 +25,14 @@ return {
             ltd_booster_pack_enable_d = {
                 "Allow locking booster packs in the shop.",
             },
+
+            ltd_mod_about_label = "About",
+            ltd_mod_description = {
+                "Lock the Deal enhances your Balatro gameplay by lett-",
+                "ing you lock shop items for future rounds or re-rolls,",
+                "adding flexibility and strategy to your runs.",
+            },
+
         },
     },
 }
