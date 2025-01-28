@@ -255,6 +255,26 @@ function LTDM.mt.State.get_lock_item(self, area)
     return item
 end
 
+--- Update a locked item or all locked data
+---@param self LTDM.mt.State
+---@param id string?
+---@param update { func: fun(item: LTDM.LockItem?), key: string?, val: any? }
+function LTDM.mt.State.update_locked_item(self, id, update)
+    -- Skip invalid item id
+    if id == false then return end
+
+    for _, item in ipairs(self.lock_list) do
+        if id and item.id == id then
+            if update.func then update.func(item)
+            elseif update.key then item[update.key] = update.val end
+            break
+        else
+            if update.func then update.func(item)
+            elseif update.key then item[update.key] = update.val end
+        end
+    end
+end
+
 
 --- Reset lock status, generator and price
 ---@param self LTDM.mt.State

@@ -102,3 +102,20 @@ position = "before"
 payload = '''
 card.ltdm_saved_id = ltdm_booster_pack and ltdm_booster_pack.id
 '''
+
+# Discound voucher fix
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+match_indent = true
+pattern = '''
+G.GAME.discount_percent = center_table.extra
+for k, v in pairs(G.I.CARD) do
+    if v.set_cost then v:set_cost() end
+'''
+position = "after"
+payload = '''
+if v.ltdm_state then
+    LTDM.state.ltd:update_locked_item(v.ltdm_state.id, { key = 'price', val = v.cost })
+end
+'''
