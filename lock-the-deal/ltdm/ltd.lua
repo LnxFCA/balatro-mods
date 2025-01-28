@@ -303,16 +303,23 @@ end
 ---@param self LTDM.mt.State
 ---@param card LTDM.Card
 function LTDM.mt.State.reset(self, card)
+    -- Reset only the given item
     if card then
         self:unlock_item(card.ltdm_state.id)
         card.children.ltd_button:remove()
         card.children.ltd_button = nil
+
+        -- Decrease price_mult if card has been locked
+        if not card.ltdm_state.no_locked then
+            self:update_price_mult(self.price_mult - 1)
+        end
+
         self.local_state[card.ltdm_state.id] = nil
         card.ltdm_state = nil
+    else
+        -- Full reset
+        self:reset_lock()
     end
-
-    -- Reset status
-    self:reset_lock()
 end
 
 --- Loads a saved state
