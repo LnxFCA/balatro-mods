@@ -23,7 +23,8 @@ See the project's [README](../README.md).
 ## Usage
 
 The mod does not select any card by default.
-~~It only allows you to select **discovered** Jokers.~~ (This restriction can be disabled in the mod configuration).
+~~It only allows you to select **discovered** Jokers.~~
+(This restriction can be disabled in the mod *source* code. See `config.lua`).
 A discovered Joker is one that you have purchased at least once, you can check your discovered Jokers on **COLLECTION** -> **Jokers**.
 
 > **Note**: These usage instructions apply only to mod version `v2.x.x` or later.
