@@ -6,9 +6,9 @@ return {
     version = LTDM.mod.version,
     links = {
         { label = 'GitHub', link = 'https://github.com/LnxFCA/balatro-mods', bg_colour = HEX("FFFFFF"), fg_colour = G.C.UI.TEXT_DARK, },
-        { label = 'NexusMods', link = 'https://www.nexusmods.com/balatro/mods/', bg_colour = G.C.ORANGE, },
+        { label = 'NexusMods', link = 'https://www.nexusmods.com/balatro/mods/191', bg_colour = G.C.ORANGE, },
     },
-    updates = "",
+    updates = "https://www.nexusmods.com/balatro/mods/191",
     documentation = {
         {
             label = "Usage Guide",
