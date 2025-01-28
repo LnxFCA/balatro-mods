@@ -279,8 +279,21 @@ end
 --- Reset lock status, generator and price
 ---@param self LTDM.mt.State
 function LTDM.mt.State.reset_lock(self)
-    -- Update price
+    -- Reset price mult
     self.price_mult = 1
+
+    -- Voucher can't be "unlocked" in re-rolls, same for Booster packs
+    if G.STATE == G.STATES.SHOP or G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.PLANET_PACK
+       or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.STANDARD_PACK or G.STATE == G.STATES.BUFFOON_PACK then
+        for _, v in pairs(self.local_state) do
+            -- Check for valid items
+            if (v.area == 'vouchers' or v.area == 'booster') and not v.no_locked and not v.locked then
+                self.price_mult = self.price_mult + 1
+            end
+        end
+    end
+
+    -- Update price
     self:update_price_mult((self.length + self.price_mult) - self.forced_length)
     self._generated_items = {}
 end
@@ -294,6 +307,7 @@ function LTDM.mt.State.reset(self, card)
         self:unlock_item(card.ltdm_state.id)
         card.children.ltd_button:remove()
         card.children.ltd_button = nil
+        self.local_state[card.ltdm_state.id] = nil
         card.ltdm_state = nil
     end
 
