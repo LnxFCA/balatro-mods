@@ -1,5 +1,19 @@
-function LTDM.utils.keybind_activate(self)
-    print("Hello World!")
+function LTDM.utils.keybind_activate()
+    if G.STATE == G.STATES.SHOP then
+        -- Check for hovered item
+        local card = G.CONTROLLER.hovering.target --[[@as LTDM.Card?]]
+        if not card or not card.ltdm_state then return end
+
+        -- Check for lock cost
+        if card.ltdm_state.no_locked and LTDM.state.ltd.price > (G.GAME.dollars - G.GAME.bankrupt_at) then return end
+
+        -- Lock/Unlock
+        if card.ltdm_state.locked then
+            LTDM.state.ltd:unlock_item(card.ltdm_state.id)
+        else
+            LTDM.state.ltd:lock_item(card)
+        end
+    end
 end
 
 
