@@ -18,6 +18,11 @@ All mods in this repository require at least Balatro version `1.0.1n`.
 
 - [first-round-joker](./first-round-joker) (First Round Joker): Ensures a specific
 Joker card appears in the shop during the first round.
+[NexusMods](https://www.nexusmods.com/balatro/mods/105)
+
+- [lock-the-deal](./lock-the-deal) (Lock the Deal): Adds a Lock feature to shop items,
+allowing players to save cards for future rounds or re-rolls.
+[NexusMods](https://www.nexusmods.com/balatro/mods/191)
 
 ## Installation
 
