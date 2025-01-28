@@ -68,7 +68,7 @@ local ltd_button_defaults = {
         languages = { 'fr', }
     },
     default = {
-        width = 1.6,
+        width = 1.68,
         label_scale = 0.5,
         locked_offset_x = {
             voucher = -0.35,
@@ -77,10 +77,10 @@ local ltd_button_defaults = {
             booster = -0.43,
         },
         lock_offset_x = {
-            voucher = -0.75,
-            other = -0.54,
+            voucher = -0.78,
+            other = -0.58,
             consumeable = -0.65,
-            booster = -0.81,
+            booster = -0.83,
         },
     },
 }
