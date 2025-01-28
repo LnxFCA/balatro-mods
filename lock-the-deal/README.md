@@ -15,7 +15,7 @@ Make your Balatro runs more strategic and rewarding with *Lock the Deal*!
 
 ## Installation
 
-Refer to the [project README](https://github.com/LnxFCA/balatro-mods#readme) for installation instructions.
+Refer to the [project README](https://github.com/LnxFCA/balatro-mods#installation) for installation instructions.
 
 ## Usage
 
