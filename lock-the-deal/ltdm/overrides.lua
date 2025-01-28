@@ -26,6 +26,10 @@ function create_card_for_shop(area)
 
     -- Mark the item
     card.ltdm_saved_id = lock_item.id
+
+    -- Restore card price
+    card.cost = lock_item.price
+
     create_shop_card_ui(card)
 
     return card
