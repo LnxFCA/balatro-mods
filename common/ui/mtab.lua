@@ -105,6 +105,11 @@ function LNXFCA.UIDEF.create_about_tab(info)
                             label = lnxfca_common.update_fmt, link = info.updates, padding = 0.2,
                             bg_colour = G.C.UI.TRANSPARENT_DARK, fg_colour = HEX("5684c4"),
                         }),
+
+                        LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.3, }),
+                        LNXFCA.UIDEF.create_open_button({
+                            padding = 0.1, label = lnxfca_common.coffee, bg_colour = HEX("FF5E5B"), fg_colour = HEX("FFFFFF"),
+                            link = 'https://ko-fi.com/LnxFCA', }),
                     }}},
                 },
                 {  -- Copyright
