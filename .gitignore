@@ -1,0 +1,9 @@
+# Ignore
+**/
+**
+
+# Mods
+!.gitignore
+!common
+!first-round-joker
+!lock-the-deal
