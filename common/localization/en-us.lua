@@ -6,8 +6,9 @@ return {
                 developed_by_fmt = "Developed by %s",
                 usage_h_text = "Guides / Documentation",
                 links_h_text = "External Links",
-                update_fmt = "Check for Updates & Info",
+                update_fmt = "Updates & Info",
                 version_download = "Download",
+                coffee = "Buy me a coffee"
             },
         },
     },
