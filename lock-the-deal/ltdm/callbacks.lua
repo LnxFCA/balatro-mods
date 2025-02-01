@@ -30,7 +30,9 @@ function G.FUNCS.ltd_can_lock_unlock(e)
         end
 
         -- Disable button when player can't afford
-        if e.config.ref_table.ltdm_state.no_locked and LTDM.state.ltd.price > (G.GAME.dollars - G.GAME.bankrupt_at) then
+        if e.config.ref_table.ltdm_state.no_locked
+            and LTDM.state.ltd.price > ((type(G.GAME.dollars) == 'table' and to_number(G.GAME.dollars) or G.GAME.dollars) - G.GAME.bankrupt_at)
+        then
             e.config.colour = G.C.UI.BACKGROUND_INACTIVE
             e.config.button = nil
         else
