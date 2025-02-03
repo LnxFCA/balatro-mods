@@ -4,6 +4,8 @@ This is a collection of my hand-made mods for [Balatro](https://store.steampower
 
 All mods in this repository require at least Balatro version `1.0.1n`.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H219IGVS)
+
 ## Table of Contents
 - [Introduction](#balatro-mods)
 - [Mod List](#mod-list)
