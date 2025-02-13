@@ -92,7 +92,7 @@ return {
                 text = {
                     "{S:0.8}({S:0.8,V:1}lvl. ???{S:0.8}){} Level up",
                     "{C:attention}Random Hand",
-                    "{C:green}+#1# Level",
+                    "{C:green}+#1#{} Level",
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                     "x2 next used Planet Card",
@@ -107,7 +107,7 @@ return {
                     "{C:attention}Random Hand",
                     "{C:green}+#1#{} Level",
                     "{C:attention}Random Hand",
-                    "{C:red}-#2#{} Level",
+                    "{C:red}#2#{} Level",
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
                 },
