@@ -48,20 +48,26 @@ end
 ---@return table
 function CEPM.utils.get_default_loc_vars(obj)
     local vars = {}
-    local card_state = CEPM.state.cards[obj.key]
-    local level_mult = 1
+    local card_state = CEPM.state.card_state[obj.key]
+    local card_config = CEPM.cards[obj.key].config
+    local level_mult = CEPM.state.level_mult
 
-    if CEPM.state.last_card == 'c_cep_hyperion' and obj.key ~= 'c_cep_janus' and obj.key ~= 'c_cep_hyperion' then
-        level_mult = 2;
+    if obj.key == 'c_cep_janus' or obj.key == 'c_cep_hyperion' then
+        level_mult = 1;
     end
 
     vars = {
-        (card_state.level or 1) * level_mult,
+        (card_config.level + (card_state.level_extra or card_config.level_extra or 0)) * level_mult,
         card_state.mult or '?',
         card_state.chips or '?',
 
-        colours = { G.C.SECONDARY_SET.Tarot },
+        colours = { G.C.SECONDARY_SET.Planet },
     }
+
+    if obj.key == 'c_cep_pandora' then
+        vars[1] = card_config.level * level_mult
+        table.insert(vars, 2, (card_state.level_extra or card_config.level_extra) * level_mult)
+    end
 
     return {
         vars = vars

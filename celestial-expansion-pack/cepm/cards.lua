@@ -1,20 +1,20 @@
 CEPM.cards = {
-    luna = { key = "cep_luna", pos = { x = 0, y = 0 }, },
-    charon = { key = "cep_charon", pos = { x = 1, y = 0}, },
-    titan = { key = "cep_titan", pos = { x = 2, y = 0 }, },
-    oberon = { key = "cep_oberon", pos = { x = 3, y = 0 }, },
-    epsilon = { key = "cep_epsilon", pos = { x = 4, y = 0 }, },
-    atlas = { key = "cep_atlas", pos = { x = 5, y = 0 }, },
-    kepler = { key = "cep_kepler", pos = { x = 0, y = 1 }, },
-    janus = { key = "cep_janus", pos = { x = 1, y = 1}, },
-    hyperion = { key = "cep_hyperion", pos = { x = 2, y = 1 }, },
-    pandora = { key = "cep_pandora", pos = { x = 3, y = 1 }, },
-    solaris = { key = "cep_solaris", pos = { x = 4, y = 1 }, },
-    nova = { key = "cep_nova", pos = { x = 5, y = 1 }, },
+    c_cep_luna = { key = "cep_luna", pos = { x = 0, y = 0 }, config = { level = 1 }, },
+    c_cep_charon = { key = "cep_charon", pos = { x = 1, y = 0}, config = { level = 2, }, },
+    c_cep_titan = { key = "cep_titan", pos = { x = 2, y = 0 }, config = { level = 1, }},
+    c_cep_oberon = { key = "cep_oberon", pos = { x = 3, y = 0 }, config = { level = 1 }, },
+    c_cep_epsilon = { key = "cep_epsilon", pos = { x = 4, y = 0 }, config = { level = 2,} },
+    c_cep_atlas = { key = "cep_atlas", pos = { x = 5, y = 0 }, config = { level = 1, } },
+    c_cep_kepler = { key = "cep_kepler", pos = { x = 0, y = 1 }, config = { level = 0, }},
+    c_cep_janus = { key = "cep_janus", pos = { x = 1, y = 1}, config = { level = 1, level_extra = 0 }, },
+    c_cep_hyperion = { key = "cep_hyperion", pos = { x = 2, y = 1 }, config = { level = 1, }, },
+    c_cep_pandora = { key = "cep_pandora", pos = { x = 3, y = 1 }, config = { level = 3, level_extra = -1 }, },
+    c_cep_solaris = { key = "cep_solaris", pos = { x = 4, y = 1 }, config = { level = 1, }, },
+    c_cep_nova = { key = "cep_nova", pos = { x = 5, y = 1 }, config = { level = 2, }, },
 }
 
 
-CEPM.cards.luna.use = function (_, card, _, _)
+CEPM.cards.c_cep_luna.use = function (_, card, _, _)
     local hand = CEPM.utils.get_random_hand(1, {}) --[[@ string]]
     local level = (CEPM.state.last_card == 'c_cep_hyperion' and 2) or 1
 
