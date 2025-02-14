@@ -38,6 +38,8 @@ function CEPM.mt.State.init(self)
     self.level_mult = 1
     self.card_state = {}
 
+    for k, _ in pairs(CEPM.cards) do self.card_state[k] = self.card_state[k] or {} end
+
     if self.saved_state then self:load() end
 end
 
@@ -48,6 +50,7 @@ function CEPM.mt.State.load(self, state)
 
     -- Load state
     for k, v in pairs(self.saved_state) do self[k] = v end
+    for k, _ in pairs(CEPM.cards) do self.card_state[k] = self.card_state[k] or {} end
 
     self.saved_state = nil
 end
