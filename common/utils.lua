@@ -34,5 +34,5 @@ end
 function LNXFCA.include(path, mod_id)
     local chunk = SMODS.load_file(path, mod_id)
 
-    if chunk then chunk() end
+    if chunk then return chunk() end
 end

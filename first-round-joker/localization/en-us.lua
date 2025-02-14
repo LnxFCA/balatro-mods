@@ -37,6 +37,12 @@ return {
                 "Allows selection of Undiscovered and Locked Jokers.",
                 "Warning: This is like Super Cheat Mode!",
             },
+
+            frj_disable_negative = "Disable Negative Edition",
+            frj_disable_negative_d = {
+                "Prevents Jokers from being generated with the",
+                "Negative Edition modifier.",
+            },
         },
     },
 }
