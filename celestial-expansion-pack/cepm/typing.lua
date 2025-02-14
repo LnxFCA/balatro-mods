@@ -5,6 +5,7 @@
 ---@field key string
 ---@field pos { x: number, y: number }
 ---@field use? fun(self: SMODS.Consumable, card: BALATRO_T.Card, area: BALATRO_T.CardArea, copier: table)
+---@field can_use? fun(sel: SMODS.Consumable, card: BALATRO_T.Card): boolean
 ---@field loc_vars? fun(self: SMODS.Consumable, card: BALATRO_T.Card): table
 ---@field config { level: integer, level_extra?: integer }
 

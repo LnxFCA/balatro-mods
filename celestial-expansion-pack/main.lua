@@ -26,6 +26,7 @@ end
 LNXFCA.include("cepm/cards.lua", CEPM.mod_id)
 LNXFCA.include("cepm/cep.lua", CEPM.mod_id)
 LNXFCA.include("cepm/utils.lua", CEPM.mod_id)
+LNXFCA.include("cepm/overrides.lua", CEPM.mod_id)
 
 
 -- Initialize state manager
@@ -54,7 +55,8 @@ for _, card in ipairs(cep_cards) do
         set = 'Planet',
         atlas = 'cep_atlas',
         use = CEPM.cards[card].use,
-        loc_vars = function (self) return CEPM.utils.get_default_loc_vars(self --[[@as SMODS.Consumable]]) end,
+        can_use = CEPM.cards[card].can_use or function() return true end,
+        loc_vars = CEPM.utils.get_default_loc_vars,
     })
 
     CEPM.state.card_state[card] = {}

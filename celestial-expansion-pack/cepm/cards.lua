@@ -14,22 +14,27 @@ CEPM.cards = {
 }
 
 
-CEPM.cards.c_cep_luna.use = function (_, card, _, _)
-    local hand = CEPM.utils.get_random_hand(1, {}) --[[@ string]]
+CEPM.cards.c_cep_luna.use = function (_, card)
+    local hand = CEPM.utils.get_random_hand(1)
     local level = (CEPM.state.last_card == 'c_cep_hyperion' and 2) or 1
 
-    update_hand_text(
-        { sound = 'button', volume = 0.7, pitch = 8.8, delay = 0.3, },
-        {
-            handname = localize(hand, 'poker_hands'), chips = G.GAME.hands[hand].chips,
-            mult = G.GAME.hands[hand].mult, level = G.GAME.hands[hand].level,
-        }
-    )
-
-    level_up_hand(card, hand, nil, level)
-    update_hand_text(
-        { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
-        { handname = '', chips = 0, mult = 0, level = ''}
-    )
+    CEPM.utils.level_up_hand(hand --[[@as string]], card, level)
 end
 
+
+CEPM.cards.c_cep_charon.use = function (obj, card)
+    local hand = CEPM.utils.get_least_used_hand()
+    if hand == nil then
+        local hands = CEPM.utils.get_available_hands()
+        hand = hands[math.random(1, #hands)]
+    end
+
+    CEPM.utils.level_up_hand(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
+end
+
+
+CEPM.cards.c_cep_titan.use = function (obj, card)
+    local hands = CEPM.utils.get_random_hand(2)
+
+    CEPM.utils.level_up_hand(hands[1], card, CEPM.utils.calculate_card_level_up(obj.key))
+end
