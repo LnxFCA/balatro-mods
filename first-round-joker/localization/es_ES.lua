@@ -37,6 +37,13 @@ return {
                 "Permite seleccionar Jokers No Descubiertos y Bloqueados.",
                 "¡Advertencia: Esto es como un Súper Modo Trampa!",
             },
+
+
+            frj_disable_negative = "Desactivar Edición Negativa",
+            frj_disable_negative_d = {
+                "Evita que los Jokers se generen con el modificador",
+                "de Edición Negativa.",
+            },
         },
     },
 }

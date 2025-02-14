@@ -22,7 +22,7 @@ function create_card_for_shop(area)
         set = 'Joker',
         area = area,
         key = FRJM.state.joker_key,
-        edition = { negative = true }
+        edition = { negative = not FRJM.mod.config.disable_negative }
     })
 
     -- Base price?
