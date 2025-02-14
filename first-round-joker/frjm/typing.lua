@@ -30,6 +30,7 @@
 ---@field joker_name string | nil Saved Joker name
 ---@field enable_frjm_button boolean Show FRJM button?
 ---@field disable_restriction boolean Disable discovered Joker restriction
+---@field disable_negative boolean Disable Negative edition modifier
 
 
 ---@class FRJM.State
