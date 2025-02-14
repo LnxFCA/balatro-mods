@@ -38,3 +38,113 @@ CEPM.cards.c_cep_titan.use = function (obj, card)
 
     CEPM.utils.level_up_hand(hands[1], card, CEPM.utils.calculate_card_level_up(obj.key))
 end
+
+
+CEPM.cards.c_cep_oberon.use = function (obj, card)
+    local hand = G.GAME.last_hand_played
+
+    CEPM.utils.level_up_hand(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
+end
+
+
+CEPM.cards.c_cep_epsilon.use = function (obj, card)
+    CEPM.utils.level_up_hand(CEPM.utils.get_random_hand() --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
+end
+
+
+CEPM.cards.c_cep_atlas.use = function (obj, card)
+    local hands = CEPM.utils.get_random_hand(3)
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 8.8, delay = 0.3, },
+        {
+            handname = localize('k_all_hands'), chips = '??',
+            mult = '??', level = '+'..CEPM.utils.calculate_card_level_up(obj.key),
+        }
+    )
+
+    delay(1)
+    for _, hand in ipairs(hands --[=[@as string[]]=]) do
+        CEPM.original.level_up_hand(card, hand, false, CEPM.utils.calculate_card_level_up(obj.key))
+    end
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+        { handname = '', chips = 0, mult = 0, level = ''}
+    )
+end
+
+
+CEPM.cards.c_cep_kepler.use = function (obj, card)
+    local hands = CEPM.utils.get_random_hand(2)
+
+    local left_hand = G.GAME.hands[hands[1]]
+    local right_hand = G.GAME.hands[hands[2]]
+
+    -- TODO: Implement hand swap
+end
+
+
+CEPM.cards.c_cep_janus.use = function (obj, card)
+    local hand = CEPM.utils.get_random_hand(1)
+    local level_extra = CEPM.state.card_state[obj.key].level_extra or 0
+
+    CEPM.utils.level_up_hand(hand --[[@as string]], card, CEPM.cards[obj.key].config.level + level_extra)
+
+    CEPM.state.card_state[obj.key].level_extra = level_extra + 1
+end
+
+
+CEPM.cards.c_cep_hyperion.use = function (obj, card)
+    local hand = CEPM.utils.get_random_hand(1)
+
+    CEPM.utils.level_up_hand(hand --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
+
+    CEPM.state.level_mult = 2
+end
+
+
+CEPM.cards.c_cep_solaris.use = function (obj, card)
+    local hands = CEPM.utils.get_available_hands()
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3, },
+        {
+            handname = localize('k_all_hands'), chips = '??',
+            mult = '??', level = '+'..CEPM.utils.calculate_card_level_up(obj.key),
+        }
+    )
+
+    delay(1)
+    for _, hand in ipairs(hands --[=[@as string[]]=]) do
+        CEPM.original.level_up_hand(card, hand, false, CEPM.utils.calculate_card_level_up(obj.key))
+    end
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+        { handname = '', chips = 0, mult = 0, level = ''}
+    )
+end
+
+
+CEPM.cards.c_cep_nova.use = function (obj, card)
+    local hands = CEPM.utils.get_available_hands()
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3, },
+        {
+            handname = localize('k_all_hands'), chips = '??',
+            mult = '??', level = '+'..CEPM.utils.calculate_card_level_up(obj.key),
+        }
+    )
+
+    delay(1)
+    for _, hand in ipairs(hands --[=[@as string[]]=]) do
+        CEPM.original.level_up_hand(card, hand, false, CEPM.utils.calculate_card_level_up(obj.key))
+    end
+
+    update_hand_text(
+        { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+        { handname = '', chips = 0, mult = 0, level = ''}
+    )
+end
