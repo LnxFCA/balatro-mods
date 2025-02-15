@@ -18,7 +18,7 @@ CEPM.cards.c_cep_luna.use = function (_, card)
     local hand = CEPM.utils.get_random_hand(1)
     local level = (CEPM.state.last_card == 'c_cep_hyperion' and 2) or 1
 
-    CEPM.utils.level_up_hand(hand --[[@as string]], card, level)
+    CEPM.utils.update_hand_level(hand --[[@as string]], card, level)
 end
 
 
@@ -29,26 +29,26 @@ CEPM.cards.c_cep_charon.use = function (obj, card)
         hand = hands[math.random(1, #hands)]
     end
 
-    CEPM.utils.level_up_hand(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
+    CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
 CEPM.cards.c_cep_titan.use = function (obj, card)
     local hands = CEPM.utils.get_random_hand(2)
 
-    CEPM.utils.level_up_hand(hands[1], card, CEPM.utils.calculate_card_level_up(obj.key))
+    CEPM.utils.update_hand_level(hands[1], card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
 CEPM.cards.c_cep_oberon.use = function (obj, card)
     local hand = G.GAME.last_hand_played
 
-    CEPM.utils.level_up_hand(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
+    CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
 CEPM.cards.c_cep_epsilon.use = function (obj, card)
-    CEPM.utils.level_up_hand(CEPM.utils.get_random_hand() --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
+    CEPM.utils.update_hand_level(CEPM.utils.get_random_hand() --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
@@ -89,7 +89,7 @@ CEPM.cards.c_cep_janus.use = function (obj, card)
     local hand = CEPM.utils.get_random_hand(1)
     local level_extra = CEPM.state.card_state[obj.key].level_extra or 0
 
-    CEPM.utils.level_up_hand(hand --[[@as string]], card, CEPM.cards[obj.key].config.level + level_extra)
+    CEPM.utils.update_hand_level(hand --[[@as string]], card, CEPM.cards[obj.key].config.level + level_extra)
 
     CEPM.state.card_state[obj.key].level_extra = level_extra + 1
 end
@@ -98,7 +98,7 @@ end
 CEPM.cards.c_cep_hyperion.use = function (obj, card)
     local hand = CEPM.utils.get_random_hand(1)
 
-    CEPM.utils.level_up_hand(hand --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
+    CEPM.utils.update_hand_level(hand --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
 
     CEPM.state.level_mult = 2
 end

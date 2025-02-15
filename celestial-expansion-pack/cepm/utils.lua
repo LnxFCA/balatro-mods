@@ -116,7 +116,7 @@ end
 ---@param hand string
 ---@param card BALATRO_T.Card
 ---@param level integer | string
-function CEPM.utils.level_up_hand(hand, card, level)
+function CEPM.utils.update_hand_level(hand, card, level)
     update_hand_text(
         { sound = 'button', volume = 0.7, pitch = 8.8, delay = 0.3, },
         {
