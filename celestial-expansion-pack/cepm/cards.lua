@@ -1,5 +1,5 @@
 CEPM.cards = {
-    c_cep_luna = { key = "cep_luna", pos = { x = 0, y = 0 }, config = { level = 1 }, },
+    c_cep_luna = { key = "cep_luna", pos = { x = 0, y = 0 }, config = { level = 1, }, },
     c_cep_charon = { key = "cep_charon", pos = { x = 1, y = 0}, config = { level = 2, }, },
     c_cep_titan = { key = "cep_titan", pos = { x = 2, y = 0 }, config = { level = 1, }},
     c_cep_oberon = { key = "cep_oberon", pos = { x = 3, y = 0 }, config = { level = 1 }, },

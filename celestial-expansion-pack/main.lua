@@ -56,6 +56,10 @@ for _, card in ipairs(cep_cards) do
         atlas = 'cep_atlas',
         use = CEPM.cards[card].use,
         can_use = CEPM.cards[card].can_use or function() return true end,
+        in_pool = CEPM.cards[card].in_pool or function() return CEPM.state.card_state[card].can_spawn end,
+        check_for_unlock = CEPM.cards[card].check_for_unlock or function() return CEPM.state.card_state[card].can_unlock end,
         loc_vars = CEPM.utils.get_default_loc_vars,
+        locked_loc_vars = CEPM.utils.get_default_locked_loc_vars,
+        unlocked = false,
     })
 end

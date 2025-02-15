@@ -10,6 +10,10 @@ return {
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                 },
+                unlock = {
+                    "Win at least {C:attention}15{} rounds",
+                    "in a single run.",
+                },
             },
 
             c_cep_charon = {
@@ -20,6 +24,11 @@ return {
                     "{C:green}+#1#{} Level",
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
+                },
+
+                unlock = {
+                    "Play {C:attention}High Card{} at least {C:attention}10{}",
+                    "times in a single run.",
                 },
 
             },
@@ -33,6 +42,11 @@ return {
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                 },
+
+                unlock = {
+                    "Play {C:attention}Pair{} at least {C:attention}3{} times",
+                    "in a single round and win.",
+                },
             },
 
             c_cep_oberon = {
@@ -43,6 +57,12 @@ return {
                     "{C:green}+#1#{} Level",
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
+                },
+
+                unlock = {
+                    "Play the same hand in {C:attention}4{} consecutive",
+                    "rounds. Excluding {C:attention}High Card{},",
+                    "{C:attention}Pair{} and {C:attention}Two Pair{}.",
                 },
             },
 
@@ -55,6 +75,10 @@ return {
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                 },
+
+                unlock = {
+                    "Reach {C:attention}Ante 7{}.",
+                },
             },
 
             c_cep_atlas = {
@@ -66,6 +90,11 @@ return {
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                 },
+
+                unlock = {
+                    "Play {C:attention}Three of a Kind{} at least",
+                    "{C:attention}3{} times in a single round and win.",
+                },
             },
 
             c_cep_kepler = {
@@ -73,6 +102,11 @@ return {
                 text = {
                     "{S:0.8}({S:0.8,V:1}lvl. ???{S:0.8}){} Level up",
                     "{C:attention}Swaps Two Random Hands",
+                },
+
+                unlock = {
+                    "Play all {C:attention}available{} hand types",
+                    "in a single run.",
                 },
             },
 
@@ -84,6 +118,11 @@ return {
                     "{C:green}+#1#{} Level (+1 each use)",
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
+                },
+
+                unlock = {
+                    "Play {C:attention}Straight Flush{} at least",
+                    "{C:attention}4{} times in a single run.",
                 },
             },
 
@@ -98,6 +137,13 @@ return {
                     "x2 next used Planet Card",
                     "(Excludes Janus and Hyperion)",
                 },
+
+                unlock = {
+                    "Play the same hand type",
+                    "excluding ({C:attention}High Card{}, {C:attention}Pair{} and {C:attention}Two Pair{})",
+                    "{C:attention}2{} times in a single round.",
+                    "at least {C:attention}4{} times in total.",
+                },
             },
 
             c_cep_pandora = {
@@ -111,6 +157,11 @@ return {
                     "{C:mult}+#3#{} Mult and",
                     "{C:chips}+#4#{} chips",
                 },
+
+                unlock = {
+                    "Discard {C:attention}Three of a Kind{} or better",
+                    "in a single round and win.",
+                },
             },
 
             c_cep_solaris = {
@@ -122,6 +173,10 @@ return {
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
                 },
+
+                unlock = {
+                    "Reach {C:attention}Ante 12{}.",
+                },
             },
 
             c_cep_nova = {
@@ -132,6 +187,12 @@ return {
                     "{C:green}+#1#{} Level",
                     "{C:mult}+#2#{} Mult and",
                     "{C:chips}+#3#{} chips",
+                },
+
+                unlock = {
+                    "Use all {C:attention}Celestial Expansion Pack{}",
+                    "cards (excluding {C:attention}Nova{}), at least",
+                    "{C:attention}2{} times in a single run.",
                 },
             },
         },

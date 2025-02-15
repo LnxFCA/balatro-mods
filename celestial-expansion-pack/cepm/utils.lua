@@ -74,6 +74,14 @@ function CEPM.utils.get_default_loc_vars(obj)
     }
 end
 
+function CEPM.utils.get_default_locked_loc_vars(_)
+    local vars = {
+        colours = { G.C.SECONDARY_SET.Planet, },
+    }
+
+    return { vars = vars }
+end
+
 
 --- Return the most used Poker Hand
 ---@return string?

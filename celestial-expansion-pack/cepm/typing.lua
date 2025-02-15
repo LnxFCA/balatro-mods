@@ -7,6 +7,8 @@
 ---@field use? fun(self: SMODS.Consumable, card: BALATRO_T.Card, area: BALATRO_T.CardArea, copier: table)
 ---@field can_use? fun(sel: SMODS.Consumable, card: BALATRO_T.Card): boolean
 ---@field loc_vars? fun(self: SMODS.Consumable, card: BALATRO_T.Card): table
+---@field in_pool? fun(self: SMODS.Consumable, args: table): boolean, { allow_duplicate: boolean }
+---@field check_for_unlock? fun(self: SMODS.Consumable, args: table): boolean
 ---@field config { level: integer, level_extra?: integer }
 
 
