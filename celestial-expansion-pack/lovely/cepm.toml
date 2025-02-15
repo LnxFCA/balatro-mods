@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local name = _type == 'achievement' and localize(_achievement, 'achievement_names') or 'ERROR'"
+position = "after"
+payload = '''
+if _type == 'Planet' and CEPM and CEPM.cards[_achievement] then
+    subtext = localize({ set = _type, type = 'name_text', key = _achievement, })
+end
+'''
+match_indent = true
