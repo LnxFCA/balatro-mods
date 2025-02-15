@@ -116,16 +116,18 @@ end
 ---@param hand string
 ---@param card BALATRO_T.Card
 ---@param level integer | string
-function CEPM.utils.update_hand_level(hand, card, level)
+---@param instant? boolean
+function CEPM.utils.update_hand_level(hand, card, level, instant)
     update_hand_text(
-        { sound = 'button', volume = 0.7, pitch = 8.8, delay = 0.3, },
+        { sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3, },
         {
             handname = localize(hand, 'poker_hands'), chips = G.GAME.hands[hand].chips,
             mult = G.GAME.hands[hand].mult, level = G.GAME.hands[hand].level,
         }
     )
 
-    CEPM.original.level_up_hand(card, hand, nil, level)
+    CEPM.original.level_up_hand(card, hand, instant, level)
+    if instant then delay(0.5) end
 
     update_hand_text(
         { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
