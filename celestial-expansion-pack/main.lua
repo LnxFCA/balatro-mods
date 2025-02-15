@@ -47,7 +47,6 @@ local cep_cards = { 'c_cep_luna', 'c_cep_charon', 'c_cep_titan', 'c_cep_oberon',
     'c_cep_kepler', 'c_cep_janus', 'c_cep_hyperion', 'c_cep_pandora', 'c_cep_solaris', 'c_cep_nova',
 }
 
-
 for _, card in ipairs(cep_cards) do
     SMODS.Consumable({
         key = CEPM.cards[card].key,
@@ -58,6 +57,4 @@ for _, card in ipairs(cep_cards) do
         can_use = CEPM.cards[card].can_use or function() return true end,
         loc_vars = CEPM.utils.get_default_loc_vars,
     })
-
-    CEPM.state.card_state[card] = {}
 end
