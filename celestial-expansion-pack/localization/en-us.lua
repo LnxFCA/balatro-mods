@@ -139,6 +139,7 @@ return {
     misc = {
         dictionary = {
             cepm_loc = {
+                about_tab_label = 'About',
                 mod_description = {},
             }
         }

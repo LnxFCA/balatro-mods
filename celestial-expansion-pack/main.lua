@@ -8,7 +8,7 @@ function CEPM.init(self)
     self.utils = {}
 
     self.mod = SMODS.current_mod
-    self.mod_id = self.mod_id
+    self.mod_id = self.mod.id
 
     self.mt = {}
     self.state = {}
@@ -27,6 +27,7 @@ LNXFCA.include("cepm/cards.lua", CEPM.mod_id)
 LNXFCA.include("cepm/cep.lua", CEPM.mod_id)
 LNXFCA.include("cepm/utils.lua", CEPM.mod_id)
 LNXFCA.include("cepm/overrides.lua", CEPM.mod_id)
+LNXFCA.include("cepm/ui/extra_tabs.lua", CEPM.mod_id)
 
 
 -- Initialize state manager
