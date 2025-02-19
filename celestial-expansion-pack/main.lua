@@ -28,6 +28,7 @@ LNXFCA.include("cepm/cep.lua", CEPM.mod_id)
 LNXFCA.include("cepm/utils.lua", CEPM.mod_id)
 LNXFCA.include("cepm/overrides.lua", CEPM.mod_id)
 LNXFCA.include("cepm/ui/extra_tabs.lua", CEPM.mod_id)
+LNXFCA.include("cepm/ui/config_tab.lua", CEPM.mod_id)
 
 
 -- Initialize state manager

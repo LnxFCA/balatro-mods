@@ -14,6 +14,7 @@
 
 ---@class CEPM.Mod.Config
 ---@field cep CEPM.mt.State.Saved
+---@field instant_level_up boolean
 
 
 ---@class CEPM.Mod : SMODS_T.Mod

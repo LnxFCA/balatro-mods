@@ -54,8 +54,8 @@ CEPM.cards.c_cep_atlas.use = function (obj, card)
     local hands = CEPM.utils.get_random_hand(3)
 
     for _, hand in ipairs(hands --[=[@as string[]]=]) do
-        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
-        delay(0.5)
+        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key), CEPM.mod.config.instant_level_up)
+        if not CEPM.mod.config.instant_level_up then delay(0.5) end
     end
 end
 
@@ -92,15 +92,15 @@ end
 
 CEPM.cards.c_cep_solaris.use = function (obj, card)
     for _, hand in ipairs(CEPM.utils.get_available_hands()) do
-        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
-        delay(0.15)
+        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key), CEPM.mod.config.instant_level_up)
+        if not CEPM.mod.config.instant_level_up then delay(0.5) end
     end
 end
 
 
 CEPM.cards.c_cep_nova.use = function (obj, card)
     for _, hand in ipairs(CEPM.utils.get_available_hands()) do
-        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key))
-        delay(0.15)
+        CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key), CEPM.mod.config.instant_level_up)
+        if not CEPM.mod.config.instant_level_up then delay(0.5) end
     end
 end

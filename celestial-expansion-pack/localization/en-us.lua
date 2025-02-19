@@ -202,6 +202,13 @@ return {
             cepm_loc = {
                 about_tab_label = 'About',
                 mod_description = {},
+                config = {
+                    instant_level_up = "Instant Level Up",
+                    instant_level_up_d = {
+                        "Reduce Hand level up animations times, useful for cards",
+                        "like Solaris, Nova and Pandora",
+                    },
+                },
             }
         }
     }
