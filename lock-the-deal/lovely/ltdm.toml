@@ -84,6 +84,17 @@ if ltdm_vouchers then
 elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
 '''
 
+# Fix Voucher LTD button drawing order
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+match_indent = true
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.BLACK, maxh = G.shop_vouchers.T.h+0.4}, nodes={'''
+position = "at"
+payload = '''
+{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.BLACK, maxh = G.shop_vouchers.T.h+0.4, draw_layer = 1}, nodes={
+'''
+
 
 # Booster pack
 [[patches]]
