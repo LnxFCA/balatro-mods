@@ -22,6 +22,7 @@
 ---@field enhancement string? The ehnacement key. See `G.P_CENTERS`
 ---@field seal string? The seal name. See `Card.seal`
 ---@field state LTDM.LockItem.State State of the card, from card.ltdm_state
+---@field shop_voucher boolean? `true` if item is current round voucher
 
 
 ---@class LTDM.State
@@ -71,6 +72,7 @@ local LTDM = {}
 ---@field ltdm_saved_id? string The saved it for this card
 ---@field opening boolean? Opening pack status
 ---@field frjm_shop_joker boolean? FRJM integration
+---@field shop_voucher boolean? `true` if card is current round voucher
 
 
 ---@class LTDM.ButtonConfig

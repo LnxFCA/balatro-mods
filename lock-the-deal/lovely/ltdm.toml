@@ -62,25 +62,26 @@ payload = "self.ltdm_saved_id = cardTable.save_fields.ltdm_saved_id"
 [patches.pattern]
 target = "game.lua"
 match_indent = true
-pattern = '''
-if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
-'''
-position = "before"
+pattern = "if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then"
+position = "at"
 payload = '''
-local ltdm_voucher = LTDM.state.ltd:get_lock_item('vouchers')
-if ltdm_voucher then
-    G.GAME.current_round.voucher = ltdm_voucher.key
-end
-'''
+local ltdm_vouchers = LTDM.state.ltd:get_area_items('vouchers')
+if ltdm_vouchers then
+    for i, v in ipairs(ltdm_vouchers) do
+        local _ltd_card = Card(
+            G.shop_vouchers.T.x + G.shop_vouchers.T.w/2, G.shop_vouchers.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty,
+            G.P_CENTERS[v.key], { bypass_discovery_center = true, bypass_discovery_ui = true, }
+        )
 
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-match_indent = true
-pattern = "create_shop_card_ui(card, 'Voucher', G.shop_vouchers)"
-position = "before"
-payload = '''
-card.ltdm_saved_id = ltdm_voucher and ltdm_voucher.id
+        G.shop_vouchers.config.card_limit = i
+
+        _ltd_card.ltdm_saved_id = v.id
+        _ltd_card.shop_voucher = v.shop_voucher
+        create_shop_card_ui(_ltd_card, 'Voucher', G.shop_vouchers)
+        _ltd_card:start_materialize()
+        G.shop_vouchers:emplace(_ltd_card)
+    end
+elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
 '''
 
 
