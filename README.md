@@ -26,6 +26,9 @@ Joker card appears in the shop during the first round.
 allowing players to save cards for future rounds or re-rolls.
 [NexusMods](https://www.nexusmods.com/balatro/mods/191)
 
+- [celestial-expansion-pack](./celestial-expansion-pack) (Celestial Expansion Pack *dev*): A
+Planetary Power-Up for Balatro!
+
 ## Installation
 
 > :warning: **Development Branch Warning:** This branch (`main`) is for development only.

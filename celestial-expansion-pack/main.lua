@@ -8,7 +8,7 @@ function CEPM.init(self)
     self.utils = {}
 
     self.mod = SMODS.current_mod
-    self.mod_id = self.mod_id
+    self.mod_id = self.mod.id
 
     self.mt = {}
     self.state = {}
@@ -27,6 +27,8 @@ LNXFCA.include("cepm/cards.lua", CEPM.mod_id)
 LNXFCA.include("cepm/cep.lua", CEPM.mod_id)
 LNXFCA.include("cepm/utils.lua", CEPM.mod_id)
 LNXFCA.include("cepm/overrides.lua", CEPM.mod_id)
+LNXFCA.include("cepm/ui/extra_tabs.lua", CEPM.mod_id)
+LNXFCA.include("cepm/ui/config_tab.lua", CEPM.mod_id)
 
 
 -- Initialize state manager
@@ -47,7 +49,6 @@ local cep_cards = { 'c_cep_luna', 'c_cep_charon', 'c_cep_titan', 'c_cep_oberon',
     'c_cep_kepler', 'c_cep_janus', 'c_cep_hyperion', 'c_cep_pandora', 'c_cep_solaris', 'c_cep_nova',
 }
 
-
 for _, card in ipairs(cep_cards) do
     SMODS.Consumable({
         key = CEPM.cards[card].key,
@@ -56,8 +57,10 @@ for _, card in ipairs(cep_cards) do
         atlas = 'cep_atlas',
         use = CEPM.cards[card].use,
         can_use = CEPM.cards[card].can_use or function() return true end,
+        in_pool = CEPM.cards[card].in_pool or function() return CEPM.state.card_state[card].can_spawn end,
+        check_for_unlock = CEPM.cards[card].check_for_unlock or function() return CEPM.state.card_state[card].can_unlock end,
         loc_vars = CEPM.utils.get_default_loc_vars,
+        locked_loc_vars = CEPM.utils.get_default_locked_loc_vars,
+        unlocked = false,
     })
-
-    CEPM.state.card_state[card] = {}
 end

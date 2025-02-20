@@ -37,3 +37,20 @@ level_up_hand = function (card, hand, instant, amount)
 
     CEPM.original.level_up_hand(card, hand, instant, amount)
 end
+
+
+CEPM.original.use_card = G.FUNCS.use_card
+--- Intercet consumable use.
+---@param e BALATRO_T.UIElement
+---@param mute boolean
+---@param nosave any
+G.FUNCS.use_card = function (e, mute, nosave)
+    local is_planet_card = e.config.ref_table and e.config.ref_table.ability.set == 'Planet'
+    local key = e.config.ref_table and e.config.ref_table.config.center.key
+
+    CEPM.original.use_card(e, mute, nosave)
+
+    if is_planet_card and key ~= 'c_cep_hyperion' then
+        CEPM.state.level_mult = 1
+    end
+end
