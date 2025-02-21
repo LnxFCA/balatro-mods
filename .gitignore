@@ -1,2 +1,7 @@
-.vscode
-dev/balatro
+**/
+*
+
+!lock-the-deal
+!celestial-expansion-pack
+!first-round-shop
+!common
