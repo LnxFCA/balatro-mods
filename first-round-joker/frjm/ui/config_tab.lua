@@ -55,6 +55,17 @@ FRJM.mod.config_tab = function ()
                 -- }),
                 LNXFCA.UIDEF.config_create_option_box({
                     LNXFCA.UIDEF.config_create_option_toggle({
+                        label = localize('frj_disable_negative'),
+                        info = localize('frj_disable_negative_d'),
+                        ref_table = FRJM.mod.config,
+                        ref_value = 'disable_negative',
+                        callback = function ()
+                            FRJM:save_config()
+                        end
+                    }),
+                }),
+                LNXFCA.UIDEF.config_create_option_box({
+                    LNXFCA.UIDEF.config_create_option_toggle({
                         label = localize('frj_use_custom_keybind'),
                         info = localize('frj_use_custom_keybind_d'),
                         ref_table = FRJM.mod.config,

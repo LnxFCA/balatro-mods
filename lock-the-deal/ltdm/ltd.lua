@@ -84,6 +84,7 @@ function LTDM.mt.State.lock_item(self, card)
         set = card.config.center.set,
         edition = card.edition and { [card.edition.type or "e_base"] = card.edition[card.edition.type]},
         seal = card.seal,
+        shop_voucher = card.shop_voucher,
     } --[[@as LTDM.LockItem]])
 end
 
@@ -383,4 +384,23 @@ function LTDM.mt.State.clear_local_state(self)
             self.local_state[k] = nil  -- Local state
         end
     end
+end
+
+--- Returns all locked items for the given area
+---@param self LTDM.mt.State
+---@param area "jokers" | "booster" | "vouchers"
+---@return LTDM.LockItem[]?
+function LTDM.mt.State.get_area_items(self, area)
+    local area_items = {}
+
+    -- Get all items by area
+    repeat
+        local locked_item = self:get_lock_item(area)
+        -- Don't save nil items
+        if locked_item then table.insert(area_items, locked_item) end
+    until not locked_item
+
+    if #area_items == 0 then area_items = nil end
+
+    return area_items;
 end
