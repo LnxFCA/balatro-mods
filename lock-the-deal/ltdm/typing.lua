@@ -84,7 +84,7 @@ local LTDM = {}
 
 ---@class LTDM.Button.Config : BALATRO_T.UIDef.Config.Common
 ---@field ref_table LTDM.Card
----@field ltd_btn_conf LTDM.ButtonConfig
+---@field ltd_controller? boolean
 
 ---@class LTDM.Button : BALATRO_T.Moveable
 ---@field UIRoot BALATRO_T.UIBox

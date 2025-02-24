@@ -137,3 +137,17 @@ if v.ltdm_state then
     LTDM.state.ltd:update_locked_item(v.ltdm_state.id, { key = 'price', val = v.cost })
 end
 '''
+
+
+# Controller/Gamepad support
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+match_indent = true
+pattern = '''
+{n=G.UIT.C, config={align = "cm", func = 'show_infotip',object = Moveable(),ref_table = next(info_boxes) and info_boxes or nil}, nodes={
+'''
+position = "at"
+payload = '''
+{n=G.UIT.R, config={align = "cm", func = 'show_infotip',object = Moveable(),ref_table = next(info_boxes) and info_boxes or nil}, nodes={
+'''

@@ -3,6 +3,9 @@
 function G.FUNCS.ltd_lock_unlock(e)
     local card = e.config.ref_table ---@type LTDM.Card
 
+    -- Prevent errors due to controller input
+    if not card.ltdm_state then return end
+
     -- Lock/unlock card
     if not card.ltdm_state.locked then
         LTDM.state.ltd:lock_item(card)
@@ -17,6 +20,19 @@ end
 -- TODO: Implement other things
 ---@param e LTDM.Button
 function G.FUNCS.ltd_can_lock_unlock(e)
+    -- Controller/Gamepad support
+    if e.config.ltd_controller and e.config.ref_table.ltdm_state then
+        if e.config.ref_table.ltdm_state.no_locked
+            and LTDM.state.ltd.price > ((type(G.GAME.dollars) == 'table' and to_number(G.GAME.dollars) or G.GAME.dollars) - G.GAME.bankrupt_at)
+        then
+            e.config.button = nil
+        else
+            e.config.button = 'ltd_lock_unlock'
+        end
+    elseif e.config.ltd_controller and not e.config.ref_table.ltdm_state then
+        e.states.visible = false
+    end
+
     -- Check if the card is highlighted
     if e.config.ref_table.highlighted then
         if ((e.config.ref_table.children.buy_and_use_button or {}).states or {}).visible then
