@@ -50,8 +50,8 @@ G.FUNCS.exit_overlay_menu = function ()
 end
 
 
-FRJM.original.main_menu = G.main_menu
-function G.main_menu(self, change_context)
+FRJM.original.main_menu = Game.main_menu
+function Game.main_menu(self, change_context)
     FRJM.original.main_menu(self, change_context)
 
     FRJM.UI.create_frjm_button()

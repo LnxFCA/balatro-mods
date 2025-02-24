@@ -83,14 +83,25 @@ LTDM.original.buy_from_shop = G.FUNCS.buy_from_shop
 -- Remove lock/unlock button when card is purchased
 -- TODO: Implement lock_list clear here
 function G.FUNCS.buy_from_shop(e)
-    if LTDM.original.buy_from_shop(e) == false then return end
+    if LTDM.original.buy_from_shop(e) == false then return false end
 
     ---@type LTDM.Card
     local card = e.config.ref_table
 
-    -- Check for supported item
-    if not card.ltdm_state then return end
-    LTDM.state.ltd:reset(card)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function ()
+            -- Check for successful purchase
+            if card.children.price then return true end
+
+            -- Check for supported item
+            if not card.ltdm_state then return true end
+            LTDM.state.ltd:reset(card)
+
+            return true
+        end,
+    }))
 end
 
 
