@@ -10,6 +10,7 @@ Tired of missing out on must-have cards like Jokers, Tarot, or other rare finds 
 - **Plan Strategically**: Save money for the perfect card while ensuring it stays available.
 - **Localization Support**: Available in multiple languages, with translations for English, Spanish, French, Italian, Portuguese (Brazil), and German.
 - **FRJM Integration**: The Joker card selected by FRJM is automatically locked at no cost.
+- **Controller/Gamepad Support**: Lock/unlock shop items using the **Left Trigger (LT)** (+ v2.0.0).
 
 Make your Balatro runs more strategic and rewarding with *Lock the Deal*!
 
@@ -52,12 +53,29 @@ Click it to lock the item. Locked items persist through re-rolls and rounds.
    ![LTD Saved Item](./images/ltd_shop_item_saved_item.png)
    *Figure 6: Saved item persists.*
 
+
+### Controller Support
+
+Controller/Gamepad users can now lock/unlock shop items using the **Left Trigger (LT)**.
+
+1. **Controller UI**: Select a shop item to highlight it. Once an item is selected, the
+   **LTD popup** appears, allowing you to lock or unlock it.
+
+    ![LTD Controller](./images/ltd_controller.png)
+    *Figure 7: LTD Controller UI*
+
+2. **Controller UI (Disabled)**: If you don’t have enough money to lock an item,
+   the popup background changes to indicate that the action is unavailable.
+
+    ![LTD Controller Disabled](./images/ltd_controller_disabled.png)
+    *Figure 8: LTD Controller UI (Disabled)*
+
 ## Configuration
 
 Customize the mod in the **Config** tab of the mod menu:
 
 ![LTD Config Tab](./images/ltd_shop_config_tab.png)
-*Figure 7: Mod configuration options*
+*Figure 9: Mod configuration options*
 
 Options include:
 
@@ -88,12 +106,12 @@ this by hovering over the **LOCK** button. When an item has been locked at least
 subsequent locks/unlocks for the same instance of that item will be free:
 
     ![LTD Item Lock Free](./images/ltd_shop_item_lock_free.png)
-    *Figure 8: Free subsequent locks.*
+    *Figure 10: Free subsequent locks.*
 
 - The lock price starts at 1 and increases each time a new item is locked for the first time (subsequent locks/unlocks for the same instance of an item don't count):
 
     ![LTD Item Lock Cost Up](./images/ltd_shop_item_price_up.png)
-    *Figure 9: Incremental lock cost.*
+    *Figure 11: Incremental lock cost.*
 
 - **Cost Reset Conditions**
 
