@@ -5,7 +5,7 @@
 ---@field no_locked boolean The initial lock state of the card, false if generated.
 ---@field id string The unique identifier
 ---@field key string Card key
----@field button { label: string, price: string } The LTD button state
+---@field button { label: string, price: string, c_label: string } The LTD button state
 ---@field locked boolean The lock status of the item
 ---@field index integer? The index of the card in the current area
 ---@field area string The area the item belongs to.
@@ -86,7 +86,7 @@ local LTDM = {}
 ---@field ref_table LTDM.Card
 ---@field ltd_controller? boolean
 
----@class LTDM.Button : BALATRO_T.Moveable
+---@class LTDM.Button : BALATRO_T.UIElement
 ---@field UIRoot BALATRO_T.UIBox
 ---@field UIBox BALATRO_T.UIBox
 ---@field config LTDM.Button.Config

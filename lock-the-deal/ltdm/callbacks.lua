@@ -30,7 +30,10 @@ function G.FUNCS.ltd_can_lock_unlock(e)
             e.config.button = 'ltd_lock_unlock'
         end
     elseif e.config.ltd_controller and not e.config.ref_table.ltdm_state then
-        e.states.visible = false
+        -- Remove the current card popup
+        -- TODO: We should find a way to remove just the LTD popup
+        e.parent.parent.parent.parent.parent.parent:remove()
+        e.UIBox:recalculate()
     end
 
     -- Check if the card is highlighted
