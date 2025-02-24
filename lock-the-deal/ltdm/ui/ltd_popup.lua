@@ -19,7 +19,7 @@ function LTDM.UIDEF.create_ltd_popup(card)
                                 {
                                     n = G.UIT.O, config = { object = DynaText({
                                         string = {{ ref_table = card.ltdm_state.button, ref_value = 'c_label', }},
-                                        colours = { G.C.GREY, }, scale = 0.4,
+                                        colours = { HEX("b1b1b1"), }, scale = 0.4,
                                     })}
                                 },
                                 {

@@ -26,6 +26,7 @@ function G.FUNCS.ltd_can_lock_unlock(e)
             and LTDM.state.ltd.price > ((type(G.GAME.dollars) == 'table' and to_number(G.GAME.dollars) or G.GAME.dollars) - G.GAME.bankrupt_at)
         then
             e.config.button = nil
+            e.parent.parent.parent.config.colour = G.C.UI.BACKGROUND_INACTIVE
         else
             e.config.button = 'ltd_lock_unlock'
         end
