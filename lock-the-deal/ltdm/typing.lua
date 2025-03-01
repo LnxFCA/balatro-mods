@@ -75,16 +75,10 @@ local LTDM = {}
 ---@field shop_voucher boolean? `true` if card is current round voucher
 
 
----@class LTDM.ButtonConfig
----@field width number Button minwidth
----@field label_scale number Button label scale
----@field lock_offset_x { voucher: number, other: number, booster: number, consumeable: number }
----@field locked_offset_x { voucher: number, other: number, booster: number, consumeable: number }
-
-
 ---@class LTDM.Button.Config : BALATRO_T.UIDef.Config.Common
 ---@field ref_table LTDM.Card
 ---@field ltd_controller? boolean
+
 
 ---@class LTDM.Button : BALATRO_T.UIElement
 ---@field UIRoot BALATRO_T.UIBox
