@@ -85,6 +85,7 @@ local ltd_button_defaults = {
     },
 }
 
+
 -- Process list
 local ltd_button_conf = {}
 for _, v in ipairs(ltd_button_defaults) do
@@ -204,3 +205,21 @@ function LTDM.UIDEF.create_ltd_button_tooltip(card)
         }},
     }
 end
+
+
+-- smods Draw API guard
+if not SMODS.draw_ignore_keys then
+    return
+end
+
+SMODS.draw_ignore_keys.ltd_button = true
+SMODS.DrawStep({
+    key = 'ltd_button',
+    order = -100,
+    ---@overload fun(card: LTDM.Card)
+    func = function(card)
+        if card.children.ltd_button and card.highlighted then
+            card.children.ltd_button:draw()
+        end
+    end
+})
