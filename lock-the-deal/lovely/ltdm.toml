@@ -10,7 +10,7 @@ match_indent = true
 pattern = "if self.children.buy_and_use_button then"
 position = "before"
 payload = '''
-if self.children.ltd_button then
+if not SMODS.draw_ignore_keys and self.children.ltd_button then
     self.children.ltd_button:draw()
 end
 '''
@@ -25,13 +25,13 @@ if not v.custom_draw and k ~= 'focused_ui' and k ~= "front" and k ~= "back" and 
 '''
 position = "at"
 payload = '''
-if k == 'ltd_button' then
-  goto continue
+if not SMODS.draw_ignore_keys and k == 'ltd_button' then
+  goto __ltd_continue
 end
 
 if not v.custom_draw and k ~= 'focused_ui' and k ~= "front" and k ~= "back" and k ~= "soul_parts" and k ~= "center" and k ~= 'floating_sprite' and k~= "shadow" and k~= "use_button" and k ~= 'buy_button' and k ~= 'buy_and_use_button' and k~= "debuff" and k ~= 'price' and k~= 'particles' and k ~= 'h_popup' then v:draw() end
 
-::continue::
+::__ltd_continue::
 '''
 
 # LTD mark
@@ -83,6 +83,61 @@ if ltdm_vouchers then
     end
 elseif G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then
 '''
+
+# SMODS v1.0.0~BETA-0301d-STEAMODDED and up
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+match_indent = true
+pattern = '''
+local vouchers_to_spawn = 0
+for _,_ in pairs(G.GAME.current_round.voucher.spawn) do vouchers_to_spawn = vouchers_to_spawn + 1 end
+if vouchers_to_spawn < G.GAME.starting_params.vouchers_in_shop + (G.GAME.modifiers.extra_vouchers or 0) then
+    SMODS.get_next_vouchers(G.GAME.current_round.voucher)
+end
+for _, key in ipairs(G.GAME.current_round.voucher or {}) do
+    if G.P_CENTERS[key] and G.GAME.current_round.voucher.spawn[key] then
+        SMODS.add_voucher_to_shop(key)
+    end
+end
+'''
+position = "at"
+payload = '''
+local ltdm_vouchers = LTDM.state.ltd:get_area_items('vouchers')
+if ltdm_vouchers then
+    G.GAME.current_round.voucher = { spawn = {} }
+    for i, v in ipairs(ltdm_vouchers) do
+        local _ltd_card = Card(
+            G.shop_vouchers.T.x + G.shop_vouchers.T.w/2, G.shop_vouchers.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty,
+            G.P_CENTERS[v.key], { bypass_discovery_center = true, bypass_discovery_ui = true, }
+        )
+
+        G.shop_vouchers.config.card_limit = i
+
+        _ltd_card.ltdm_saved_id = v.id
+        _ltd_card.shop_voucher = true
+        create_shop_card_ui(_ltd_card, 'Voucher', G.shop_vouchers)
+        _ltd_card:start_materialize()
+        G.shop_vouchers:emplace(_ltd_card)
+    end
+
+    goto __ltd_voucher_continue
+end
+
+local vouchers_to_spawn = 0
+for _,_ in pairs(G.GAME.current_round.voucher.spawn) do vouchers_to_spawn = vouchers_to_spawn + 1 end
+if vouchers_to_spawn < G.GAME.starting_params.vouchers_in_shop + (G.GAME.modifiers.extra_vouchers or 0) then
+    SMODS.get_next_vouchers(G.GAME.current_round.voucher)
+end
+for _, key in ipairs(G.GAME.current_round.voucher or {}) do
+    if G.P_CENTERS[key] and G.GAME.current_round.voucher.spawn[key] then
+        SMODS.add_voucher_to_shop(key)
+    end
+end
+
+::__ltd_voucher_continue::
+'''
+
 
 # Fix Voucher LTD button drawing order
 [[patches]]
