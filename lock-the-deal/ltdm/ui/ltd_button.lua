@@ -216,6 +216,7 @@ SMODS.draw_ignore_keys.ltd_button = true
 SMODS.DrawStep({
     key = 'ltd_button',
     order = -100,
+    layer = 'card',
     ---@overload fun(card: LTDM.Card)
     func = function(card)
         if card.children.ltd_button and card.highlighted then
