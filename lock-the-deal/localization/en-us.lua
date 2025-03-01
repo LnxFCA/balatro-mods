@@ -18,6 +18,9 @@ return {
             ltd_button_lock = "LOCK",
             ltd_button_locked = "LOCKED",
 
+            ltd_controller_lock = "Unlocked",
+            ltd_controller_locked = "Locked",
+
             ltd_button_tooltip_title = "Lock Cost",
             ltd_button_tooltip_free = "Free",
 
@@ -32,7 +35,6 @@ return {
                 "ing you lock shop items for future rounds or re-rolls,",
                 "adding flexibility and strategy to your runs.",
             },
-
         },
     },
 }

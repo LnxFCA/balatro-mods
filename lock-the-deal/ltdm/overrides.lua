@@ -162,3 +162,18 @@ function G.FUNCS.reroll_shop(e)
 
     LTDM.original.reroll_shop(e)
 end
+
+
+LTDM.original.card_h_popup = G.UIDEF.card_h_popup
+--- Add support for controller/gamepad users
+---@param card LTDM.Card
+function G.UIDEF.card_h_popup(card)
+    local h_popup = LTDM.original.card_h_popup(card) --[[@as UIDef]]
+
+    if card.ltdm_state and card.children.focused_ui then
+        local index = 1  -- For later compatibility integrations
+        table.insert(h_popup.nodes, index, LTDM.UIDEF.create_ltd_popup(card))
+    end
+
+    return h_popup
+end

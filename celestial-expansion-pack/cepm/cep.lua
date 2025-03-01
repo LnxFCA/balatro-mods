@@ -5,6 +5,7 @@
 ---@field used number
 ---@field can_spawn boolean
 ---@field can_unlock boolean
+---@field extra table<string, any>
 
 
 ---@class CEPM.mt.State.Saved
@@ -36,8 +37,10 @@ function CEPM.mt.State.init(self)
     self.level_mult = 1
     self.card_state = {}
 
+
+    -- Initialize card state
     for k, _ in pairs(CEPM.cards) do
-        self.card_state[k] = self.card_state[k] or { used = 0, can_spawn = false, can_unlock = false, }
+        self.card_state[k] = self.card_state[k] or { used = 0, can_spawn = false, can_unlock = false, extra = {}, }
     end
 
     if self.saved_state then self:load() end
@@ -50,8 +53,10 @@ function CEPM.mt.State.load(self, state)
 
     -- Load state
     for k, v in pairs(self.saved_state) do self[k] = v end
+
+    -- Initialize card state
     for k, _ in pairs(CEPM.cards) do
-        self.card_state[k] = self.card_state[k] or { used = 0, can_spawn = false, can_unlock = false, }
+        self.card_state[k] = self.card_state[k] or { used = 0, can_spawn = false, can_unlock = false, extra = {}, }
     end
 
     self.saved_state = nil

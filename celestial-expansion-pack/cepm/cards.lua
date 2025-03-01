@@ -14,12 +14,14 @@ CEPM.cards = {
 }
 
 
-CEPM.cards.c_cep_luna.use = function (obj, card)
+-- USE
+
+CEPM.cards.c_cep_luna.use = function(obj, card)
     CEPM.utils.update_hand_level(CEPM.utils.get_random_hand(1) --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
-CEPM.cards.c_cep_charon.use = function (obj, card)
+CEPM.cards.c_cep_charon.use = function(obj, card)
     local hand = CEPM.utils.get_least_used_hand()
     if hand == nil then
         local hands = CEPM.utils.get_available_hands()
@@ -30,7 +32,7 @@ CEPM.cards.c_cep_charon.use = function (obj, card)
 end
 
 
-CEPM.cards.c_cep_titan.use = function (obj, card)
+CEPM.cards.c_cep_titan.use = function(obj, card)
     local hands = CEPM.utils.get_random_hand(2) --[=[@as string[]]=]
 
     for _, hand in ipairs(hands) do
@@ -40,17 +42,17 @@ CEPM.cards.c_cep_titan.use = function (obj, card)
 end
 
 
-CEPM.cards.c_cep_oberon.use = function (obj, card)
+CEPM.cards.c_cep_oberon.use = function(obj, card)
     CEPM.utils.update_hand_level(G.GAME.last_hand_played, card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
-CEPM.cards.c_cep_epsilon.use = function (obj, card)
+CEPM.cards.c_cep_epsilon.use = function(obj, card)
     CEPM.utils.update_hand_level(CEPM.utils.get_random_hand() --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
 end
 
 
-CEPM.cards.c_cep_atlas.use = function (obj, card)
+CEPM.cards.c_cep_atlas.use = function(obj, card)
     local hands = CEPM.utils.get_random_hand(3)
 
     for _, hand in ipairs(hands --[=[@as string[]]=]) do
@@ -75,7 +77,7 @@ CEPM.cards.c_cep_kepler.use = function (_, card)
 end
 
 
-CEPM.cards.c_cep_janus.use = function (obj, card)
+CEPM.cards.c_cep_janus.use = function(obj, card)
     local level = CEPM.cards[obj.key].config.level + (CEPM.state.card_state[obj.key].level_extra or 0)
 
     CEPM.utils.update_hand_level(CEPM.utils.get_random_hand(1) --[[@as string]], card, level)
@@ -84,13 +86,13 @@ CEPM.cards.c_cep_janus.use = function (obj, card)
 end
 
 
-CEPM.cards.c_cep_hyperion.use = function (obj, card)
+CEPM.cards.c_cep_hyperion.use = function(obj, card)
     CEPM.utils.update_hand_level(CEPM.utils.get_random_hand(1) --[[@as string]], card, CEPM.utils.calculate_card_level_up(obj.key))
     CEPM.state.level_mult = 2
 end
 
 
-CEPM.cards.c_cep_solaris.use = function (obj, card)
+CEPM.cards.c_cep_solaris.use = function(obj, card)
     for _, hand in ipairs(CEPM.utils.get_available_hands()) do
         CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key), CEPM.mod.config.instant_level_up)
         if not CEPM.mod.config.instant_level_up then delay(0.5) end
@@ -98,9 +100,130 @@ CEPM.cards.c_cep_solaris.use = function (obj, card)
 end
 
 
-CEPM.cards.c_cep_nova.use = function (obj, card)
+CEPM.cards.c_cep_nova.use = function(obj, card)
     for _, hand in ipairs(CEPM.utils.get_available_hands()) do
         CEPM.utils.update_hand_level(hand, card, CEPM.utils.calculate_card_level_up(obj.key), CEPM.mod.config.instant_level_up)
         if not CEPM.mod.config.instant_level_up then delay(0.5) end
     end
 end
+
+
+-- SPAWN
+
+CEPM.cards.c_cep_luna.in_pool = function(obj, _)
+    if G.GAME.round >= 15 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_charon.in_pool = function(obj, _)
+    if G.GAME.hands["High Card"].played >= 4 or G.GAME.hands["Pair"].played >= 4 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_titan.in_pool = function(obj, _)
+    if G.GAME.hands["Pair"].played >= 8 or G.GAME.hands["Two Pair"].played >= 8 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_oberon.in_pool = function(obj, _)
+    return false
+end
+
+
+CEPM.cards.c_cep_epsilon.in_pool = function(obj, _)
+    if G.GAME.hands["Two Pair"].played >= 10 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_atlas.in_pool = function(obj, _)
+    if G.GAME.hands["Three of a Kind"].played >= 6 or G.GAME.hands["Straight"].played >= 6 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_kepler.in_pool = function(obj, _)
+    if G.GAME.hands["Straight"].played_this_round >= 2 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_janus.in_pool = function(obj, _)
+    if G.GAME.hands["Straight Flush"].played >= 1 or G.GAME.hands["Straight"].played >= 8 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_hyperion.in_pool = function(obj, _)
+    return false
+end
+
+
+CEPM.cards.c_cep_pandora.in_pool = function(obj, _)
+    if G.GAME.hands["Three of a Kind"].played >= 3 and G.GAME.hands["Full House"].played >= 3 then
+        CEPM.state.card_state[obj.key].can_spawn = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_solaris.in_pool = function(obj, _)
+    if not CEPM.state.card_state[obj.key].can_spawn then
+        local played_hands = 0
+        local available_hands = CEPM.utils.get_available_hands()
+        for _, hand in ipairs(available_hands) do
+            if G.GAME.hands[hand].visible and G.GAME.hands[hand].played >= 1 then
+                played_hands = played_hands + 1
+            end
+        end
+
+        if played_hands >= 1 and played_hands == #available_hands then
+            CEPM.state.card_state[obj.key].can_spawn = true
+        end
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+
+CEPM.cards.c_cep_nova.in_pool = function(obj, _)
+    if not CEPM.state.card_state[obj.key].can_spawn then
+        local card_count = 0
+        for _, state in pairs(CEPM.state.card_state) do
+            if state.used >= 1 then card_count = card_count + 1 end
+        end
+
+        if card_count >= 11 then
+            CEPM.state.card_state[obj.key].can_spawn = true
+        end
+    end
+
+    return CEPM.state.card_state[obj.key].can_spawn
+end
+
+-- UNLOCK

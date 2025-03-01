@@ -73,6 +73,7 @@ function LTDM.mt.State.lock_item(self, card)
     -- Update LTD button
     self:update_btn_lock_price(card.ltdm_state.id)
     self.local_state[card.ltdm_state.id].button.label = localize('ltd_button_locked')
+    self.local_state[card.ltdm_state.id].button.c_label = localize('ltd_controller_locked')
 
     -- Add item to lock table
     table.insert(self.lock_list, {
@@ -95,6 +96,7 @@ end
 function LTDM.mt.State.unlock_item(self, id)
     -- Update LTD button
     self.local_state[id].button.label = localize('ltd_button_lock')
+    self.local_state[id].button.c_label = localize('ltd_controller_lock')
     self.local_state[id].locked = false
 
     -- Remove item from the lock list
@@ -196,7 +198,7 @@ function LTDM.mt.State.register(self, card, area, force_lock)
         ltdm_state = {
             id = LTDM.utils.generate_uuid(),
             no_locked = true,
-            button = { price = '$' .. 1 * self.price_mult, label = localize('ltd_button_lock'), },
+            button = { price = '$' .. 1 * self.price_mult, label = localize('ltd_button_lock'), c_label = localize('ltd_controller_lock'), },
             key = card.config.center.key,
             locked = false,
             area = area,
