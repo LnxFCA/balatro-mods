@@ -47,6 +47,17 @@ function CEPM.mt.State.init(self)
 end
 
 
+--- If `val` is `nil`, return spawn status for `key`, if not set spawn status to `val`
+---@param self CEPM.mt.State
+---@param key string
+---@param val? boolean
+function CEPM.mt.State.can_spawn(self, key, val)
+    if val ~= nil then self.card_state[key].can_spawn = val end
+
+    return self.card_state[key].can_spawn
+end
+
+
 function CEPM.mt.State.load(self, state)
     self.saved_state = state or self.saved_state
     if not self.saved_state then return end
