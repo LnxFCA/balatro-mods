@@ -227,3 +227,117 @@ CEPM.cards.c_cep_nova.in_pool = function(obj, _)
 end
 
 -- UNLOCK
+CEPM.cards.c_cep_luna.check_for_unlock = function(obj)
+    if G.GAME.round >= 15 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_charon.check_for_unlock = function(obj)
+    if G.GAME.hands["High Card"].played >= 15 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_titan = function(obj)
+    if G.GAME.hands["Pair"].played >= 3 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_oberon.check_for_unlock = function(obj)
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_epsilon.check_for_unlock = function(obj)
+    if G.GAME.round_resets.ante >= 7 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_atlas.check_for_unlock = function(obj)
+    if G.GAME.hands["Three of a Kind"].played_this_round >= 3 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_kepler.check_for_unlock = function(obj)
+    local hands = CEPM.utils.get_available_hands()
+
+    local status = true
+    for i, v in ipairs(hands) do
+        if G.GAME.hands[v].played >= 1 then
+            status = true
+        else
+            status = false
+            break
+        end
+    end
+
+    CEPM.state.card_state[obj.key].can_unlock = status
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_janus.check_for_unlock = function(obj)
+    if G.GAME.hands["Straight Flush"].played >= 3 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_hyperion.check_for_unlock = function(obj)
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_pandora.check_for_unlock = function(obj)
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_solaris.check_for_unlock = function(obj)
+    if G.GAME.round_resets.ante >= 10 then
+        CEPM.state.card_state[obj.key].can_unlock = true
+    end
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
+
+
+CEPM.cards.c_cep_nova.check_for_unlock = function(obj)
+    local state = true
+    for k, v in pairs(CEPM.state.card_state) do
+        if k ~= "c_cep_nova" then
+            if v.used >= 2 then
+                state = true
+            else
+                state = false
+                break
+            end
+        end
+    end
+
+    CEPM.state.card_state[obj.key].can_unlock = state
+
+    return CEPM.state.card_state[obj.key].can_unlock
+end
