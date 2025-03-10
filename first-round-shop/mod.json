@@ -1,0 +1,14 @@
+{
+  "id": "first-round-shop",
+  "name": "First Round Shop",
+  "author": ["LnxFCA"],
+  "display_name": "FRS",
+  "description": "",
+  "prefix": "frs",
+  "main_file": "main.lua",
+  "priority": 1,
+  "badge_colour": "0D1217",
+  "badge_text_colour": "D7D9DB",
+  "version": "1.0.0",
+  "dependencies": []
+}
