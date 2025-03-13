@@ -1,10 +1,13 @@
 FRSM = {} --[[@as FRSM]] ---@diagnostic disable-line:missing-fields
--- A tomate greet a tomato in a tomato garden, after a few hours a new tomate came and greet the tomatoes, and the
 
 function FRSM.init(self)
     self.state = {}
     self.utils = {}
     self.UIDEF = {}
+
+    -- State
+    self.state.shop_price = 0
+    self.state.ui_active = false
 
     self.mod = SMODS.current_mod --[[@as FRSM.Mod]]
     self.mod_id = self.mod.id

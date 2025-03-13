@@ -22,7 +22,7 @@ function FRSM.UIDEF.create_overlay_box(contents, args)
         nodes = {{
             n = G.UIT.C, config = { align = args.align, padding = 0.07, r = 0.3, minw = args.minw, minh = args.minh, colour = args.border_color, },
             nodes = {{
-                n = G.UIT.C, config = {
+                n = args.container or G.UIT.C, config = {
                     align = args.align, padding = args.padding, r = 0.3, minw = args.minw, minh = args.minh, colour = args.background,
                 },
                 nodes = contents,
@@ -34,6 +34,7 @@ end
 
 function FRSM.UIDEF.frsm_ui()
     local frsm_loc = localize('frsm_loc')
+    local room = { w = G.ROOM.T.w * 0.9, h = G.ROOM.T.h * 0.9 }
 
     FRSM.UIDEF.shop_jokers = CardArea(
         0, G.ROOM.T.y + 9, (G.GAME.shop.joker_max or 2) * 1.2 * G.CARD_W, 1.05 * G.CARD_H,
@@ -50,7 +51,7 @@ function FRSM.UIDEF.frsm_ui()
         { card_limit = 2, type = 'shop', highlight_limit = 0, card_w = 1.27 * G.CARD_W, }
     )
 
-    local shop_sign = AnimatedSprite(0,0, 1.6, 0.85, G.ANIMATION_ATLAS['shop_sign'])
+    local shop_sign = AnimatedSprite(0,0, room.w * 0.15, room.h * 0.12, G.ANIMATION_ATLAS['shop_sign'])
     shop_sign:define_draw_steps({
       { shader = 'dissolve', shadow_height = 0.05, },
       { shader = 'dissolve', }
@@ -58,23 +59,138 @@ function FRSM.UIDEF.frsm_ui()
 
     ---@type UIDef[]
     local main_ui = {
-        -- Title
-        { n = G.UIT.R, config = { align = "cm", padding = 0.1, }, nodes = {
-            { n = G.UIT.C, config = { align = "cm", }, nodes = {{
-                n = G.UIT.O, config = { object = DynaText({
-                    string = { frsm_loc.ui_title }, colours = { lighten(G.C.GOLD, 0.3), }, shadow = true,
-                    rotate = true, float = true, bump = true, scale = 0.6, spacing = 0.5, pop_in = 0.05,
-                })},
-            }}},
-            { n = G.UIT.C, config = { align = "cm", }, nodes = {{ n = G.UIT.O, config = { object = shop_sign, }}}},
-        }},
+        LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.5 }),
+        -- Left
+        {
+            n = G.UIT.C, config = {
+                align = "cm", padding = 0.07, colour = G.C.GREEN, r = 0.3,
+            },
+            nodes = {{
+                n = G.UIT.C, config = {
+                    align = "tm", padding = 0.1, colour = HEX("40484c"), r = 0.3, minw = room.w * 0.25, minh = room.h - 0.7,
+                    maxw = room.w * 0.25, maxh = room.h - 0.7,
+                },
+                nodes = {
+                    -- Title
+                    {
+                        n = G.UIT.R, config = {
+                            align = "cm", colour = G.C.DYN_UI.DARK, minw = room.w * 0.23, minh = room.h * 0.24, r = 0.3,
+                        },
+                        nodes = {{
+                            n = G.UIT.C, config = {
+                                align = "cm", r = 0.3, padding = 0.05,
+                            },
+                            nodes = {
+                                { n = G.UIT.R, config = { align = "cm", }, nodes = {{
+                                    n = G.UIT.O, config = { object = DynaText({
+                                        string = { frsm_loc.ui_title }, colours = { lighten(G.C.GOLD, 0.3), }, shadow = true,
+                                        rotate = true, float = true, bump = true, scale = 0.6, spacing = 0.5, pop_in = 0.05,
+                                    })},
+                                }}},
 
-        -- Content
+                                { n = G.UIT.R, config = { align = "cm", }, nodes = {{ n = G.UIT.O, config = { object = shop_sign, }}}},
+                            },
+                        }},
+                    },
+
+                    -- Price information
+                    { n = G.UIT.R, config = { align = "cm", }, nodes = {{ n = G.UIT.C, config = { align = "cm", }, nodes = {
+
+                        LNXFCA.UIDEF.create_spacing_box({ h = 0.2, }),
+
+                        -- Shop price
+                        {
+                            n = G.UIT.R, config = {
+                                align = "cl", padding = 0.1, colour = G.C.DYN_UI.DARK, r = 0.3, minw = room.w * 0.24,
+                                maxw = room.w * 0.24, emboss = 0.05,
+                            },
+                            nodes = {
+                                {
+                                    n = G.UIT.C, config = {
+                                        align = "cm", padding = 0.05, minw = room.w * 0.1, maxw = room.w * 0.1,
+                                    },
+                                    nodes = {{
+                                        n = G.UIT.T, config = { text = frsm_loc.label_shop_price, scale = 0.35, colour = G.C.UI.TEXT_LIGHT, },
+                                    }}
+                                },
+                                {
+                                    n = G.UIT.C, config = {
+                                        align = "cm", padding = 0.1, colour = G.C.L_BLACK, r = 0.3, minw = room.w * 0.13,
+                                        maxw = room.w * 0.13,
+                                    },
+                                    nodes = {{
+                                        n = G.UIT.O, config = { object = DynaText({
+                                            string = {{ prefix = localize('$'), ref_table = FRSM.state, ref_value = 'shop_price'}},
+                                            colours = { G.C.MONEY, }, scale = 0.4,
+                                        })},
+                                    }},
+                                },
+                            },
+                        },
+                        -- FRSM Price
+                        -- {},
+                    }}}},
+                },
+            }}
+        },
+
+        LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.5 }),
+        -- Right (content)
+        { n = G.UIT.C, config = { align = "cm", emboss = 0.05, }, nodes = {{
+            n = G.UIT.C, config = {
+                align = "cm", padding = 0.1, colour = G.C.DYN_UI.DARK, r = 0.3, minw = room.w * 0.65, minh = room.h - 1,
+                maxw = room.w * 0.65, maxh = room.h - 1,
+            },
+            nodes = {
+                -- Jokers
+                { n = G.UIT.R, config = { align = "cm", emboss = 0.05, }, nodes = {
+                    -- Reset all button
+                    { n = G.UIT.C, config = { align = "cm", maxw = 2, minw = 2, }, nodes = {{
+                        n = G.UIT.C, config = {
+                            align = "cm", colour = G.C.RED, r = 0.3, padding = 0.25, shadow = true, hover = true,
+                            button = 'frsm_act_reset_all',
+                        },
+                        nodes = {{
+                            n = G.UIT.T, config = { text = frsm_loc.btn_reset, scale = 0.5, colour = G.C.UI.TEXT_LIGHT, },
+                        }},
+                    }}},
+
+                    LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.6, }),
+
+                    {
+                        n = G.UIT.C, config = { align = "cm", padding = 0.2, colour = G.C.L_BLACK, minw = 8, r = 0.2, },
+                        nodes = {{ n = G.UIT.O, config = { object = FRSM.UIDEF.shop_jokers, }}},
+                    },
+                }},
+
+                LNXFCA.UIDEF.create_spacing_box({ h = 0.25, }),
+
+                { n = G.UIT.R, config = { align = "cm", emboss = 0.05, }, nodes = {
+                    -- Vouchers
+                    {
+                        n = G.UIT.C, config = { align = "cm", padding = 0.2, r = 0.2, colour = G.C.L_BLACK, emboss = 0.05, },
+                        nodes = {{
+                            n = G.UIT.C, config = {
+                                padding = 0.2, r = 0.2, colour = G.C.BLACK, maxh = FRSM.UIDEF.shop_vouchers.T.h + 0.4,
+                            },
+                            nodes = {{ n = G.UIT.O, config = { object = FRSM.UIDEF.shop_vouchers, }}},
+                        }},
+                    },
+
+                    LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.5, }),
+
+                    -- Booster Packs
+                    {
+                        n = G.UIT.C, config = { align = "cm", padding = 0.15, r = 0.2, colour = G.C.L_BLACK, emboss = 0.05, },
+                        nodes = {{ n = G.UIT.O, config = { object = FRSM.UIDEF.shop_booster, }}}
+                    },
+                }},
+            },
+        }}},
     }
 
 
     return FRSM.UIDEF.create_overlay_box(main_ui, {
-        align = "tm", padding = 0, fixed = true, minw = G.ROOM.T.w * 0.85, minh = G.ROOM.T.h * 0.85,
-        background = G.C.DYN_UI.DARK,
+        align = "cl", padding = 0, fixed = true, minw = room.w, minh = room.h, background = G.C.L_BLACK, container = G.UIT.R,
     })
 end
