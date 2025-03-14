@@ -36,17 +36,17 @@ function FRSM.UIDEF.frsm_ui()
     local frsm_loc = localize('frsm_loc')
     local room = { w = G.ROOM.T.w * 0.9, h = G.ROOM.T.h * 0.9 }
 
-    FRSM.UIDEF.shop_jokers = CardArea(
+    FRSM.UIDEF.shop_jokers = FRSM.UIDEF.CardArea(
         0, G.ROOM.T.y + 9, (G.GAME.shop.joker_max or 2) * 1.2 * G.CARD_W, 1.05 * G.CARD_H,
         { card_limit = G.GAME.shop.joker_max, type = 'shop', highlight_limit = 0, }
     )
 
-    FRSM.UIDEF.shop_vouchers = CardArea(
+    FRSM.UIDEF.shop_vouchers = FRSM.UIDEF.CardArea(
         0, G.ROOM.T.y + 9, 2.1 * G.CARD_W, 1.05 * G.CARD_H,
         { card_limit = 1, type = 'shop', highlight_limit = 0, }
     )
 
-    FRSM.UIDEF.shop_booster = CardArea(
+    FRSM.UIDEF.shop_booster = FRSM.UIDEF.CardArea(
         0, G.ROOM.T.y + 9, 2.4 * G.CARD_W, 1.15 * G.CARD_H,
         { card_limit = 2, type = 'shop', highlight_limit = 0, card_w = 1.27 * G.CARD_W, }
     )

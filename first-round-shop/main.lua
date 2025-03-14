@@ -27,6 +27,7 @@ end
 -- Load mod files
 LNXFCA.include("frsm/ui/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/ui/collection.lua")
+LNXFCA.include("frsm/cardarea.lua")
 LNXFCA.include("frsm/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/utils.lua", FRSM.mod_id)
 LNXFCA.include("frsm/callbacks.lua", FRSM.mod_id)
