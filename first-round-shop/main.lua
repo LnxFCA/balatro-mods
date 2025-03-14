@@ -6,8 +6,9 @@ function FRSM.init(self)
     self.UIDEF = {}
 
     -- State
-    self.state.shop_price = 0
     self.state.ui_active = false
+    self.state.shop_cost = 0
+    self.state.cost = 0
 
     self.mod = SMODS.current_mod --[[@as FRSM.Mod]]
     self.mod_id = self.mod.id

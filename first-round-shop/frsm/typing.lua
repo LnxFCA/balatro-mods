@@ -10,7 +10,8 @@
 
 ---@class FRSM.State
 ---@field ui_active boolean
----@field shop_price number
+---@field shop_cost number
+---@field cost number
 
 
 ---@class FRSM
@@ -21,3 +22,4 @@
 ---@field utils table<string, function>
 ---@field init fun(self: FRSM)
 ---@field activate fun(self: FRSM)
+---@field callbacks table<string, fun(e: BALATRO_T.UIElement)>

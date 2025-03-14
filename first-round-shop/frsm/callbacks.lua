@@ -17,3 +17,12 @@ function FRSM.activate(self)
 
     -- FRSM.UIDEF.shop_jokers:emplace(card)
 end
+
+--- FRSM callback handler
+--- Used to prevent namespace collision with other mods or the game itself
+---@param e BALATRO_T.UIElement
+function G.FUNCS.frsm_callback_handler(e)
+    local handler = string.sub(e.config.id, 6)
+
+    -- FRSM.callbacks[handler](e)
+end
