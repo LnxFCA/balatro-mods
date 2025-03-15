@@ -43,6 +43,26 @@
 ---@field callback fun(e: BALATRO_T.UIElement | table)? A function to execute when the button is clicked
 
 
+---@class LNXFCA.UIDEF.ButtonArgs
+---@field align? BALATRO_T.UIDef.Config.Align
+---@field col? UITEnum
+---@field padding? number
+---@field controller_control? string
+---@field content string | UIDef[]
+---@field scale? number
+---@field button string
+---@field data? any
+---@field width? number
+---@field height? number
+---@field fixed? number
+---@field background? BALATRO_T.UIDef.Config.Colour
+---@field foreground? BALATRO_T.UIDef.Config.Colour
+---@field r? number
+---@field hover? boolean
+---@field shadow? boolean
+---@field extra? table<string, any>
+
+
 ---@class LnxFCA.UIDEF
 ---@field config_create_option_box fun(contents: UIDef[]): UIDef Create a configuration option box
 ---@field config_create_option_toggle fun(args: LnxFCA.UIDEF.OptionToggleArgs): UIDef Create an option toggle (used with `config_create_option_toggle`)
@@ -52,6 +72,7 @@
 ---@field create_spacing_box fun(args: { h: number?, w: number?, col: number?, padding: number?, colour: table? }): UIDef Create a spacing box
 ---@field create_open_button fun(args: LNXFCA.UIDEF.OpenButtonArgs): UIDef Create a open link button
 ---@field create_open_button_grid fun(rows: number, args: LNXFCA.UIDEF.OpenButtonArgs[], spacing: number?): UIDef[] Create a grid of n buttons per row.
+---@field create_button fun(args: LNXFCA.UIDEF.ButtonArgs | table<string, any>): UIDef Create a button
 
 
 ---@class LnxFCA.Utils
