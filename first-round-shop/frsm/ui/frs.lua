@@ -178,28 +178,20 @@ function FRSM.UIDEF.frsm_ui()
                                     },
                                     nodes = {
                                         -- Preset select
-                                        {
-                                            n = G.UIT.C, config = {
-                                                id = 'frsm_preset_select', align = "cm", padding = 0.2, colour = G.C.RED, r = 0.3,
-                                                hover = true, button = 'frsm_callback_handler', minw = room.w * 0.08, maxw = room.w * 0.08,
-                                            },
-                                            nodes = {{
-                                                n = G.UIT.T, config = { text = frsm_loc.btn_preset_select, scale = 0.35, colour = G.C.UI.TEXT_LIGHT, },
-                                            }},
-                                        },
+                                        LNXFCA.UIDEF.create_button({
+                                            background = G.C.RED, button = 'frsm_callback_handler', width = room.w * 0.08,
+                                            fixed = true, content = frsm_loc.btn_preset_select, scale = 0.35, shadow = false,
+                                            extra = { id = 'frsm_preset_select', },
+                                        }),
 
                                         LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.15, }),
 
                                         -- Preset new
-                                        {
-                                            n = G.UIT.C, config = {
-                                                id = 'frsm_preset_new', align = "cm", padding = 0.2, colour = G.C.GREEN, r = 0.3,
-                                                hover = true, button = 'frsm_callback_handler', minw = room.w * 0.08, maxw = room.w * 0.08,
-                                            },
-                                            nodes = {{
-                                                n = G.UIT.T, config = { text = frsm_loc.btn_preset_new, scale = 0.35, colour = G.C.UI.TEXT_LIGHT, },
-                                            }},
-                                        },
+                                        LNXFCA.UIDEF.create_button({
+                                            background = G.C.GREEN, button = 'frsm_callback_handler', width = room.w * 0.08,
+                                            fixed = true, content = frsm_loc.btn_preset_new, scale = 0.35, shadow = false,
+                                            extra = { id = 'frsm_preset_new', },
+                                        }),
                                     },
                                 },
                             }}},
@@ -208,27 +200,21 @@ function FRSM.UIDEF.frsm_ui()
                         LNXFCA.UIDEF.create_spacing_box({ h = 0.6, }),
 
                         -- Save
-                        { n = G.UIT.R, config = { align = "cm", padding = 0.1, }, nodes = {{
-                            n = G.UIT.C, config = {
-                                id = 'frsm_save', align = "cm", padding = 0.2, minw = room.w * 0.15, maxw = room.w * 0.15,
-                                hover = true, r = 0.3, shadow = true, button = 'frsm_callback_handler', colour = G.C.BLUE,
-                            },
-                            nodes = {{
-                                n = G.UIT.T, config = { text = frsm_loc.btn_save, scale = 0.35, colour = G.C.UI.TEXT_LIGHT, },
-                            }},
-                        }}},
+                        { n = G.UIT.R, config = { align = "cm", padding = 0.1, }, nodes = {
+                            LNXFCA.UIDEF.create_button({
+                                width = room.w * 0.15, fixed = true, content = frsm_loc.btn_save, scale = 0.35,
+                                button = 'frsm_callback_handler', extra = { id = 'frsm_save', },
+                            }),
+                        }},
 
 
                         -- Exit
-                        { n = G.UIT.R, config = { align = "cm", padding = 0.1, }, nodes = {{
-                            n = G.UIT.C, config = {
-                                id = 'frsm_exit', align = "cm", padding = 0.2, minw = room.w * 0.15, maxw = room.w * 0.15,
-                                hover = true, r = 0.3, shadow = true, button = 'frsm_callback_handler', colour = G.C.RED,
-                            },
-                            nodes = {{
-                                n = G.UIT.T, config = { text = frsm_loc.btn_exit, scale = 0.35, colour = G.C.UI.TEXT_LIGHT, },
-                            }},
-                        }}},
+                        { n = G.UIT.R, config = { align = "cm", padding = 0.1, }, nodes = {
+                            LNXFCA.UIDEF.create_button({
+                                background = G.C.RED, width = room.w * 0.15, fixed = true, content = frsm_loc.btn_exit,
+                                scale = 0.35, button = 'frsm_callback_handler', extra = { id = 'frsm_exit', },
+                            }),
+                        }},
                     }}}},
                 },
             }}
@@ -247,28 +233,18 @@ function FRSM.UIDEF.frsm_ui()
                     -- Action buttons
                     { n = G.UIT.C, config = { align = "cm", minw = room.w * 0.12, maxw = room.w * 0.12, }, nodes = {
                         -- Random
-                        {
-                            n = G.UIT.R, config = {
-                                id = 'frsm_random', align = "cm", colour = G.C.ORANGE, r = 0.3, padding = 0.2, shadow = true,
-                                hover = true, button = 'frsm_callback_handler', minw = room.w * 0.11, maxw = room.w * 0.11,
-                            },
-                            nodes = {{
-                                n = G.UIT.T, config = { text = frsm_loc.btn_random, scale = 0.4, colour = G.C.UI.TEXT_LIGHT, },
-                            }},
-                        },
+                        LNXFCA.UIDEF.create_button({
+                            col = G.UIT.R, background = G.C.ORANGE, width = room.w * 0.11, fixed = true, scale = 0.4,
+                            button = 'frsm_callback_handler', content = frsm_loc.btn_random, extra = { id = 'frsm_random', },
+                        }),
 
                         LNXFCA.UIDEF.create_spacing_box({ h = 0.3, }),
 
                         -- Reset All
-                        {
-                            n = G.UIT.R, config = {
-                                id = 'frsm_reset_all', align = "cm", colour = G.C.RED, r = 0.3, padding = 0.2, shadow = true,
-                                hover = true, button = 'frsm_callback_handler', minw = room.w * 0.11, maxw = room.w * 0.11,
-                            },
-                            nodes = {{
-                                n = G.UIT.T, config = { text = frsm_loc.btn_reset, scale = 0.4, colour = G.C.UI.TEXT_LIGHT, },
-                            }},
-                        },
+                        LNXFCA.UIDEF.create_button({
+                            col = G.UIT.R, background = G.C.RED, content = frsm_loc.btn_reset, scale = 0.4, fixed = true,
+                            width = room.w  * 0.11, button = 'frsm_callback_handler', extra = { id = 'frsm_reset_all', },
+                        }),
                     }},
 
                     LNXFCA.UIDEF.create_spacing_box({ col = G.UIT.C, w = 0.6, }),
