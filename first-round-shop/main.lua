@@ -4,6 +4,7 @@ function FRSM.init(self)
     self.state = {}
     self.utils = {}
     self.UIDEF = {}
+    self.callbacks = {}
 
     -- State
     self.state.ui_active = false
@@ -28,10 +29,16 @@ end
 LNXFCA.include("frsm/ui/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/ui/collection.lua")
 LNXFCA.include("frsm/cardarea.lua")
+LNXFCA.include("frsm/ui/card.lua")
+LNXFCA.include("frsm/card.lua")
 LNXFCA.include("frsm/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/utils.lua", FRSM.mod_id)
 LNXFCA.include("frsm/callbacks.lua", FRSM.mod_id)
 LNXFCA.include("frsm/overrides.lua", FRSM.mod_id)
+
+
+-- Load atlas
+SMODS.Atlas({ key = 'frsm_empty_card', path = 'frsm_empty_card.png', px = 71, py = 95, })
 
 
 SMODS.Keybind({
