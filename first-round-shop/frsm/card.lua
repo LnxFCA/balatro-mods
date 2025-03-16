@@ -1,4 +1,4 @@
-FRSM.UIDEF.EmptyCard = Moveable:extend()
+FRSM.UIDEF.EmptyCard = Card:extend()
 
 FRSM.UIDEF.EmptyCard.P_CENTER = {
     empty_joker = {
@@ -30,6 +30,7 @@ function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
     self.states.hover.can = true
     self.states.drag.can = false
     self.states.click.can = true
+    self.created_on_pause = false
 
     self.children = {}
     self.cost = 0
@@ -107,7 +108,6 @@ function FRSM.UIDEF.EmptyCard.set_sprites(self, _center, _front)
                 self.children.center.atlas = G.ASSET_ATLAS['frs_frsm_empty_card']
                 self.children.center:set_sprite_pos(_center.pos)
             else
-                print("Here..")
                 self.children.center = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, G.ASSET_ATLAS['frs_frsm_empty_card'], self.config.center.pos)
 
                 self.children.center.states.hover = self.states.hover
@@ -190,8 +190,22 @@ end
 function FRSM.UIDEF.EmptyCard.click(self) FRSM.callbacks.open_card_selector(self.config.center.set) end
 
 
+function FRSM.UIDEF.EmptyCard.update(self, _)
+    if not self.states.focus.is and self.children.focused_ui then
+        self.children.focused_ui:remove()
+        self.children.focused_ui = nil
+    end
+end
+
+
 FRSM.UIDEF.EmptyCard.set_card_area = Card.set_card_area
 FRSM.UIDEF.EmptyCard.juice_up = Card.juice_up
 FRSM.UIDEF.EmptyCard.stop_hover = Card.stop_hover
 FRSM.UIDEF.EmptyCard.set_cost = Card.set_cost
 FRSM.UIDEF.EmptyCard.highlight = Card.highlight
+FRSM.UIDEF.EmptyCard.remove = Card.remove
+FRSM.UIDEF.EmptyCard.align = Card.align
+FRSM.UIDEF.EmptyCard.remove_from_area = Card.remove_from_area
+FRSM.UIDEF.EmptyCard.get_id = Card.get_id
+FRSM.UIDEF.EmptyCard.remove_UI = Card.remove_UI
+FRSM.UIDEF.EmptyCard.remove_from_deck = Card.remove_from_deck
