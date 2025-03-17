@@ -22,7 +22,7 @@
 ---@field utils table<string, function>
 ---@field init fun(self: FRSM)
 ---@field activate fun(self: FRSM)
----@field callbacks table<string, fun(e: BALATRO_T.UIElement)>
+---@field callbacks table<string, function>
 ---@field overrides table<string, function>
 
 
