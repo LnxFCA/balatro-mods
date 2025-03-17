@@ -23,3 +23,8 @@
 ---@field init fun(self: FRSM)
 ---@field activate fun(self: FRSM)
 ---@field callbacks table<string, fun(e: BALATRO_T.UIElement)>
+---@field overrides table<string, function>
+
+
+---@class FRSM.Card : BALATRO_T.Card
+---@field ability_UIBox_table table<string, any>

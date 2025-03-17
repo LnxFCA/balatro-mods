@@ -1,4 +1,35 @@
 return {
+    descriptions = {
+        Joker = {
+            j_frs_empty_joker = {
+                name = "Empty Joker Slot",
+                text = {
+                    "Click (or press {C:green}A{}) to",
+                    "add a Joker to this slot",
+                },
+            },
+        },
+        Voucher = {
+            v_frs_empty_voucher = {
+                name = "Empty Voucher Slot",
+                text = {
+                    "Click (or press {C:green}A{}) to add",
+                    "a {C:voucher}Voucher{} to this slot",
+                },
+            },
+        },
+
+        Other = {
+            p_frs_empty_pack = {
+                name = "Empty Pack Slot",
+                text = {
+                    "Click (or press {C:green}A{}) to",
+                    "add a Pack to this slot",
+                },
+            },
+        },
+    },
+
     misc = {
         dictionary = {
             frsm_loc = {

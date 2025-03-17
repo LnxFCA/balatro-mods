@@ -1,101 +1,46 @@
-FRSM.UIDEF.EmptyCard = Card:extend()
+---@diagnostic disable:duplicate-set-field
 
-FRSM.UIDEF.EmptyCard.P_CENTER = {
+
+FRSM.overrides.card = {}
+FRSM.UIDEF.P_CENTERS = {
     empty_joker = {
-        unlocked = true, discoverd = true, cost = 0, name = "Empty Joker", pos = { x = 0, y = 0 }, set = "Joker",
-        config = {}, key = "empty_joker",
+        unlocked = true, discovered = true, cost = 0, name = "Empty Joker", pos = { x = 0, y = 0 }, set = "Joker",
+        config = {}, key = "j_frs_empty_joker", order = 1, rarity = 1, alerted = true, frsm_empty_card = true,
     },
     empty_voucher = {
-        unlocked = true, discoverd = true, cost = 0, name = "Empty Voucher", pos = { x = 1, y = 0 }, set = "Voucher",
-        config = {}, key = "empty_voucher",
+        unlocked = true, discovered = true, cost = 0, name = "Empty Voucher", pos = { x = 1, y = 0 }, set = "Voucher",
+        config = {}, key = "v_frs_empty_voucher", order = 2, rarity = 1, alerted = true, frsm_empty_card = true,
     },
 
     empty_pack = {
-        unlocked = true, discoverd = true, cost = 0, name = "Empty Pack", pos = { x = 2, y = 0 }, set = "Booster",
-        config = {}, key = "empty_pack",
+        unlocked = true, discovered = true, cost = 0, name = "Empty Pack", pos = { x = 2, y = 0 }, set = "Booster",
+        config = {}, key = "p_frs_empty_pack", order = 3, rarity = 1, alerted = true, frsm_empty_card = true,
+        weight = 1, kind = "Empty",
     },
 }
 
 
-function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
-    self.params = {}
-    Moveable.init(self, X, Y, W, H)
+FRSM.overrides.card.init = Card.init
+function Card.init(self, X, Y, W, H, card, center, params)
+    FRSM.overrides.card.init(self, X, Y, W, H, card, center, params)
 
-    self.CT = self.VT
-    self.config = { card = {}, center = center, }
-
-    self.tilt_var = {mx = 0, my = 0, dx = 0, dy = 0, amt = 0}
-    self.ambient_tilt = 0.2
-
-    self.states.collide.can = true
-    self.states.hover.can = true
-    self.states.drag.can = false
-    self.states.click.can = true
-
-    self.children = {}
-    self.cost = 0
-    self.base_cost = 0
-
-    self.children.shadow = Moveable(0, 0, 0, 0)
-    self.unique_val = 1-self.ID / 1603301
-    self.edition = nil
-    self.zoom = true
-
-    self:set_ability(center, false)
-    self:set_base(self.config.card, true)
-
-    self.facing = 'front'
-    self.sprite_facing = 'front'
-    self.flipping = nil
-    self.area = nil
-    self.highlighted = false
-    self.click_timeout = 0.3
-    self.T.scale = 0.95
-    self.debuff = false
-
-    self.rank = nil
-    self.added_to_deck = nil
-
-    if self.children.front then self.children.front.VT.w = 0 end
-    self.children.back.VT.w = 0
-    self.children.center.VT.w = 0
-
-    if self.children.front then self.children.front.parent = self; self.children.front.layered_parallax = nil end
-    self.children.back.parent = self; self.children.back.layered_parallax = nil
-    self.children.center.parent = self; self.children.center.layered_parallax = nil
-
-    self:set_cost()
-
-    if getmetatable(self) == Card then 
-        table.insert(G.I.CARD, self)
+    -- Remove card from game context
+    if center.frsm_empty_card then
+        for i, v in ipairs(G.I.CARD or {}) do if self == v then table.remove(G.I.CARD, i) end end
     end
 end
 
 
-function FRSM.UIDEF.EmptyCard.set_ability(self, center, delay_sprites)
-    self.config.center = center
-    self.sticker_run = nil
-    self.ability = {
-        name = self.config.center.name,
-        set = self.config.center.set,
-        consumable = self.config.center.set == "Booster"
-    }
+FRSM.overrides.card.set_sprites = Card.set_sprites
+function Card.set_sprites(self, _center, _front)
+    -- Override empty card sprites
+    if not self.config.center.frsm_empty_card then
+        FRSM.overrides.card.set_sprites(self, _center, _front)
 
-    if delay_sprites then
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                if not self.REMOVED then self:set_sprites(center) end
-
-                return true
-            end
-        }))
-    else
-        self:set_sprites(center)
+        return
     end
-end
 
 
-function FRSM.UIDEF.EmptyCard.set_sprites(self, _center, _front)
     if _front then
         local _atlas, _pos = get_front_spriteinfo(_front)
         if self.children.front then
@@ -123,7 +68,7 @@ function FRSM.UIDEF.EmptyCard.set_sprites(self, _center, _front)
                 self.children.center.states.click = self.states.click
                 self.children.center.states.drag = self.states.drag
                 self.children.center.states.collide.can = false
-                self.children.center:set_role({major = self, role_type = 'Glued', draw_major = self})
+                self.children.center:set_role({ major = self, role_type = 'Glued', draw_major = self })
             end
         end
 
@@ -139,19 +84,14 @@ function FRSM.UIDEF.EmptyCard.set_sprites(self, _center, _front)
 end
 
 
-function FRSM.UIDEF.EmptyCard.set_base(self, card, _)
-    card = card or {}
-    self.config.card = card
+FRSM.overrides.card.draw = Card.draw
+function Card.draw(self, layer)
+    if not self.config.center.frsm_empty_card then
+        FRSM.overrides.card.draw(self, layer)
 
-    if next(card) then self:set_sprites(nil, card) end
+        return
+    end
 
-    self.base = {
-        name = self.config.card.name,
-    }
-end
-
-
-function FRSM.UIDEF.EmptyCard.draw(self, layer)
     layer = layer or 'both'
     self.hover_tilt = 0
 
@@ -180,44 +120,28 @@ function FRSM.UIDEF.EmptyCard.draw(self, layer)
 end
 
 
-function FRSM.UIDEF.EmptyCard.hover(self)
+FRSM.overrides.card.hover = Card.hover
+function Card.hover(self)
+    if not self.config.center.frsm_empty_card then
+        FRSM.overrides.card.hover(self)
+
+        return
+    end
+
     self:juice_up(0.05, 0.03)
+    play_sound('paper1', math.random() * 0.2 + 0.9, 0.35)
 
 
-    --if this is the focused card
+    -- If this is the focused card
     if self.states.focus.is and not self.children.focused_ui then
         self.children.focused_ui = G.UIDEF.card_focus_ui(self)
     end
 
     if self.facing == 'front' and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then
-        self.ability_UIBox_table = nil
-        self.config.h_popup = nil
-        self.config.h_popup_config = nil
+        self.ability_UIBox_table = FRSM.UIDEF.empty_card_h_popup_ui_table(self.config.center)
+        self.config.h_popup = FRSM.UIDEF.empty_card_h_popup(self)
+        self.config.h_popup_config = self:align_h_popup()
 
         Node.hover(self)
     end
 end
-
-
-function FRSM.UIDEF.EmptyCard.click(self) FRSM.callbacks.open_card_selector(self.config.center.set) end
-
-
-function FRSM.UIDEF.EmptyCard.update(self, _)
-    if not self.states.focus.is and self.children.focused_ui then
-        self.children.focused_ui:remove()
-        self.children.focused_ui = nil
-    end
-end
-
-
-FRSM.UIDEF.EmptyCard.set_card_area = Card.set_card_area
-FRSM.UIDEF.EmptyCard.juice_up = Card.juice_up
-FRSM.UIDEF.EmptyCard.stop_hover = Card.stop_hover
-FRSM.UIDEF.EmptyCard.set_cost = Card.set_cost
-FRSM.UIDEF.EmptyCard.highlight = Card.highlight
-FRSM.UIDEF.EmptyCard.remove = Card.remove
-FRSM.UIDEF.EmptyCard.align = Card.align
-FRSM.UIDEF.EmptyCard.remove_from_area = Card.remove_from_area
-FRSM.UIDEF.EmptyCard.get_id = Card.get_id
-FRSM.UIDEF.EmptyCard.remove_UI = Card.remove_UI
-FRSM.UIDEF.EmptyCard.remove_from_deck = Card.remove_from_deck

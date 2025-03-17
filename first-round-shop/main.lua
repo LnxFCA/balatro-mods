@@ -5,6 +5,7 @@ function FRSM.init(self)
     self.utils = {}
     self.UIDEF = {}
     self.callbacks = {}
+    self.overrides = {}
 
     -- State
     self.state.ui_active = false

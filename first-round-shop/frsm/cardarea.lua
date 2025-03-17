@@ -6,7 +6,7 @@ FRSM.UIDEF.CardArea = CardArea:extend()
 function FRSM.UIDEF.CardArea.can_highlight(self, card)
     local ckey = card.config.center.key
 
-    if ckey == 'empty_joker' or ckey == 'empty_voucher' or ckey == 'empty_pack' then return false end
+    if ckey == 'j_frs_empty_joker' or ckey == 'v_frs_empty_voucher' or ckey == 'p_frs_empty_pack' then return false end
 
     return CardArea.can_highlight(self, card)
 end
