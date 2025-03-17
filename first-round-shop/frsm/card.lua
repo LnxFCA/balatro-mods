@@ -3,21 +3,22 @@ FRSM.UIDEF.EmptyCard = Card:extend()
 FRSM.UIDEF.EmptyCard.P_CENTER = {
     empty_joker = {
         unlocked = true, discoverd = true, cost = 0, name = "Empty Joker", pos = { x = 0, y = 0 }, set = "Joker",
-        config = {},
+        config = {}, key = "empty_joker",
     },
     empty_voucher = {
         unlocked = true, discoverd = true, cost = 0, name = "Empty Voucher", pos = { x = 1, y = 0 }, set = "Voucher",
-        config = {},
+        config = {}, key = "empty_voucher",
     },
 
     empty_pack = {
         unlocked = true, discoverd = true, cost = 0, name = "Empty Pack", pos = { x = 2, y = 0 }, set = "Booster",
-        config = {},
+        config = {}, key = "empty_pack",
     },
 }
 
 
 function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
+    self.params = {}
     Moveable.init(self, X, Y, W, H)
 
     self.CT = self.VT
@@ -30,7 +31,6 @@ function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
     self.states.hover.can = true
     self.states.drag.can = false
     self.states.click.can = true
-    self.created_on_pause = false
 
     self.children = {}
     self.cost = 0
@@ -39,6 +39,7 @@ function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
     self.children.shadow = Moveable(0, 0, 0, 0)
     self.unique_val = 1-self.ID / 1603301
     self.edition = nil
+    self.zoom = true
 
     self:set_ability(center, false)
     self:set_base(self.config.card, true)
@@ -64,13 +65,21 @@ function FRSM.UIDEF.EmptyCard.init(self, X, Y, W, H, center)
     self.children.center.parent = self; self.children.center.layered_parallax = nil
 
     self:set_cost()
+
+    if getmetatable(self) == Card then 
+        table.insert(G.I.CARD, self)
+    end
 end
 
 
 function FRSM.UIDEF.EmptyCard.set_ability(self, center, delay_sprites)
     self.config.center = center
     self.sticker_run = nil
-    self.ability = {}
+    self.ability = {
+        name = self.config.center.name,
+        set = self.config.center.set,
+        consumable = self.config.center.set == "Booster"
+    }
 
     if delay_sprites then
         G.E_MANAGER:add_event(Event({
@@ -108,7 +117,7 @@ function FRSM.UIDEF.EmptyCard.set_sprites(self, _center, _front)
                 self.children.center.atlas = G.ASSET_ATLAS['frs_frsm_empty_card']
                 self.children.center:set_sprite_pos(_center.pos)
             else
-                self.children.center = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, G.ASSET_ATLAS['frs_frsm_empty_card'], self.config.center.pos)
+                self.children.center = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, _center.atlas or G.ASSET_ATLAS['frs_frsm_empty_card'], _center.pos)
 
                 self.children.center.states.hover = self.states.hover
                 self.children.center.states.click = self.states.click
@@ -145,11 +154,13 @@ end
 function FRSM.UIDEF.EmptyCard.draw(self, layer)
     layer = layer or 'both'
     self.hover_tilt = 0
-    if layer == 'shadow' then return end
 
+    if not self.states.visible then return end
+    if layer == 'shadow' then return end
     if layer ~= 'card' and layer ~= 'both' then return end
 
     if self.children.focused_ui then self.children.focused_ui:draw() end
+
     self.tilt_var = self.tilt_var or {mx = 0, my = 0, dx = self.tilt_var.dx or 0, dy = self.tilt_var.dy or 0, amt = 0}
 
     -- Draw buttons
@@ -179,8 +190,9 @@ function FRSM.UIDEF.EmptyCard.hover(self)
     end
 
     if self.facing == 'front' and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then
-        -- self.config.h_popup = G.UIDEF.card_h_popup(self)
-        -- self.config.h_popup_config = self:align_h_popup()
+        self.ability_UIBox_table = nil
+        self.config.h_popup = nil
+        self.config.h_popup_config = nil
 
         Node.hover(self)
     end
