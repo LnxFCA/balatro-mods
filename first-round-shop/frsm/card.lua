@@ -40,47 +40,10 @@ function Card.set_sprites(self, _center, _front)
         return
     end
 
-
-    if _front then
-        local _atlas, _pos = get_front_spriteinfo(_front)
-        if self.children.front then
-            self.children.front.atlas = _atlas
-            self.children.front:set_sprite_pos(_pos)
-        else
-            self.children.front = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, _atlas, _pos)
-            self.children.front.states.hover = self.states.hover
-            self.children.front.states.click = self.states.click
-            self.children.front.states.drag = self.states.drag
-            self.children.front.states.collide.can = false
-            self.children.front:set_role({major = self, role_type = 'Glued', draw_major = self})
-        end
-    end
-
-    if _center then
-        if _center.set then
-            if self.children.center then
-                self.children.center.atlas = G.ASSET_ATLAS['frs_frsm_empty_card']
-                self.children.center:set_sprite_pos(_center.pos)
-            else
-                self.children.center = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, _center.atlas or G.ASSET_ATLAS['frs_frsm_empty_card'], _center.pos)
-
-                self.children.center.states.hover = self.states.hover
-                self.children.center.states.click = self.states.click
-                self.children.center.states.drag = self.states.drag
-                self.children.center.states.collide.can = false
-                self.children.center:set_role({ major = self, role_type = 'Glued', draw_major = self })
-            end
-        end
-
-        if not self.children.back then
-            self.children.back = Sprite(self.T.x, self.T.y, self.T.w, self.T.h, G.ASSET_ATLAS["centers"], G.P_CENTERS['b_red'].pos)
-            self.children.back.states.hover = self.states.hover
-            self.children.back.states.click = self.states.click
-            self.children.back.states.drag = self.states.drag
-            self.children.back.states.collide.can = false
-            self.children.back:set_role({major = self, role_type = 'Glued', draw_major = self})
-        end
-    end
+    -- Draw empty card slot sprite
+    FRSM.overrides.card.set_sprites(
+        self, { set = "Empty", atlas = 'frs_frsm_empty_card', pos = _center.pos, } --[[@as any]], _front
+    )
 end
 
 
@@ -92,24 +55,29 @@ function Card.draw(self, layer)
         return
     end
 
+    -- Empty card draw
+
     layer = layer or 'both'
     self.hover_tilt = 0
 
+    -- Draw only card/both layers
     if not self.states.visible then return end
     if layer == 'shadow' then return end
     if layer ~= 'card' and layer ~= 'both' then return end
 
+    -- Draw controller support UI
     if self.children.focused_ui then self.children.focused_ui:draw() end
 
+    -- Disable hover tilt
     self.tilt_var = self.tilt_var or {mx = 0, my = 0, dx = self.tilt_var.dx or 0, dy = self.tilt_var.dy or 0, amt = 0}
 
     -- Draw buttons
 
-    -- Draw front
+    -- Draw center and front
     self.children.center:draw_shader('dissolve')
     if self.children.front then self.children.front:draw_shader('dissolve') end
 
-    -- Draw children
+    -- Draw childrens
     for k, v in pairs(self.children) do
         if k ~= 'focused_ui' and k ~= "front" and k ~= "back" and k ~= "center" and k~= "shadow" and k ~= 'price' and k ~= 'h_popup' then v:draw() end
     end
@@ -122,6 +90,9 @@ end
 
 FRSM.overrides.card.hover = Card.hover
 function Card.hover(self)
+    -- TODO: Allow specifying a custom focused_ui for all cards,
+    -- but only for supported card areas or cards.
+
     if not self.config.center.frsm_empty_card then
         FRSM.overrides.card.hover(self)
 
@@ -137,6 +108,7 @@ function Card.hover(self)
         self.children.focused_ui = G.UIDEF.card_focus_ui(self)
     end
 
+    -- Set the focused/hover h_popup
     if self.facing == 'front' and (not self.states.drag.is or G.CONTROLLER.HID.touch) and not self.no_ui and not G.debug_tooltip_toggle then
         self.ability_UIBox_table = FRSM.UIDEF.empty_card_h_popup_ui_table(self.config.center)
         self.config.h_popup = FRSM.UIDEF.empty_card_h_popup(self)
