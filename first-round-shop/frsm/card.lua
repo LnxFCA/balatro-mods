@@ -71,8 +71,6 @@ function Card.draw(self, layer)
     -- Disable hover tilt
     self.tilt_var = self.tilt_var or {mx = 0, my = 0, dx = self.tilt_var.dx or 0, dy = self.tilt_var.dy or 0, amt = 0}
 
-    -- Draw buttons
-
     -- Draw center and front
     self.children.center:draw_shader('dissolve')
     if self.children.front then self.children.front:draw_shader('dissolve') end
@@ -115,5 +113,14 @@ function Card.hover(self)
         self.config.h_popup_config = self:align_h_popup()
 
         Node.hover(self)
+    end
+end
+
+FRSM.overrides.card.click = Card.click
+function Card.click(self)
+    if not self.config.center.frsm_empty_card then
+        FRSM.overrides.card.click(self)
+
+        return
     end
 end
