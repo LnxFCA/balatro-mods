@@ -1,16 +1,14 @@
 FRSM = {} --[[@as FRSM]] ---@diagnostic disable-line:missing-fields
 
 function FRSM.init(self)
-    self.state = {}
     self.utils = {}
     self.UIDEF = {}
     self.callbacks = {}
     self.overrides = {}
+    self.mt = {}
 
     -- State
-    self.state.ui_active = false
-    self.state.shop_cost = 0
-    self.state.cost = 0
+    self.state = FRSM.mt.State:new()
 
     self.mod = SMODS.current_mod --[[@as FRSM.Mod]]
     self.mod_id = self.mod.id
