@@ -74,6 +74,9 @@
 ---@field create_open_button fun(args: LNXFCA.UIDEF.OpenButtonArgs): UIDef Create a open link button
 ---@field create_open_button_grid fun(rows: number, args: LNXFCA.UIDEF.OpenButtonArgs[], spacing: number?): UIDef[] Create a grid of n buttons per row.
 ---@field create_button fun(args: LNXFCA.UIDEF.ButtonArgs): UIDef Create a button
+---@field generate_collection fun(pool: table[], rows: table, args: table)
+---@field create_collection_box fun(args: table): UIDef
+---@field collection table
 
 
 ---@class LnxFCA.Utils
@@ -82,11 +85,16 @@
 ---@field open_link fun(link: string): boolean? Open a link with (uses `love.system.openURL`)
 
 
+---@class LnxFCA.Callbacks
+---@field update_collection_page fun(args: table)
+
+
 ---@class LnxFCA
 ---@field UIDEF LnxFCA.UIDEF
 ---@field is_mod boolean `true` if initialized as standalone
 ---@field utils LnxFCA.Utils Common functions used by other mods
 ---@field include fun(path: string, mod_id: string?) Load a file in the current context
+---@field callbacks LnxFCA.Callbacks
 LNXFCA = {}
 
 --- Initialize the API
