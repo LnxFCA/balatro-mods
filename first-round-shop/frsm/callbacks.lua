@@ -47,15 +47,15 @@ end
 ---@param e BALATRO_T.UIElement | table
 function G.FUNCS.frsm_callback_handler(e)
     local handler = nil
+    local callback = nil
 
     -- Handle option cycle
     if e.cycle_config then
-        handler = 'update_selection_page'
+        callback = LNXFCA.callbacks.update_collection_page(e)
     else
         handler = string.sub(e.config.id, 6)
     end
 
-
-    local callback = FRSM.callbacks[handler](e)
-    if callback then callback() end
+    if handler then callback = LNXFCA.callbacks[handler] end
+    if callback then callback(e) end
 end
