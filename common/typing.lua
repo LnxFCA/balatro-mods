@@ -54,12 +54,13 @@
 ---@field data? any
 ---@field width? number
 ---@field height? number
----@field fixed? number
+---@field fixed? boolean
 ---@field background? BALATRO_T.UIDef.Config.Colour
 ---@field foreground? BALATRO_T.UIDef.Config.Colour
 ---@field r? number
 ---@field hover? boolean
 ---@field shadow? boolean
+---@field focus_args? table
 ---@field extra? table<string, any>
 
 
@@ -72,7 +73,7 @@
 ---@field create_spacing_box fun(args: { h: number?, w: number?, col: number?, padding: number?, colour: table? }): UIDef Create a spacing box
 ---@field create_open_button fun(args: LNXFCA.UIDEF.OpenButtonArgs): UIDef Create a open link button
 ---@field create_open_button_grid fun(rows: number, args: LNXFCA.UIDEF.OpenButtonArgs[], spacing: number?): UIDef[] Create a grid of n buttons per row.
----@field create_button fun(args: LNXFCA.UIDEF.ButtonArgs | table<string, any>): UIDef Create a button
+---@field create_button fun(args: LNXFCA.UIDEF.ButtonArgs): UIDef Create a button
 
 
 ---@class LnxFCA.Utils

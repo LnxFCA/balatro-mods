@@ -64,6 +64,9 @@ function LNXFCA.UIDEF.create_button(args)
     -- booleans
     args.shadow = (args.shadow == nil and true) or args.shadow
     args.hover = (args.hover == nil and true) or args.hover
+    args.focus_args = args.controller_control and {
+        type = 'none', button = args.controller_control, scale = 0.55, orientation = 'tli',
+    }
 
     ---@type UIDef
     local button = {
@@ -71,8 +74,9 @@ function LNXFCA.UIDEF.create_button(args)
             align = args.align or "cm", padding = args.padding or 0.2, r = args.r or 0.3, colour = args.background or G.C.BLUE,
             shadow = args.shadow, hover = args.hover, button = args.button, ref_table = args.data, minw = args.width,
             minh = args.height, maxw = (args.fixed and args.width) or nil, maxh = (args.fixed and args.width) or nil,
+            focus_args = args.focus_args, func = args.controller_control and 'set_button_pip',
         },
-        nodes = (type(args.content) == 'table' and args.content) or {{
+        nodes = (type(args.content) == 'table' and args.content --[=[@as UIDef[]]=]) or {{
             n = G.UIT.T, config = { text = args.content, scale = args.scale, colour = args.foreground or G.C.UI.TEXT_LIGHT, },
         }},
     }
