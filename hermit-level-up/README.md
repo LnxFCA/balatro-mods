@@ -20,7 +20,7 @@ Each time **The Hermit** is used, its level increases by 1 (starting at level 1)
 ![Hermit Overview](https://raw.githubusercontent.com/LnxFCA/balatro-mods/refs/heads/main/hermit-level-up/images/hlu_overview.png)
 *Figure 1: Hermit Level Up Overview*
 
-Each level adds **+5** to the base money cap (starting at **$20**).
+Each level adds **+10** to the base money cap (starting at **$20**).
 
 ![Hermit Level Up](https://raw.githubusercontent.com/LnxFCA/balatro-mods/refs/heads/main/hermit-level-up/images/hlu_levelup.png)
 *Figure 2: Hermit Level Up in Action*
