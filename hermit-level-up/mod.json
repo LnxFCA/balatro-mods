@@ -3,7 +3,7 @@
   "name": "Hermit Level Up",
   "author": ["LnxFCA"],
   "display_name": "HLU",
-  "description": "Itroduces a level system for Hermit cards, increasing their money cap with each use.",
+  "description": "Introduces a level system for The Hermit, increasing its money cap with each level.",
   "prefix": "hlu",
   "main_file": "main.lua",
   "priority": -5,
