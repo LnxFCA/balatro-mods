@@ -9,7 +9,7 @@
 ---@field state HLUM.State.Saved
 
 
----@class HLUM.Mod : Mod
+---@class HLUM.Mod : SMODS_T.Mod
 ---@field config HLUM.Config
 
 

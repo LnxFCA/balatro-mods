@@ -11,4 +11,16 @@ return {
             },
         },
     },
+
+    misc = {
+        dictionary = {
+            hlum_loc = {
+                about_label = "About",
+                mod_description = {
+                    "A Balatro mod that lets The Hermit level up,",
+                    "increasing its money cap with each use."
+                },
+            },
+        },
+    },
 }
