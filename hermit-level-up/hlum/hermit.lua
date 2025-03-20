@@ -50,12 +50,15 @@ end
 
 
 --- Hermit loc_vars
+--- @return table
 function HLUM.callbacks.hermit_loc_vars()
+    local current_level = (G.STAGE == G.STAGES.RUN and HLUM.state.level) or HLUM.state.level_d
+
     return {
         vars = {
-            HLUM.state.money_cap,
-            HLUM.state.level,
-            colours = { (HLUM.state.level == 1 and G.C.UI.TEXT_DARK) or G.C.HAND_LEVELS[math.min(7, HLUM.state.level)], },
+            (G.STAGE == G.STAGES.RUN and HLUM.state.money_cap) or HLUM.state.money_cap_d or G.P_CENTERS.c_hermit.config.extra,
+            current_level,
+            colours = { (current_level == 1 and G.C.UI.TEXT_DARK) or G.C.HAND_LEVELS[math.min(7, HLUM.state.level)], },
         },
     }
 end
