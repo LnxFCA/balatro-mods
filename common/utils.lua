@@ -36,3 +36,10 @@ function LNXFCA.include(path, mod_id)
 
     if chunk then return chunk() end
 end
+
+
+function LNXFCA.include_list(paths, mod_id)
+    for _, path in ipairs(paths) do
+        LNXFCA.include(path, mod_id)
+    end
+end

@@ -94,6 +94,7 @@
 ---@field is_mod boolean `true` if initialized as standalone
 ---@field utils LnxFCA.Utils Common functions used by other mods
 ---@field include fun(path: string, mod_id: string?) Load a file in the current context
+---@field include_list fun(paths: string[], mod_id: string?) Load a list of files in the `mod_id` context
 ---@field callbacks LnxFCA.Callbacks
 LNXFCA = {}
 
