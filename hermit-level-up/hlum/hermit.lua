@@ -55,7 +55,7 @@ function HLUM.callbacks.hermit_loc_vars()
         vars = {
             HLUM.state.money_cap,
             HLUM.state.level,
-            colours = { G.C.SECONDARY_SET.Tarot, },
+            colours = { (HLUM.state.level == 1 and G.C.UI.TEXT_DARK) or G.C.HAND_LEVELS[math.min(7, HLUM.state.level)], },
         },
     }
 end
