@@ -7,9 +7,6 @@ function FRSM.init(self)
     self.overrides = {}
     self.mt = {}
 
-    -- State
-    self.state = FRSM.mt.State:new()
-
     self.mod = SMODS.current_mod --[[@as FRSM.Mod]]
     self.mod_id = self.mod.id
 end
@@ -27,14 +24,16 @@ end
 -- Load mod files
 LNXFCA.include("frsm/ui/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/ui/collection.lua")
-LNXFCA.include("frsm/cardarea.lua")
 LNXFCA.include("frsm/ui/card.lua")
+LNXFCA.include("frsm/cardarea.lua")
 LNXFCA.include("frsm/card.lua")
 LNXFCA.include("frsm/frs.lua", FRSM.mod_id)
 LNXFCA.include("frsm/utils.lua", FRSM.mod_id)
 LNXFCA.include("frsm/callbacks.lua", FRSM.mod_id)
 LNXFCA.include("frsm/overrides.lua", FRSM.mod_id)
 
+
+FRSM.state = FRSM.mt.State:new()
 
 -- Load atlas
 SMODS.Atlas({ key = 'frsm_empty_card', path = 'frsm_empty_card.png', px = 71, py = 95, })
