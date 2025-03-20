@@ -36,7 +36,8 @@ that let's **The Hermite** level up.
 ## Installation
 
 > :warning: **Development Branch Warning:** This branch (`main`) is for development only.
-> Code here is unstable and may not work. For stable releases, please switch to the `release` branch.
+> Code here is unstable and may not work. For stable releases, ~please switch to the `release` branch.~
+> use the [GitLab subgroup](https://gitlab.com/lnxfca-dev/balatro-mods) `release` branch.
 
 This repository contains all my mods for **Balatro**.
 Each mod is located in its respective directory
