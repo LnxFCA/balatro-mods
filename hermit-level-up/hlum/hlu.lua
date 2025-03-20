@@ -11,6 +11,7 @@ HLUM.mt.State = Object:extend()
 function HLUM.mt.State.init(self)
     self.level = 1
     self.money_cap = 20
+    self.money_scale = 10
     self.level_d = 1
     self.money_cap_d = nil
 
@@ -23,15 +24,16 @@ function HLUM.mt.State.load(self, state)
 
     if not self.saved_state then return end
 
-    self.level = self.saved_state.level
-    self.money_cap = self.saved_state.money_cap
+    self.level = self.saved_state.level or 1
+    self.money_cap = self.saved_state.money_cap or G.P_CENTERS.c_hermit.config.extra or 20
+    self.money_scale = self.saved_state.money_scale or 10
 
     self.saved_state = nil
 end
 
 
 function HLUM.mt.State.save(self, mod)
-    mod.config.state = { level = self.level, money_cap = self.money_cap }
+    mod.config.state = { level = self.level, money_cap = self.money_cap, money_scale = self.money_scale }
 
     SMODS.save_mod_config(mod)
 end
@@ -42,7 +44,7 @@ end
 ---@param obj SMODS.Consumable
 function HLUM.mt.State.level_up(self, obj)
     self.level = self.level + 1
-    self.money_cap = self.money_cap + 5
+    self.money_cap = self.money_cap + self.money_scale
     self.money_cap_d = self.money_cap_d or obj.config.extra
 
     obj.config.extra = self.money_cap

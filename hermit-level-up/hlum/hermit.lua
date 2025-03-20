@@ -57,19 +57,11 @@ function HLUM.callbacks.hermit_calculate(obj, card, context)
     if not context.using_consumeable then return end
     if obj.key ~= 'c_hermit' then return end
 
-    local area = card.area or {}
+    local money_msg = '+' .. localize('$') .. HLUM.state.money_scale
 
     for _, v in ipairs(G.consumeables.cards) do
         if v.config.center.key == 'c_hermit' then
-            card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colours = G.C.MONEY, })
-        end
-    end
-
-    if area == G.consumeables then return end
-
-    for _, v in ipairs(area.cards) do
-        if v.config.center.key == 'c_hermit' then
-            card_eval_status_text(v, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colours = G.C.MONEY, })
+            card_eval_status_text(v, 'extra', nil, nil, nil, { message = money_msg, colours = G.C.MONEY, })
         end
     end
 end

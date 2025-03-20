@@ -3,6 +3,7 @@
 ---@class HLUM.State.Saved
 ---@field level number
 ---@field money_cap number
+---@field money_scale number
 
 
 ---@class HLUM.Config
