@@ -138,6 +138,9 @@ To update, run the following command:
 git pull origin release
 ```
 
+> **Note**: For a better experience with `git`, is recommended to use the GitLab
+subgroup: `https://gitlab.com/lnxfca-dev/balatro-mods`.
+
 ## Updating
 
 When updating to a new major version (e.g., from `v1.x.x` to `v2.x.x`) or a new
