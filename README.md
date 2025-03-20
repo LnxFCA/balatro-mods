@@ -29,6 +29,9 @@ allowing players to save cards for future rounds or re-rolls.
 - [celestial-expansion-pack](./celestial-expansion-pack) (Celestial Expansion Pack *dev*): A
 Planetary Power-Up for Balatro!
 
+- [hermit-level-up](./hermit-level-up) (Hermit Level Up **to be released**): A mod
+that let's **The Hermite** level up.
+
 ## Installation
 
 > :warning: **Development Branch Warning:** This branch (`main`) is for development only.
