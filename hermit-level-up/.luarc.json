@@ -5,7 +5,7 @@
     "../dev/balatro",
     "../dev/balatro-dev",
     "../dev/smods/src",
-    "../dev/smods/lsp_def",
+    "../dev/smods-dev",
     "../common"
   ],
   "diagnostics.disable": [
