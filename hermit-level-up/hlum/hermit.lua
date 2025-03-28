@@ -27,7 +27,7 @@ end
 
 --- Hermit use
 ---@param obj SMODS.Consumable
----@param card BALATRO_T.Card
+---@param card BALATRO.Card
 function HLUM.callbacks.hermit_use(obj, card)
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
@@ -50,12 +50,17 @@ end
 
 
 --- Hermit calculate
----@param obj SMODS.Consumable
----@param card BALATRO_T.Card
+---@param _ SMODS.Consumable
+---@param card BALATRO.Card
 ---@param context table
-function HLUM.callbacks.hermit_calculate(obj, card, context)
+function HLUM.callbacks.hermit_calculate(_, card, context)
     if not context.using_consumeable then return end
-    if obj.key ~= 'c_hermit' then return end
+
+    -- Only update on card usage
+    if context.consumeable.config.center.key ~= 'c_hermit' then return end
+
+    -- Don't update the used card
+    if card == context.consumeable then return end
 
     local money_msg = '+' .. localize('$') .. HLUM.state.money_scale
 
