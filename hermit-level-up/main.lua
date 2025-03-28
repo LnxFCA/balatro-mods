@@ -19,6 +19,8 @@ LNXFCA.include_list({
     'hlum/hlu.lua',
     'hlum/hermit.lua',
     'hlum/ui/extra_tabs.lua',
+    'hlum/ui/config.lua',
+    'hlum/callbacks.lua',
 }, HLUM.mod_id)
 
 

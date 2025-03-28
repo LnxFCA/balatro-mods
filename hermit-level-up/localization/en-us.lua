@@ -20,6 +20,9 @@ return {
                     "A Balatro mod that lets The Hermit level up,",
                     "increasing its money cap with each use."
                 },
+
+                o_money_scale = 'Money Cap Increase per Level',
+                o_money_scale_d = 'Sets how much the money cap increases per level.'
             },
         },
     },
