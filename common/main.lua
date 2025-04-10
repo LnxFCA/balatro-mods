@@ -16,6 +16,8 @@ function lnxfca_common_init()
     LNXFCA.is_mod = SMODS.current_mod.id == 'lnxfca-common'
     LNXFCA.UIDEF = {}
     LNXFCA.utils = {}
+    LNXFCA.callbacks = {}
+    LNXFCA.overrides = {}
 
     local iprefix = (LNXFCA.is_mod and '') or 'common/'
 
@@ -28,7 +30,11 @@ function lnxfca_common_init()
     include("ui/mtab.lua")
     include("ui/text.lua")
     include("ui/other.lua")
+    include("inject.lua")
     include("utils.lua")
+    include("overrides.lua")
+
+    LNXFCA.INJECT:init()
 
     LNXFCA.initialized = true
 end
