@@ -1,5 +1,5 @@
 function LNXFCA.UIDEF.create_spacing_box(args)
-    ---@type UIDef
+    ---@type BALATRO.UI.Node
     return {
         n = args.col or G.UIT.R, config = { padding = args.padding or 0, colour = args.colour },
         nodes = {{ n = G.UIT.B, config = { h = args.h or 0.1, w = args.w or 0.1, }}}
@@ -18,7 +18,7 @@ function LNXFCA.UIDEF.create_open_button(args)
         end
     end
 
-    ---@type UIDef
+    ---@type BALATRO.UI.Node
     return {
         n = args.col or G.UIT.C,
         config = {
@@ -68,7 +68,7 @@ function LNXFCA.UIDEF.create_button(args)
         type = 'none', button = args.controller_control, scale = 0.55, orientation = 'tli',
     }
 
-    ---@type UIDef
+    ---@type BALATRO.UI.Node
     local button = {
         n = args.col or G.UIT.C, config = {
             align = args.align or "cm", padding = args.padding or 0.2, r = args.r or 0.3, colour = args.background or G.C.BLUE,
@@ -76,7 +76,7 @@ function LNXFCA.UIDEF.create_button(args)
             minh = args.height, maxw = (args.fixed and args.width) or nil, maxh = (args.fixed and args.width) or nil,
             focus_args = args.focus_args, func = args.controller_control and 'set_button_pip',
         },
-        nodes = (type(args.content) == 'table' and args.content --[=[@as UIDef[]]=]) or {{
+        nodes = (type(args.content) == 'table' and args.content --[=[@as BALATRO.UI.Node[]]=]) or {{
             n = G.UIT.T, config = { text = args.content, scale = args.scale, colour = args.foreground or G.C.UI.TEXT_LIGHT, },
         }},
     }

@@ -1,6 +1,6 @@
 --- Create a new configuration option box.
----@param content UIDef[]
----@return UIDef
+---@param content BALATRO.UI.Node[]
+---@return BALATRO.UI.Node
 function LNXFCA.UIDEF.config_create_option_box(content)
     return {
         n = G.UIT.R,
@@ -51,7 +51,7 @@ function LNXFCA.UIDEF.create_about_tab(info)
 
     info.developed_by = info.developed_by or lnxfca_common.developed_by_fmt:format(table.concat(info.author, ','))
 
-    ---@type UIDef
+    ---@type BALATRO.UI.Node
     return {
         n = G.UIT.ROOT, config = { align = "cm", minw = 8, colour = G.C.BLACK, r = 0.1, padding = 0.2, },
         nodes = {{

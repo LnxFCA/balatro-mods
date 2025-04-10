@@ -48,9 +48,8 @@ end
 
 --- Create collection UI
 ---@param args table
----@return UIDef
+---@return BALATRO.UI.Node
 function LNXFCA.UIDEF.create_collection_box(args)
-    ---@type UIDef
     return {
         n = G.UIT.C, config = { align = "cm", padding = 0.1, }, nodes = {
             { n = G.UIT.R, config = { align = "cm", r = 0.1, colour = G.C.BLACK, }, nodes = LNXFCA.UIDEF.collection.deck_tables, },
@@ -61,5 +60,5 @@ function LNXFCA.UIDEF.create_collection_box(args)
                 })
             }},
         },
-    }
+    }  --[[@as BALATRO.UI.Node]]
 end
