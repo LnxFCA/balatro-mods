@@ -1,6 +1,6 @@
-function LNXFCA.utils.copy_table(stable)
+function LNXFCA.utils.copy_table(t)
     local output = {}
-    for k, v in pairs(stable) do
+    for k, v in pairs(t) do
         if type(v) == 'table' then  -- perform deep copy
             output[k] = LNXFCA.utils.copy_table(v)
         else
