@@ -17,7 +17,7 @@
 ---@field cycle_config HLUM.Config.CycleConfig
 
 
----@class HLUM.Mod : SMODS_T.Mod
+---@class HLUM.Mod : SMODS.Mod.Base, SMODS.Mod.Base
 ---@field config HLUM.Config
 
 
