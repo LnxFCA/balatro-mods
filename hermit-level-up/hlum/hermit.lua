@@ -52,7 +52,7 @@ end
 --- Hermit calculate
 ---@param _ SMODS.Consumable
 ---@param card BALATRO.Card
----@param context table
+---@param context BALATRO.Calc.Context
 function HLUM.callbacks.hermit_calculate(_, card, context)
     if not context.using_consumeable then return end
 
@@ -64,16 +64,12 @@ function HLUM.callbacks.hermit_calculate(_, card, context)
 
     local money_msg = '+' .. localize('$') .. HLUM.state.money_scale
 
-    for _, v in ipairs(G.consumeables.cards) do
-        if v.config.center.key == 'c_hermit' then
-            card_eval_status_text(v, 'extra', nil, nil, nil, { message = money_msg, colours = G.C.MONEY, })
-        end
-    end
+    card_eval_status_text(card, 'extra', nil, nil, nil, { message = money_msg, colours = G.C.MONEY })
 end
 
 
 --- Hermit loc_vars
---- @return table
+--- @return SMODS.LocVars
 function HLUM.callbacks.hermit_loc_vars()
     local current_level = (G.STAGE == G.STAGES.RUN and HLUM.state.level) or HLUM.state.level_d
 
