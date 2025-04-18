@@ -99,5 +99,5 @@ end
 ---@param mod? number
 function FWNM.mt.State.update_negative_chance(self, mod)
     self.saved = false
-    self.editions.e_negative.weight = self.editions.e_negative.weight * (mod or 2)
+    self.editions.e_negative.weight = self.editions.e_negative.weight + (mod or 1)
 end
