@@ -33,6 +33,8 @@ Planetary Power-Up for Balatro!
 that let's **The Hermite** level up.
 [NexusMods](https://www.nexusmods.com/balatro/mods/331)
 
+- [fortune-wheel-negative](./fortune-wheel-negative) (Fortune Wheel: Negative *dev*): Adds a chance to get **Negative** edition to **The Wheel of Fortune**.
+
 ## Installation
 
 > :warning: **Development Branch Warning:** This branch (`main`) is for development only.
