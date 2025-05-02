@@ -10,7 +10,7 @@
 ---@field state FRSM.mt.State.Saved Mod state
 
 
----@class FRSM.Mod : SMODS_T.Mod
+---@class FRSM.Mod : SMODS.Mod.Base, SMODS.Mod.Extra
 ---@field config FRSM.Mod.Config
 
 
@@ -50,5 +50,5 @@
 ---@field mt { State: FRSM.mt.State }
 
 
----@class FRSM.Card : BALATRO_T.Card
+---@class FRSM.Card : BALATRO.Card
 ---@field ability_UIBox_table table<string, any>

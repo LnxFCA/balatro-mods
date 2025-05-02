@@ -1,0 +1,63 @@
+This is mod concept is based on First Round Shop, but as its name says, it allows you
+to select the items that will appear in the first round shop.
+
+The shop is divided by areas:
+
+- Jokers
+- Vouchers
+- Booster Packs
+
+The Joker areas can have any card, except Vouchers and Booster Packs.
+The Vouchers area can have only Vouchers.
+The Booster Packs area can have only Booster Packs.
+
+Because this mod is like cheating, we must add a bit of balance,
+first, for each item selected, the user will have to 1$, increasing by 1$ per selected item.
+The math formula would be `price = n * 1`, where n is the number of selected shop items.
+
+
+We must make the UI intuitive and add controller support.
+
+Card selection UI, the card selection UI can be divided into 3 areas, same as the shop,
+we must also show the current amount to be charged.
+
+In the card selection UI, we must include CardAreas for each area, so that users can see
+which card has been selected.
+
+For card selection the following can be implemented:
+
+- For each empty slot on the card Area, a placeholder will be shown, when clicking/actaviting
+the slot, a new UI will appear, this UI will contain the available cards, the user can
+click/activate a card, after a card is selected the overlay will be closed, and the selected card
+will appear in the specific CardArea. For The Jokers area, we must implement other UI which allows
+filter cards by categories, e.g. Jokers, Tarots, Planets, Spectral, Playing Cards, etc...
+
+- We can also enable Joker modifiers, but we must charge extra per item.
+
+- This mod is to be used with Lock the Deal, because there isn't way that we can purchase all
+items at once.
+
+
+To select card for each area, we can include buttons and the placeholder, so that
+we can either click the button or placeholder to open the card collection for that area.
+
+
+The costs will be charged to the user, in the evaluate section, so that is intuitive and
+the users knows what are these charges for.
+
+
+-- DESIGN
+
+What can our mod do?:
+
+It allows to customize the first round shop, allowing the user to specify which cards
+will appear in the first shop.
+
+How?
+
+The mod will present the user a selection interface where the user can select the
+cards for different areas, this interface will close to the shop's interface.
+
+
+The mod will present placeholders for each area, when the user clicks the placeholder
+the card selector will be open and the user can select any cards from there.

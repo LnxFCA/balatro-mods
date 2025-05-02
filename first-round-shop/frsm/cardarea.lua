@@ -1,8 +1,8 @@
 FRSM.UIDEF.CardArea = CardArea:extend()
 
 --- Override can_highlight
----@param self BALATRO_T.CardArea
----@param card BALATRO_T.Card
+---@param self BALATRO.CardArea
+---@param card BALATRO.Card
 function FRSM.UIDEF.CardArea.can_highlight(self, card)
     local ckey = card.config.center.key
 

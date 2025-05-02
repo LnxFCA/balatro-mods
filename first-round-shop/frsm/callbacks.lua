@@ -44,7 +44,7 @@ end
 
 --- FRSM callback handler
 --- Used to prevent namespace collision with other mods or the game itself
----@param e BALATRO_T.UIElement | table
+---@param e BALATRO.UIElement | table
 function G.FUNCS.frsm_callback_handler(e)
     local handler = nil
     local callback = nil
