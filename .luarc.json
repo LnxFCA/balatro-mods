@@ -1,5 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "runtime": {
+  "version": "LuaJIT"
+  },
   "workspace.library": [
     "dev/love2d-dev",
     "dev/balatro",
