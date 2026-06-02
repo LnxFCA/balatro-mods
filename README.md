@@ -7,13 +7,21 @@ All mods in this repository require at least Balatro version `1.0.1n`.
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H219IGVS)
 
 ## Table of Contents
+
 - [Introduction](#balatro-mods)
+
 - [Mod List](#mod-list)
+
 - [Installation](#installation)
-    - [Requirements](#requirements)
-    - [Methods](#installation-methods)
+
+    -[Requirements](#requirements)
+
+    -[Methods](#installation-methods)
+
 - [Updating](#updating)
+
 - [Troubleshooting](#general-troubleshooting)
+
 - [License](#license)
 
 ## Mod list
@@ -26,14 +34,15 @@ Joker card appears in the shop during the first round.
 allowing players to save cards for future rounds or re-rolls.
 [NexusMods](https://www.nexusmods.com/balatro/mods/191)
 
-- [celestial-expansion-pack](./celestial-expansion-pack) (Celestial Expansion Pack *dev*): A
-Planetary Power-Up for Balatro!
+- [celestial-expansion-pack](./celestial-expansion-pack) (Celestial Expansion Pack *dev*):
+A Planetary Power-Up for Balatro!
 
 - [hermit-level-up](./hermit-level-up) (Hermit Level Up): A mod
 that let's **The Hermite** level up.
 [NexusMods](https://www.nexusmods.com/balatro/mods/331)
 
-- [fortune-wheel-negative](./fortune-wheel-negative) (Fortune Wheel: Negative *dev*): Adds a chance to get **Negative** edition to **The Wheel of Fortune**.
+- [fortune-wheel-negative](./fortune-wheel-negative) (Fortune Wheel: Negative *dev*):
+Adds a chance to get **Negative** edition to **The Wheel of Fortune**.
 
 ## Installation
 
@@ -74,16 +83,15 @@ which depends on your OS:
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | Linux/Deck    | `%LIBRARY%/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods`         |
 | Default Linux | `$HOME/.steam/root/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods` |
-| Windows       | `C:\Users\%User%\AppData\Roaming\Balatro\Mods` or `%AppData%/Balatro/Mods`                               |
+| Windows       | `C:\Users\%User%\AppData\Roaming\Balatro\Mods` or `%AppData%/Balatro/Mods`                                |
 | macOS         | `/Users/$USER/Library/Application Support/Balatro/Mods`                                                   |
-
 
 > **Note**: **Linux / Deck**: Replace `%LIBRARY%` with your Steam Library path.
 If you don’t use a custom library, then use the **Default Linux** path.
 
 For further help, visit the
 [lovely-injector](https://github.com/ethangreen-dev/lovely-injector?tab=readme-ov-file#manual-installation)
-project page or the [smods wiki](https://github.com/Steamodded/smods/wiki#step-3-installing-steamodded).
+project page or the [smods wiki](https://github.com/Steamodded/smods/wiki/Installing-Steamodded-windows).
 
 ### Installation methods
 
@@ -162,7 +170,7 @@ This can usually be done by deleting the mod folder from the `Mods` directory. T
 is not necessary when using the git installation method.
 
 2. **Clean Configuration Files**:
-After successfully uninstalling the old version, you need to remove the old 
+After successfully uninstalling the old version, you need to remove the old
 configuration files from the configuration directory.
 The configuration directory (`config`) is located in the same Balatro data directory
 as the `Mods` folder. The configuration file will have the same name as the mod directory.
@@ -198,9 +206,9 @@ In general, you can try the following:
 - Ensure that you are using the latest version of the mod.
 
 - Confirm that you downloaded the mod from a valid source:
-    - The GitHub releases page.
-    - Nexus Mods.
-    - The repository's `release` branch.
+  - The GitHub releases page.
+  - Nexus Mods.
+  - The repository's `release` branch.
 
 - If using `git`, make sure you are not on the `main` branch.
 
@@ -216,7 +224,7 @@ you can create a new issue.
 
 Please include the following information to assist in troubleshooting:
 
-1. **Specify the mod name**: Include the mod name, such as `first-round-joker`, 
+1. **Specify the mod name**: Include the mod name, such as `first-round-joker`,
 either in the issue label or in its description.
 
 2. **Provide visual or log evidence**: Upload or paste any relevant screenshots or
