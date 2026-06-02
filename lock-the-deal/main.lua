@@ -65,11 +65,16 @@ LTDM.state.ltd = LTDM.mt.State:new()
 -- =========================================================
 -- SILK TOUCH INTEGRATION (Fully API Compliant)
 -- Registers mobile-like touch dragging & native gamepad inputs
+-- ===========================================
+
+-- =========================================================
+-- SILK TOUCH INTEGRATION (Fully API Compliant)
+-- Registers mobile-like touch dragging & native gamepad inputs
 -- =========================================================
 
 if SilkTouch then
     
-    -- 1. Touchscreen Drag Target[span_3](start_span)[span_3](end_span)
+    -- 1. Touchscreen Drag Target
     SilkTouch.DragTarget{
         key = "ltd_lock_drag_area",
         prefix_config = {key = false},
@@ -89,7 +94,8 @@ if SilkTouch then
         end,
         text = function(card)
             if card and card.ltdm_state and card.ltdm_state.locked then
-                return {localize('ltd_button_locked')} 
+                -- Explicitly shows "Unlock" when dragging an already locked card
+                return {"Unlock"} 
             end
             return {localize('ltd_button_lock')}
         end,
@@ -112,20 +118,19 @@ if SilkTouch then
         end,
     }
 
-    -- 2. Native Gamepad/Controller Button[span_4](start_span)[span_4](end_span)
+    -- 2. Native Gamepad/Controller Button
     SilkTouch.ControllerButton{
         key = "ltd_lock_controller_button",
-        button_key = "leftshoulder", -- Assigns the action to the LB/L1 button[span_5](start_span)[span_5](end_span)
+        button_key = "leftshoulder",
         text = function(card)
-            -- Utilizes Lock the Deal's built-in controller localization[span_6](start_span)[span_6](end_span)
             if card and card.ltdm_state and card.ltdm_state.locked then
-                return { localize('ltd_controller_locked'), single_text = true }
+                -- Explicitly shows "Unlock" for the controller button prompt
+                return {"Unlock", single_text = true} 
             end
-            return { localize('ltd_controller_lock'), single_text = true }
+            return {localize('ltd_controller_lock'), single_text = true}
         end,
         colour = G.C.BLUE,
         focus_condition = function(card)
-            -- Only displays the prompt when hovering over a valid shop item[span_7](start_span)[span_7](end_span)
             return card and card.ltdm_state ~= nil and card.area and (card.area == G.shop_jokers or card.area == G.shop_vouchers or card.area == G.shop_booster)
         end,
         active_check = function(card)
@@ -144,4 +149,5 @@ if SilkTouch then
     }
 end
 
+    
 
