@@ -54,12 +54,6 @@ Click it to lock the item. Locked items persist through re-rolls and rounds.
    *Figure 6: Saved item persists.*
 
 
-5. **Silk touch**: Silk touch mod support for mobile ui like drag & drop. 
-
-   ![LTD Saved Item](./images/silk_touch1.jpg)
-   *Figure 7: Saved item persists.*
-
-
 ### Controller Support
 
 Controller/Gamepad users can now lock/unlock shop items using the **Left Trigger (LT)**.
